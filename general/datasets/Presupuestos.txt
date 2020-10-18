@@ -1,0 +1,607 @@
+// obtenido de https://convertio.co/es/pdf-csv/
+
+Programas                                                            2011        2012        2013         2014         2015         2016         2017         2018         2018-P        2019-P
+
+111M : Gobierno del Poder Judicial                                          38          36           33           32           31           32           32           34            34            34
+
+111N : Dirección y Servicios Generales de Justicia                          62          55           51           50           47           45           48           50            50            50
+
+111O : Selección y formación de Jueces                                      27          26           21           18           15           15           15           15            15            15
+
+111P : Documentación y publicaciones Judiciales                             10           9            8            8            8            9            9            9             9             9
+
+111Q : Formación del personal de la Administración de Justicia              12          11            8            7            7            9            8            8             8             8
+
+111R: Formación de la Carrera Fiscal                                         5           6            3            2            4            3            3            2             2             2
+
+112A : Tribunales de Justicia y Ministerio Fiscal                      1.529       1.442        1.391        1.359        1.372        1.465        1.580        1.628         1.628         1.628
+
+113M : Registros vinculados con la Fe Pública                               31          26           27           24           24           27           30           34            33            33
+
+11 JUSTICIA                                                            1.713       1.613        1.543        1.501        1.508        1.604        1.726        1.781         1.780         1.780
+
+121M : Administración y Servicios Generales de Defensa                 1.234       1.225        1.160        1.088        1.134        1.168        1.244        1.187         1.187         1.187
+
+121N : Formación del personal de las Fuerzas Armadas                    486         419             387          373          374          385          400          413        413           413
+
+121O : Personal en reserva                                              547         551             554          533          513          524          568          526        526           526
+
+122A : Modernización de las Fuerzas Armadas                             383         269             179          161          193          202          146          160        160           160
+
+122B : Programas especiales de modernización                            205              5            7            7            7            7      1.824        2.164         2.164         2.164
+
+122M: Gastos operativos de las Fuerzas Armadas                         2.363       2.289        2.165        2.161        2.190        2.197        2.155        2.629         2.629         2.629
+
+122N : Apoyo logístico                                                 1.651       1.511        1.334        1.332        1.301        1.251        1.238        1.320         1.320         1.320
+
+12 DEFENSA                                                             6.868       6.269        5.786        5.654        5.712        5.734        7.576        8.401         8.401         8.401
+
+131M : Dirección y Serv. Generales de Seguridad y Protección Civil          94          88           67           67           70           68           63           66            66            66
+
+131N : Formación de Fuerzas y Cuerpos de Seguridad del Estado               97          81           75           76           79           95          124          141        141           141
+
+131O : Fuerzas y Cuerpos en reserva                                     733         697             615          527          449          427          404          382        382           382
+
+131P : Derecho de asilo y apátridas                                          3           3            3            3            3            6            6            6             6             6
+
+132A : Seguridad ciudadana                                             5.388       5.469        5.192        5.264        5.276        5.299        5.326        5.790         5.790         5.790
+
+132B : Seguridad vial                                                   782         724             710          711          734          755          740          766        766           766
+
+132C : Actuaciones policiales en materia de droga                           81          82           83           82           79           77           76           76            76            76
+
+133A : Centros e Instituciones Penitenciarias                          1.162       1.154        1.102        1.122        1.125        1.150        1.145        1.160         1.160         1.160
+
+133B : Trabajo, formación y asistencia a reclusos                           30          27           28            0
+
+134M : Protección Civil                                                     17          15           14           14           14           14           14           15            15            15
+
+135M : Protección de datos de carácter personal                             14          14           14           13           14           14           14           14            14            14
+
+13 SEGURIDAD CIUDAD. E INST. PENITENCIARIAS                            8.402       8.355        7.903        7.881        7.843        7.904        7.912        8.418         8.418         8.418
+
+141M : Dirección y Servicios Generales de Asuntos Exteriores                90          80           77           76           68           64           63           64            64            64
+
+142A : Acción del Estado en el exterior                                 504         761             764          670          677          737          780          791        791           791
+
+142B : Acción diplomática ante la Unión Europea                             24          23           21           21           21           21           20           21            21            21
+
+143A : Cooperación para el desarrollo                                  1.978        684             523          497          519          518          513          555        555           555
+"                 A. PRESUPUESTOS"
+1. PRESUPUESTOS GENERALES DEL ESTADO CONSOLIDADOS
+
+1.6. Programas de gasto (capítulos 1 a 8)
+Millones de euros
+Programas                                                                 2011        2012        2013         2014         2015         2016         2017         2018         2018-P        2019-P
+
+144A : Cooperación, promoción y difusión cultural en el exterior             151         133             109          131          135          128          133          137        137           137
+
+144B : Cooperación, promoción y difusión educativa en el exterior                                                                    3           10           12           13            13            13
+
+14 POLÍTICA EXTERIOR                                                        2.748       1.681        1.495        1.395        1.422        1.478        1.522        1.581         1.581         1.581
+
+211M : Pensiones contributivas de la Seguridad Social                      99.239     102.103      106.505      104.628      108.265      111.691      115.757      119.940       119.940       119.940
+
+211N : Pensiones de Clases Pasivas                                         10.062      10.858       11.824       12.341       12.928       13.419       13.783       14.590        14.590        14.590
+
+211O : Otras pensiones y prestaciones de Clases Pasivas                          85      108              41           43           42           41           41           42            42            42
+
+212M : Pensiones no contributivas y prestaciones asistenciales              2.033       2.022        2.498        2.183        2.254        2.301        2.330        2.389         2.389         2.389
+
+212N : Pensiones de guerra                                                   342         315             284          260          215          191          170          159        159           159
+
+212O: Gestión y control de los complementos a mínimos de pensiones                                                7.633        7.563        7.410        7.180        7.329         7.329         7.329
+
+219M : Gestión de las prestaciones económicas de Seguridad Social            447         413             396          390          385          389          381          380        380           380
+
+219N : Gestión de pensiones de Clases Pasivas                                     8           8            8            8            7            6            6            6             6             6
+
+21 PENSIONES                                                              112.216     115.826      121.557      127.484      131.659      135.449      139.647      144.834       144.834       144.834
+
+221M : Subsidios incapac. temporal y otras pres. econ. de Seg. Soc.        11.581      10.263       10.602        9.839        9.496       10.208       12.021       13.176        13.176        13.176
+
+222M : Prestaciones económicas del Mutualismo Administrativo                 556         444             360          355          353          364          383          380        377           377
+
+223M: Prestaciones de garantía salarial                                     1.429       1.275            868      1.376        1.064        1.087        1.072            796        796           796
+
+224M: Prestaciones económicas por cese de actividad                              11          31           49           35           31           27           36           36            36            36
+
+22 OTRAS PRESTACIONES ECONÓMICAS                                           13.576      12.013       11.880       11.604       10.944       11.686       13.512       14.388        14.385        14.385
+
+231A : Plan Nacional sobre Drogas                                                26          18           15           15           15           15           15           15            15            15
+
+231B: Acciones en favor de los emigrantes                                    117             90           77           75           70           69           57           59            59            59
+
+231C: Servicios Sociales Seg.Social a personas con discapacidad                  92          75           69           63           59           56           53           53            53            53
+
+231D : Servicios Sociales de la Seguridad Social a personas mayores          202         124             115          117          118          117          118          117        117           117
+
+231E : Otros servicios sociales de la Seguridad Social                           49          42           41           41           41           48           47           48            48            48
+
+231F : Otros servicios sociales del Estado                                   240         182             156          157          291          313          329          349        349           349
+
+231G : Atención a la infancia y a las familias                                    9           5            4            6            8           12           12          10             10            10
+
+231H: Acciones a favor de los inmigrantes                                    148             67           62           62           66          313          313          318        318           318
+
+231I: Autonomía personal y atención a la Dependencia                        1.498       1.407        2.206        1.177        1.177        1.252        1.355        1.401         1.401         1.401
+
+231M : Servicios sociales de la Seg. Soc. gestionados por las CC.AA               0
+
+231N : Coordinación en materia de extranjería e inm
+232A : Promoción y servicios a la juventud                                       32          29           29           28           28           29           31           33            33            33
+
+232B : Igualdad de oportunidades entre mujeres y hombres                         31          25           19           19           21           20           20           20            20            20
+
+232C: Actuaciones para la prevención integral de la violencia de género          30          24           22           22           24           25           32          160        160           160
+
+232D: Igualdad de trato y diversidad                                                                                                                                                      1             1
+
+232M: Dirección y servicios generales de promoción social
+"                 A. PRESUPUESTOS"
+1. PRESUPUESTOS GENERALES DEL ESTADO CONSOLIDADOS
+
+1.6. Programas de gasto (capítulos 1 a 8)
+Millones de euros
+Programas                                                                                2011        2012        2013         2014         2015         2016         2017         2018         2018-P        2019-P
+
+239M : Gestión de los servicios sociales de la Seguridad Social                                 39          31           31           29           28           28           27           47            47            47
+
+23 SERVIC. SOCIALES Y PROMOCIÓN SOCIAL                                                     2.513       2.119        2.845        1.810        1.944        2.296        2.408        2.630         2.631         2.631
+
+241A : Fomento de la inserción y estabilidad laboral                                       7.323       5.760        3.765        4.042        4.712        5.179        5.488        3.374         3.374         3.374
+
+241B: Formación Profesional para el Empleo                                                                                                                                           2.331         2.331         2.331
+
+241N: Desarrollo del trabjo autón., la ec. social y de la respons. social de las empr.           7           5            6           32           34           36           11          11             11            11
+
+24 FOMENTO DEL EMPLEO                                                                      7.329       5.765        3.772        4.074        4.746        5.215        5.499        5.716         5.716         5.716
+
+251M : Prestaciones a los desempleados                                                    30.474      28.805       26.994       29.728       25.300       19.621       18.318       17.702        17.702        17.702
+
+25 DESEMPLEO                                                                              30.474      28.805       26.994       29.728       25.300       19.621       18.318       17.702        17.702        17.702
+
+261M : Dirección y Servicios Generales de Vivienda
+261N : Promoción, admón. y ayudas para rehabil. y acceso a vivienda                        1.126        781             738          773          556          553          453          450        450           450
+
+261O : Ordenación y fomento de la edificación                                                   72          38           26           26           30           33           20           29            29            29
+
+261P: Urbanismo y política del suelo                                                             2           1            1            1            1            1            1            1             1             1
+
+26 ACCESO A LA VIVIENDA Y FOMENTO DE LA EDIFICACIÓN                                        1.200        820             766          800          587          587          474          481        481           481
+
+291A : Inspección y control de Seguridad y Protección Social                                140         127             122          124          123          123          124          126        146           146
+
+291M : Direcc. y Serv. Grales de Seg. Social y Protección Social                           7.630       2.774        4.314        4.253        5.221        5.867       14.164       17.170        17.151        17.151
+
+29 GESTIÓN Y ADMINISTRACIÓN DE LA S.S.                                                     7.771       2.901        4.436        4.377        5.344        5.990       14.288       17.297        17.297        17.297
+
+311M: Dirección y Servicios Generales de Sanidad, Consumo y Bienestar Social                103             99           84           69           70           66           66           66            66            66
+
+311O: Políticas de Salud y Ordenación Profesional                                               42          11            9            9            9            9            9            9             9             9
+
+312A : Asistencia hospitalaria en las Fuerzas Armadas                                       176         148             150          137          129          131          134          150        150           150
+
+312B : Atención primaria de salud. Inst. Nac. de Gestión Sanitaria                              62          60           58           58           58           64           65           66            66            66
+
+312C : Atención especializada de salud. Inst. Nac. de Gest. Sanit.                          149         142             141          146          150          151          157          160        160           160
+
+312D : Medicina marítima                                                                        32          33           32           32           31           31           35           35            35            35
+
+312E : Asistencia sanitaria del Mutualismo Administrativo                                  2.088       2.083        2.056        2.060        2.091        2.164        2.178        2.249         2.248         2.248
+
+312F : Atención primaria de salud Mutuas Acc. Trabajo y E.P e I.S.M                        1.005        831             818          823          823          857          905          944        944           944
+
+312G : Atención especializ. salud Mutuas Acc. Trabajo y E.P e I.S.M                         375         365             369          379          396          420          433          459        459           459
+
+312M : Asistencia sanitaria de la Seg. Social gestionada por CC.AA.                              0
+
+313A: Prestaciones sanitarias y farmacia                                                    139         145              87           74           53           52           56           56            56            56
+
+313B : Salud pública, sanidad exterior y calidad                                                70          38           33           34           34           36           37           38            38            38
+
+313C : Seguridad alimentaria y nutrición                                                        17          16           15           15           16           16           16           16            16            16
+
+313D : Donación y trasplante de órganos, tejidos y células                                       4           4            4            4            4            4            4            4             4             4
+
+31 SANIDAD                                                                                 4.263       3.976        3.856        3.840        3.864        4.000        4.093        4.253         4.251         4.251
+
+321M : Dirección y Servici. Generales de la Educ., Cultura y Deporte                            80          75          108           99           90           90           87           86            50            50
+
+321N : Formación permanente del profesorado de Educación                                        52           4            3            4            3            3            3            3             3             3
+"                  A. PRESUPUESTOS"
+1. PRESUPUESTOS GENERALES DEL ESTADO CONSOLIDADOS
+
+1.6. Programas de gasto (capítulos 1 a 8)
+Millones de euros
+Programas                                                                2011        2012        2013         2014         2015         2016         2017         2018         2018-P        2019-P
+
+322A : Educación infantil y primaria                                        263         167             160          159          159          162          159          160        156           156
+
+322B : Educ. secundaria, formación profesional y Esc. Ofic. de Idiomas      247         176             108          101          237          454          429          419        419           419
+
+322C : Enseñanzas universitarias                                            400         150             122          121          118          119          124          129        130           130
+
+322D: Educación especial                                                        14          13
+
+322E : Enseñanzas artísticas                                                     6           7            5            5            5            3            3            4             4             4
+
+322F : Educación en el exterior                                             116         109             100          100           96           96           95           98            98            98
+
+322G : Educación compensatoria                                                  70      170             53           54            5            5             5            5            5             5
+
+322H : Educación permanente y a distancia no universitaria                       7           6
+
+322I : Enseñanzas especiales                                                     2           2            2            2            2            2            3            3             3             3
+
+322J : Nuevas tecnologías aplicadas a la educación                          108             45
+
+322K : Deporte en edad escolar y en la Universidad                              17          13            2            2            2            3            2
+
+322L: Inversiones en centros educativos y otras actividades educativas                                   52           53           78           42           90          100        100           100
+
+323M : Becas y ayudas a estudiantes                                        1.431       1.270        1.222        1.467        1.470        1.472        1.523        1.575         1.575         1.575
+
+324M : Servicios complementarios de la enseñanza                                 6           6            5            7            7           32
+
+324N : Apoyo a otras actividades escolares                                      25           7
+
+32 EDUCACIÓN                                                               2.843       2.220        1.945        2.175        2.273        2.484        2.524        2.582         2.541         2.541
+
+331M: Dirección y Servicios Generales de Cultura                                49          45                                                                                          35            35
+
+332A : Archivos                                                                 42          41           31           27           26           27           26           28            28            28
+
+332B : Bibliotecas                                                              77          61           47           43           43           44           44           47            47            47
+
+333A : Museos                                                               214         177             137          132          143          151          152          158        158           158
+
+333B : Exposiciones                                                              5           4            2            2            2            2            2            2             2             2
+
+334A : Promoción y cooperación cultural                                         54          25           10           10           10           11            9           10             9             9
+
+334B : Promoción del libro y publicaciones culturales                           15          11            8            7            7            7            8            8             8             8
+
+334C: Fomento de las industrias culturales                                      31          29           14           14           14           14           14           14            14            14
+
+335A : Música y danza                                                       107             90           71           86           92           94          100          101        101           101
+
+335B : Teatro                                                                   56          45           37           58           53           53           51           51            51            51
+
+335C : Cinematografía                                                       113             71           55           48           51           75           85           86            86            86
+
+336A : Fomento y apoyo de las actividades deportivas                        150         177             161          147          154          170          171          194        190           190
+
+337A : Administración del Patrimonio Histórico-Nacional                     121         118             113          110          125          126          109          117        117           117
+
+337B : Conservación y restauración de bienes culturales                         59          41           31           28           26           27           28           32            32            32
+
+337C : Protección del Patrimonio Histórico                                      10           8            5            5            4            4            5            8             8             8
+
+337D: Administración de los Reales Patronatos
+33 CULTURA                                                                 1.104        942             722          718          749          807          803          856        887           887
+"                 A. PRESUPUESTOS"
+1. PRESUPUESTOS GENERALES DEL ESTADO CONSOLIDADOS
+
+1.6. Programas de gasto (capítulos 1 a 8)
+Millones de euros
+Programas                                                                 2011        2012        2013         2014         2015         2016         2017         2018         2018-P        2019-P
+
+411M : Direc. y Servicios Generales de Agricultura, Pesca y Alimen.               0                                                                                                      85            85
+
+412A : Competitividad y calidad de la producción agrícola                        53
+
+412B : Competitividad y calidad de la producción ganadera                    135
+
+412C Competitividad y calidad de la producción y los mercados agrarios                       63           39           30           29           37           49           50            50            50
+
+412D Competitividad y calidad de la sanidad agraria                                          56           47           41           41           42           42           42            42            42
+
+412M : Regulación de los mercados agrarios                                  6.156       6.371        6.204        5.815        5.797        5.900        5.741        5.804         5.804         5.804
+
+413A: Competitividad de industria agroalimentaria y calidad alimentaria          41          31           29           26           25           32           32           33            33            33
+
+414A: Gestión de Recursos Hídricos para el Regadío                               67          53           47           47           46           70           57           60            60            60
+
+414B : Desarrollo del medio rural                                           1.520       1.520        1.008        1.476        2.347        1.034        1.214        1.234         1.234         1.234
+
+414C : Programa de desarrollo rural sostenible                               200             29           20           20           20            0
+
+415A : Protección de los recursos pesqueros y desarrollo sostenible              29          20           14           15           18           18           19           19            19            19
+
+415B : Mejora de estructuras y mercados pesqueros                                93          59           48           46           52           53           43           43            43            43
+
+416A : Previsión de riesgos en las producciones agrarias y pesqueras         281         253             205          205          204          216          216          216        216           216
+
+417A: Desarrollo de la política forestal                                                                                                                                             122           122
+
+41 AGRICULTURA, PESCA Y ALIMENTACIÓN                                        8.575       8.455        7.662        7.721        8.580        7.403        7.413        7.500         7.707         7.707
+
+421M: Dirección y servic. Gener. de Energia, Turismo y Agenda Digital            93          71           63           68           68           68           68           68            69            69
+
+421N : Regulación y protección de la propiedad industrial                        60          54           46           46           47           48           47           51            51            51
+421O : Calidad y seguridad industrial                                             6           4            4            4            3            4            4            4             4             4
+422A : Incentivos regionales a la localización industrial                    179         128              82           82           82           82           64           60            60            60
+422B : Desarrollo industrial                                                 586         424             426          417          376           64           25           60            60            60
+422M : Reconversión y reindustrialización                                    705         575             467          475          525          845          875          871        871           871
+423M : Desarrollo alternativo de las comarcas mineras del carbón             145             41           45           61           50           50           34           32            32            32
+423N : Explotación minera                                                    658         523             458          411          346          332          320          291        291           291
+424M : Seguridad nuclear y protección radiológica                                48          47           47           47           47           46           46           47            47            47
+425A : Normativa y desarollo energético                                      322             30      2.937        4.167        4.485        3.919        3.948        4.285         4.285         4.285
+42 INDUSTRIA Y ENERGÍA                                                      2.801       1.897        4.575        5.778        6.028        5.456        5.432        5.769         5.771         5.771
+
+431A : Promoción comercial e internacionalización de la empresa              592         490             390          443          457          465          401          400        400           400
+
+431M : Dirección y Servicios Generales de Comercio y Turismo                     27          14
+
+431N : Ordenación del comercio exterior                                          12          10            9            9            9           10            9            9             9             9
+
+431O : Ordenación y modernización de las estructuras comerciales                 23          17           15           15           15           14            5           10            10            10
+
+432A : Coordinación y promoción del turismo                                  623         438             331          316          323          329          320          332        332           332
+
+433M : Apoyo a la pequeña y mediana empresa                                  156         141             145          154          160          164          140          145        145           145
+
+43 COMERCIO, TURISMO Y PYMES                                                1.433       1.110            890          936          963          983          875          896        896           896
+"                 A. PRESUPUESTOS"
+1. PRESUPUESTOS GENERALES DEL ESTADO CONSOLIDADOS
+
+1.6. Programas de gasto (capítulos 1 a 8)
+Millones de euros
+Programas                                                                   2011        2012        2013         2014         2015         2016         2017         2018         2018-P        2019-P
+
+441M : Subvenciones y apoyo al transporte terrestre                           1.149       1.248            827      1.140            904          900          900      1.551         1.541         1.541
+
+441N : Subvenciones y apoyo al transporte marítimo                                 84          58           58           97           82          110          110          129        129           129
+
+441O : Subvenciones y apoyo al transporte aéreo                                345         288             275          357          325          359          351          394        394           394
+
+441P : Subvenciones al transporte extrapeninsular de mercancías                    41          23           20           20           30           55           60           75            75            75
+
+44 SUBVENCIONES AL TRANSPORTE                                                 1.619       1.617        1.180        1.615        1.340        1.424        1.421        2.149         2.139         2.139
+
+451M : Estudios y serv. asist. técn. en Obras Públicas y Urbanismo                 44          32           33           33           31           30           28           29            29            29
+
+451N: Dirección y Servicios Generales de Fomento                              2.331       1.192            855          702      1.143        1.020            605          918        918           918
+
+451O : Dirección y Serv. Gener. de Agricul., Pesca, Aliment. y Medio Amb.      192         178             148          142          143          141          128          130            51            51
+
+452A : Gestión e infraestructuras del agua                                    1.138        940             839      1.171        1.170        1.138        1.074        1.131         1.116         1.116
+
+452M : Normativa y ordenac. territorial de los recursos hídricos               121             55           57           11          118          110           44           70            70            70
+
+453A : Infraestructura del transporte ferroviario                             1.192        986             857          850          863          851          845          413        413           413
+
+453B : Creación de infraestructura de carreteras                              1.433       1.782        1.577        1.059        1.012        1.075        1.122        1.457         1.456         1.456
+
+453C : Conservación y explotación de carreteras                               1.137        926             993          878          910          935          936          809        808           808
+
+453M : Ordenación e inspección del transporte terrestre                            66          35           23           21           24           24           20           21            21            21
+
+453N: Regulación y supervisión de la seguridad ferroviaria                                                                                         16           14           14            14            14
+
+453O: Comisión de investigación de accidentes ferroviarios                                                                                                       0            0             0             0
+
+454M : Regulación y seguridad del tráfico marítimo                                 57      51 *            48           44           43           41           42           41             41            41
+
+454O: Comisión de investigación de accidentes e incidentes marítimos                                                                                             1            1             1             1
+
+455M : Regulación y supervisión de la aviación civil                               58          56           54           70           75           75           75           87            87            87
+
+455O: Comisión de investig. de accidentes e incidentes aviación civil                                                                                            2            1             1             1
+
+456A : Calidad del agua                                                        282         199             135          149          243          206          177          167        167           167
+
+456B : Protección y mejora del medio ambiente                                      30          19           15           14           25           18           17           21            21            21
+
+456C : Protección y mejora del medio natural                                   226         190             166          147          155          197          172          175            52            52
+
+456D : Actuación en la costa                                                   162         105              75           66           90           92           95           99            99            99
+456M : Act.para la preven.de la contaminación y el cambio climático            102             53           49           42           55           51           28           28            28            28
+
+457M : Infraestructuras en comarcas mineras del carbón                         289         102              42           54           50           30           30           45            45            45
+
+45 INFRAESTRUCTURAS                                                           8.859       6.901        5.966        5.454        6.150        6.049        5.453        5.657         5.437         5.437
+
+461M : Dirección y Servicios Generales de Ciencia y                                                                                                                                         6             6
+
+462M: Investigación y estudios sociológicos y constitucionales                     13          13           12           12           12           13           12           12            12            12
+
+462N : Investigación y estudios estadísticos y económicos                           7           7            6            6            6            6            6            6             6             6
+
+463A : Investigación científica                                                811         772             689          690          689          718          705          721        721           721
+
+463B : Fomento y coord. de la investigación científica y técnica              2.140       1.392        1.411        1.465        1.443        1.613        3.395        2.981         2.979         2.979
+
+464A : Investigación y estudios de las Fuerzas Armadas                         204         174             145          163          163          164          159          211        211           211
+"                 A. PRESUPUESTOS"
+1. PRESUPUESTOS GENERALES DEL ESTADO CONSOLIDADOS
+
+1.6. Programas de gasto (capítulos 1 a 8)
+Millones de euros
+Programas                                                                  2011        2012        2013         2014         2015         2016         2017         2018         2018-P        2019-P
+
+464B: Apoyo a la innovación tecnológica en sector defensa                     804         583             218          344          564          468          302          468        468           468
+
+464C: Investigación y estudios en materia de seguridad pública                     1           1
+
+465A : Investigación sanitaria                                                328         299             282          287          274          272          270          271        271           271
+
+466A : Investigación y evaluación educativa                                       27           6
+
+467A : Astronomía y astrofísica                                                   20          17           17            0
+
+467B : Investig., desarrollo y experimentación en transporte e infraest.           4           1            1            0            0            1            1            1             1             1
+
+467C : Investigación y desarrollo tecnológico-industrial                     2.834       2.064        2.244        2.235        2.204        2.115            761      1.460         1.460         1.460
+
+467D : Investigación y experimentación agraria                                    79          76           69           77           78           80           54           53            53            53
+
+467E : Investigación oceanográfica y pesquera                                     60          58           57           60           61           65           60           61            61            61
+
+467F : Investigación geológico-minera y medioambiental                            26          26           25           25           25           25           24           23            23            23
+
+467G : Investigación y desarrollo de la Sociedad de la información            419         146             106          110          126          126          131          140        146           146
+
+467H : Investigación energética, medioambiental y tecnológica                     87          84           83           83           93           90           87           90            89            89
+
+467I : Innovación tecnológica de las telecomunicaciones                       722         672             561          582          658          670          536          553        553           553
+
+46 INVESTIGACIÓN, DESARROLLO E INNOVACIÓN                                    8.586       6.387        5.926        6.140        6.395        6.425        6.503        7.050         7.058         7.058
+
+491M : Orden. y prom. de las telecom. y de la Sdad. de la Informac.               30          71           35           28          305           27           29           29            29            29
+
+491N : Servicio postal universal                                                  70           1          319          519          181          181           59          121        121           121
+
+492M : Defensa competencia en los mercados y regulación sect. prod.               13          13           13           53           60           60           58           60            60            60
+
+492N : Regulac. y vigilancia de la compet. en el Mercado de Tabacos                9           9            9            9            8            8            8            7             7             7
+
+492O : Protección y promoción derechos de consumidores y usuarios                 23          19           17           16           13           13           17           14            14            14
+
+493M : Dirección, control y gestión de seguros                                293         293             238          231           14           16           14           16            16            16
+
+493N : Regulación de mercados financieros
+493O : Regulación contable y auditorias                                            7           7            8            9            9            8            8            8             8             8
+
+494M : Admón. de las relaciones laborales y condiciones de trabajo                47          42           36           35           34           35           51           53            53            53
+
+495A : Desarrollo y aplicac. de la información geográfica española                44          35           32           31           31           32           32           35            35            35
+
+495B : Meteorología                                                           123             87           83           83          120          122          126          129        129           129
+
+495C : Metrología                                                                  9           7            6            6            7            8            8            8             8             8
+
+496M: Regulación del juego                                                                     6            6            6            7            7            7            7             7             7
+
+497M Salvamento y lucha contra la contaminación en la mar                                                 100          135          140          148          138          153        153           153
+
+49 OTRAS ACTUACIONES DE CARÁCTER ECONÓMICO                                    808        710 *            901      1.160            927          665          556          639        639           639
+
+911M : Jefatura del Estado                                                         8           8            8            8            8            8            8            8             8             8
+
+911N : Actividad legislativa                                                  216         207             201          201          202          206          207          212        212           212
+
+911O : Control externo del Sector Público                                         62          62           61           61           61           63           62           63            63            63
+
+911P : Control Constitucional                                                     26          26           24           24           23           23           24           24            24            24
+"                 A. PRESUPUESTOS"
+1. PRESUPUESTOS GENERALES DEL ESTADO CONSOLIDADOS
+
+1.6. Programas de gasto (capítulos 1 a 8)
+Millones de euros
+Programas                                                                         2011        2012        2013         2014         2015         2016         2017         2018         2018-P        2019-P
+
+911Q : Apoyo a la gestión administrativa de la Jefatura del Estado                        6           6            6            6            6            6            6            6             6             6
+
+912M : Presidencia del Gobierno                                                          43          41           39           38           37           36           35           36            36            36
+
+912N : Alto asesoramiento del Estado                                                     10          10           10           10           10           11           11           11            11            11
+
+912O : Relac. Cortes Grales, Secretariado del Gob.y apoyo Alta Dir.                      43          43           34           34           34           32           31           31            31            31
+
+912P : Asesor. del Gobierno en materia social, económica y laboral                        9           9            8            8            8            8            8            8             8             8
+
+912Q : Asesoramiento para la protección de los intereses nacionales                  228         221             204          204          224          241          261          282        282           282
+
+91 ALTA DIRECCIÓN                                                                    654         633             596          594          613          634          652          681        681           681
+
+921M: Dirección y Servicios Generales de Política Territorial y Función Pública                                                                                                                   9             9
+
+921N : Dirección y organización de la Adminsitración Pública                             24          49           47           46           50           45           43           25            25            25
+
+921O : Formación del personal de las administraciones públicas                       146             76           68           66           69           74           79           86            85            85
+
+921P : Administración periférica del Estado                                          317         302             280          275          267          268          260          249        249           249
+
+921Q : Cobertura informativa                                                             18          18           60           55           55           55           55           68            68            68
+
+921R : Publicidad de las normas legales                                                  36          34           34           32           32           31           31           31            31            31
+
+921S : Asesoramiento y defensa de los intereses del Estado                               33          32           32           32           31           33           34           34            34            34
+
+921T : Servicios de transportes de Ministerios                                           47          43           41           42           39           38           37           45            45            45
+
+921U : Publicaciones                                                                      3           0            0            0            0            0            0            0             0             0
+
+921X : Evaluación de la transparencia de la actividad pública                                                                                3            3            3            2             2             2
+
+922M : Organizac. territ. del Est. y desarrollo de sus sist. de colab.                    4           4            3            3            3            3            4           13            13            13
+922N : Coordinación y relaciones financieras con los Entes Territ.                        6           6     23.006       23.007       21.007       26.008       17.508       17.508        17.508        17.508
+
+922Q : Dirección y Servicios Generales de Política Territorial
+923A : Gestión del Patrimonio del Estado                                             479         208             211          202          186          176          179          184        184           184
+
+923C : Elaboración y difusión estadística                                            229         216             185          184          180          178          174          176        176           176
+
+923M : Dirección y Servicios Generales de Hacienda y Adm. Públicas                  1.332       1.192            598          556          540          578          533      1.034         1.025         1.025
+
+923N : Formación del personal de Economía y Hacienda                                     15          10            9            9            9           12          13           12             12            12
+
+923O : Gestión de la Deuda y de la Tesorería del Estado                                  12          29          512          271          275           57           83          26             26            26
+
+923P : Relaciones con los Organismos Financieros Multilaterales                      558         353             272          232          232          558          592          429        429           429
+
+923Q: Dirección y Servic. Generales de Economía, Industria y Compet.                                              67           81           79           64           59           55            44            44
+
+923R: Contratación centralizada                                                                                                             80          194          259          283        283           283
+
+923S: Aportaciones al Mutualismo Administrativo                                                                                                                               2.058         2.054         2.054
+
+924M : Elecciones y Partidos Políticos                                               245         115              67          161          345          123           72           63            63            63
+
+929M : Imprevistos y funciones no clasificadas                                      2.064       1.980        1.751        1.984        2.351        3.031        2.339              0
+
+929N : Fondo de contingencia de ejecución presupuestaria                            2.440       2.323        2.595        2.665        2.581        2.468        2.367        2.277         2.277         2.277
+
+92 SERVICIOS DE CARÁCTER GENERAL                                                    8.014       6.992       29.844       29.906       28.417       33.999       24.728       24.659        24.643        24.643
+"                  A. PRESUPUESTOS"
+1. PRESUPUESTOS GENERALES DEL ESTADO CONSOLIDADOS
+
+1.6. Programas de gasto (capítulos 1 a 8)
+Millones de euros
+Programas                                                             2011        2012        2013         2014         2015         2016         2017         2018         2018-P        2019-P
+
+931M : Previsión y política económica                                        56     3.933        4.286        8.446            576          349          27            8             8             8
+
+931N : Política presupuestaria                                               48          59           58           59           61           63           62           65            56            56
+
+931O : Política tributaria                                                    7           7            6            6            6            6            5            6             6             6
+
+931P : Control interno y Contabilidad Pública                                81          79           75           75           74           74           73           75            85            85
+
+931Q : Control y Supervisión de la Política Fiscal                                                                  4            4            4            5            7             7             7
+
+932A : Aplicación del sistema tributario estatal                        1.079       1.027            948          949          997          999      1.060        1.089         1.089         1.089
+
+932M : Gestión del catastro inmobiliario                                 109         103              98          137          131          132          122          110        110           110
+
+932N : Resolución de reclamaciones económico-administrativas                 30          30           29           29           28           28           29           29            29            29
+
+93 ADMÓN FINANCIERA Y TRIBUTARIA                                        1.409       5.238        5.502        9.705        1.878        1.657        1.382        1.390         1.390         1.390
+
+941M : Transferencias a CC.AA. por participación en ingresos Estado    14.798      21.806       19.772       16.041       17.082       17.388       17.548       18.266        18.266        18.266
+
+941N : Transferencias a CC.AA. por los Fondos de Compens. Intert.       1.074        672             672          582          582          582          582          582        582           582
+
+941O : Otras transferencias a CC.AA.(**)                                1.193        498             198          500          492          444          460          685        685           685
+
+942A : Cooperación económica local del Estado                            141             33           15            6            9            7            6           37            37            37
+
+942M : Transferencias a EE.LL. por participación en ingresos Estado    13.236      14.683       15.543       15.548       15.851       16.408       16.149       16.336        16.336        16.336
+
+942N : Otras aportaciones a Entidades Locales                            252         223             217          228          228          228          227          219        219           219
+
+943M : Transferencias al Presup. Gral. de la Unión Europea             11.822      11.471       11.602       12.800       12.639       13.446       12.925       13.003        13.003        13.003
+
+943N : Cooperación al desarr. a través del F. Europeo de Desarrollo      295         299             299          283          283          312          325          381        381           381
+
+94 TRANSFERENC. A OTRAS ADMONES PÚBLICAS                               42.811      49.686       48.317       45.989       47.166       48.816       48.223       49.510        49.510        49.510
+
+951M : Amort.y gastos finan. de la deuda pública en euros              25.698      27.990       37.519       35.835       34.926       33.355       31.884       31.124        31.124        31.124
+
+951N : Amort. y gtos. finan. de la deuda pública en moneda extranj.     1.702        858         1.070            755          564          135          287          424        424           424
+
+95 DEUDA PÚBLICA                                                       27.400      28.848       38.590       36.590       35.490       33.490       32.171       31.547        31.547        31.547
+
+TOTAL                                                                 315.992     311.777      345.446      354.626      347.843      351.856      355.111      368.369       368.323       368.323
