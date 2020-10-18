@@ -1,6 +1,6 @@
 # State Budgets
 
-This is an analysis project for the state budgets of Spain.
+This is an analysis project for the state budgets of Spain. Is is focused in 2019 data.
 
 ## Requirements
 Python is needed (version 3.6 preferred) and next libraries must be installed in the environment:
