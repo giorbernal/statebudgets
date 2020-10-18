@@ -19,6 +19,12 @@ With this dataset we have developed a Tableau visualization. The result can be o
 
 ### Pensions
 
+In this case we have developed an analysis over the *contributive* pensions. The information has been extracted from [here](https://w6.seg-social.es/ProsaInternetAnonimo/OnlineAccess?ARQ.SPM.ACTION=LOGIN&ARQ.SPM.APPTYPE=SERVICE&ARQ.IDAPP=ESTA0001) in form of two .csv files: *edad.csv* and *tramos.csv*. The headers of both of them has been adapted (by hand) in *edad2.csv* and *tramos2.csv* respectively.
+
+Executing [createDataSet.sh](pensions/createDataSet.sh) we could get the .csv files to analysis: edad_melt.csv and tramos_melt.csv.
+
+With this dataset we have developed a Tableau visualization. The result can be observed [here](https://public.tableau.com/profile/gior6119#!/vizhome/Pensiones_16026224709640/Edad-Tipo-Total-Media).
+
 ### Autonomic Budgets
 Not implemented yet.
 
