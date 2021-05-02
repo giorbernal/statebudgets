@@ -2,9 +2,20 @@ import sys
 import re
 import numpy as np
 import pandas as pd
+import argparse
+from collections import defaultdict
+
+years = defaultdict()
+years['2020'] = (
+	['2011', '2012', '2013', '2014', '2015', '2016', '2017','2018', '2018-P', '2019-P'],
+	'^(Programas)  *(2011)  *(2012)  *(2013)  *(2014)  *(2015)  *(2016)  *(2017)  *(2018)  *(2018-P)  *(2019-P)$'
+)
+years['2021'] = (
+	['2012', '2013', '2014', '2015', '2016', '2017','2018', '2018-P', '2019-P', '2021'],
+	'^(Programas)  *(2012)  *(2013)  *(2014)  *(2015)  *(2016)  *(2017)  *(2018)  *(2018-P)  *(2019-P)  *(2021)$'
+)
 
 SEP=';'
-REGEX_HEADER='^(Programas)  *(2011)  *(2012)  *(2013)  *(2014)  *(2015)  *(2016)  *(2017)  *(2018)  *(2018-P)  *(2019-P)$'
 REGEX_DATA='^([0-9][0-9][0-9][A-Z] ?:? [a-zA-Zñ -áéíóú]+[a-zA-Z\)\.áéíóú])  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)$'
 REGEX_DATA_INCOMPLETED='^([0-9][0-9][0-9][A-Z] ?:? [a-zA-Zñ -áéíóú]+[a-zA-Z\)\.áéíóú])  ([0-9 \.]*)$'
 REGEX_GROUP='^[0-9][0-9] ([A-ZÑ\. -ÁÉÍÓÚ]+[A-Z\.ÁÉÍÓÚ])  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)$'
@@ -14,7 +25,7 @@ LEN_DATA_SLOT=12
 
 TOTAL_DATA=10
 
-def processDataIncompleted(reg):
+def __processDataIncompleted__(reg):
 	ref = LEN_DATA_PROGRAM-len(reg[1])
 	rest='  ' + reg[2][(ref if ref>0 else 0):]
 	data=[x for x in rest.strip().split(' ') if x != '']
@@ -25,12 +36,14 @@ def processDataIncompleted(reg):
 		#print('   ','INIT',reg,data)
 		return (SEP + reg[1] + SEP + SEP.join(np.concatenate([np.array(data),np.zeros(TOTAL_DATA-len(data),dtype='int32')]).tolist()) + SEP + '\n')
 
-def main_parse():
+def mainParse(fileIn, year):
+	REGEX_HEADER = years[year][1]
+
 	header_found=False
 
 	data_block = []
 
-	with open(sys.argv[2], 'r') as reader:
+	with open(fileIn, 'r') as reader:
 		line=reader.readline()
 		while line != '':  # The EOF char is an empty string
 			if (header_found == False):
@@ -46,9 +59,9 @@ def main_parse():
 				else:
 					x_data = re.split(REGEX_DATA_INCOMPLETED, line)
 					if (len(x_data) > 1):
-						#processDataIncompleted(x_data)
-						data_block.append(processDataIncompleted(x_data))
-						#print(processDataIncompleted(x_data))
+						#__processDataIncompleted__(x_data)
+						data_block.append(__processDataIncompleted__(x_data))
+						#print(__processDataIncompleted__(x_data))
 					else:
 						x_group = re.split(REGEX_GROUP, line)
 						if (len(x_group) > 1):
@@ -57,22 +70,32 @@ def main_parse():
 							data_block = []
 			line = reader.readline()
 
-def melt():
-	df=pd.read_csv(sys.argv[2],sep=';', decimal=',')
+def melt(fileIn, fileOut, year):
+	df=pd.read_csv(fileIn,sep=';', decimal=',')
 	df.drop(columns=['Unnamed: 0'],axis=1,inplace=True)
-	dfm=df.melt(id_vars=['Programas','Grupo'], value_vars=['2011', '2012', '2013', '2014', '2015', '2016', '2017','2018', '2018-P', '2019-P'])
+	dfm=df.melt(id_vars=['Programas','Grupo'], value_vars=years[year][0])
 	dfm.columns=['Programas','Grupo','Año','Valor']
-	dfm.to_csv(sys.argv[3],sep=';', decimal=',', index=False);
+	dfm.to_csv(fileOut,sep=';', decimal=',', index=False);
 
-if (len(sys.argv[1:]) < 1):
-	print('Error in params!')
-	print('Usage: > python createDataSet.py <mode> (mode: 1(main_parse)/2(melt) )')
-	exit(-1);
+def concatBudgets(fileIns, fileOut):
+	file_in_list = fileIns.split(',')
+	dfs = [pd.read_csv(x, sep=';', decimal=',') for x in file_in_list]
+	dfc = pd.concat(dfs).drop_duplicates().reset_index(drop=True)
+	dfc.to_csv(fileOut,sep=';', decimal=',', index=False);
 
-switcher = {
-	'1': main_parse,
-	'2': melt
-}
+if (__name__ == "__main__"):
+	parser = argparse.ArgumentParser(description="Creating dataset for state budget analysis")
+	parser.add_argument("--command", required=True, help="PARSE | MELT | CONCAT")
+	parser.add_argument("--fileIn", required=False, help="Input files (If more than one, use comma separated)")
+	parser.add_argument("--fileOut", required=False, help="Output file")
+	parser.add_argument("--year", required=False, help="year of budget")
 
-func = switcher.get(sys.argv[1], lambda: 'Invalid argument')
-func()
+	args = parser.parse_args()
+	if (args.command == 'PARSE'):
+		mainParse(args.fileIn, args.year)
+	elif (args.command == 'MELT'):
+		melt(args.fileIn, args.fileOut, args.year)
+	elif (args.command == 'CONCAT'):
+		concatBudgets(args.fileIn, args.fileOut)
+	else:
+		print('Invalid command')
