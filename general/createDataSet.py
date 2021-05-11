@@ -1,31 +1,35 @@
-import sys
 import re
 import numpy as np
 import pandas as pd
 import argparse
-from collections import defaultdict
 
-years = defaultdict()
-years['2020'] = (
-	['2011', '2012', '2013', '2014', '2015', '2016', '2017','2018', '2018-P', '2019-P'],
-	'^(Programas)  *(2011)  *(2012)  *(2013)  *(2014)  *(2015)  *(2016)  *(2017)  *(2018)  *(2018-P)  *(2019-P)$',
-	'^(Capítulos)  *(2011)  *(2012)  *(2013)  *(2014)  *(2015)  *(2016)  *(2017)  *(2018)  *(2018-P)  *(2019-P)$',
-)
-years['2021'] = (
-	['2012', '2013', '2014', '2015', '2016', '2017','2018', '2018-P', '2019-P', '2021'],
-	'^(Programas)  *(2012)  *(2013)  *(2014)  *(2015)  *(2016)  *(2017)  *(2018)  *(2018-P)  *(2019-P)  *(2021)$',
-	'^(Capítulos)  *(2012)  *(2013)  *(2014)  *(2015)  *(2016)  *(2017)  *(2018)  *(2018-P)  *(2019-P)  *(2021)$',
-)
+# Key columns
+PROGRAM='Programa'
+GROUP='Grupo'
+TYPE='Tipo'
 
-REGEX_INCOME_DATA_GROUP='^([A-Z][a-zA-Zñ -áéíóú]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)$'
+# Constants
+INC_SUFFIX = 'inc'
+INCOME = 'ingreso'
+OUTCOME = 'gasto'
 
+# Parsing paramenters (Constants for the moment)
+YEARS = ['2012', '2013', '2014', '2015', '2016', '2017','2018', '2018-P', '2019-P', '2021']
+
+# Income parse params
+REGEX_INCOME_HEADER = '^(Capítulos)  *(2012)  *(2013)  *(2014)  *(2015)  *(2016)  *(2017)  *(2018)  *(2018-P)  *(2019-P)  *(2021)$'
+REGEX_INCOME_DATA_GROUP = '^([A-Z][a-zA-Zñ -áéíóú]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)$'
+NO_FINANCIAL_OPERATIONS = 'OPERACIONES NO FINANCIERAS'
+FINANCIAL_OPERATIONS = 'OPERACIONES FINANCIERAS'
+END_MARK = 'TOTAL CAPÍTULOS 1 a 8'
+
+# Outcome parser params
+REGEX_OUTCOME_HEADER = '^(Programas)  *(2012)  *(2013)  *(2014)  *(2015)  *(2016)  *(2017)  *(2018)  *(2018-P)  *(2019-P)  *(2021)$'
 REGEX_OUTCOME_DATA= '^([0-9][0-9][0-9][A-Z] ?:? [a-zA-Zñ -áéíóú]+[a-zA-Z\)\.áéíóú])  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)$'
 REGEX_OUTCOME_DATA_INCOMPLETED= '^([0-9][0-9][0-9][A-Z] ?:? [a-zA-Zñ -áéíóú]+[a-zA-Z\)\.áéíóú])  ([0-9 \.]*)$'
 REGEX_OUTCOME_GROUP= '^[0-9][0-9] ([A-ZÑ\. -ÁÉÍÓÚ]+[A-Z\.ÁÉÍÓÚ])  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)  *([0-9]+\.?[0-9]*)$'
-
 LEN_OUTCOME_DATA_PROGRAM=73
 LEN_OUTCOME_DATA_SLOT=12
-
 TOTAL_OUTCOME_DATA=10
 
 def __processDataIncompleted__(reg):
@@ -47,7 +51,6 @@ def __increment__(x):
 
 def mainParse(fileIn, year):
 	# Process income
-	REGEX_INCOME_HEADER=years[year][2]
 	header_found=False
 	data = []
 	data_block = []
@@ -62,10 +65,10 @@ def mainParse(fileIn, year):
 			else:
 				x_data = [x.strip() for x in re.split(REGEX_INCOME_DATA_GROUP, line)]
 				if (len(x_data) > 1):
-					if (x_data[1] == 'OPERACIONES NO FINANCIERAS'):
+					if (x_data[1] == NO_FINANCIAL_OPERATIONS):
 						group = x_data[1]
-					elif (x_data[1] == 'TOTAL CAPÍTULOS 1 a 8'):
-						group = 'OPERACIONES FINANCIERAS'
+					elif (x_data[1] == END_MARK):
+						group = FINANCIAL_OPERATIONS
 						exit = True
 					else:
 						group = ''
@@ -81,11 +84,10 @@ def mainParse(fileIn, year):
 
 			line = reader.readline()
 
-	income = pd.DataFrame(data, columns=['Programas','2012','2013','2014','2015','2016','2017','2018','2018-P','2019-P','2021','Grupo'])
-	income[['2012','2013','2014','2015','2016','2017','2018','2018-P','2019-P','2021']] = income[['2012','2013','2014','2015','2016','2017','2018','2018-P','2019-P','2021']].apply(pd.to_numeric)
+	income = pd.DataFrame(data, columns=([PROGRAM] + YEARS + [GROUP]))
+	income[YEARS] = income[YEARS].apply(pd.to_numeric)
 
 	# Process Outcome
-	REGEX_OUTCOME_HEADER = years[year][1]
 	header_found=False
 	data = []
 	data_block = []
@@ -114,37 +116,29 @@ def mainParse(fileIn, year):
 							data_block = []
 			line = reader.readline()
 
-	outcome = pd.DataFrame(data, columns=['Programas','2012','2013','2014','2015','2016','2017','2018','2018-P','2019-P','2021','Grupo'])
-	outcome[['2012','2013','2014','2015','2016','2017','2018','2018-P','2019-P','2021']] = outcome[['2012','2013','2014','2015','2016','2017','2018','2018-P','2019-P','2021']].apply(pd.to_numeric)
+	outcome = pd.DataFrame(data, columns=([PROGRAM] + YEARS + [GROUP]))
+	outcome[YEARS] = outcome[YEARS].apply(pd.to_numeric)
 
 	# merging income and outcome in the same dataset
-	income['Tipo'] = 'ingreso'
-	outcome['Tipo'] = 'gasto'
+	income[TYPE] = INCOME
+	outcome[TYPE] = OUTCOME
 	budget = pd.concat([income, outcome])
-	budget.info()
 
 	# Calculating percentage increments
-	budget['2013_inc'] = budget[['2012','2013']].apply(__increment__, axis=1)
-	budget['2014_inc'] = budget[['2013','2014']].apply(__increment__, axis=1)
-	budget['2015_inc'] = budget[['2014','2015']].apply(__increment__, axis=1)
-	budget['2016_inc'] = budget[['2015','2016']].apply(__increment__, axis=1)
-	budget['2017_inc'] = budget[['2016','2017']].apply(__increment__, axis=1)
-	budget['2018_inc'] = budget[['2017','2018']].apply(__increment__, axis=1)
-	budget['2018-P_inc'] = budget[['2018','2018-P']].apply(__increment__, axis=1)
-	budget['2019-P_inc'] = budget[['2018-P','2019-P']].apply(__increment__, axis=1)
-	budget['2021_inc'] = budget[['2019-P','2021']].apply(__increment__, axis=1)
+	for i in np.arange(len(YEARS)-1):
+		budget['_'.join([YEARS[i+1],INC_SUFFIX])] = budget[[YEARS[i],YEARS[i+1]]].apply(__increment__, axis=1)
 
 	# Melting
-	budget_abs = budget[['Programas','Grupo','Tipo','2012','2013','2014','2015','2016','2017','2018','2018-P','2019-P','2021']]
-	budget_rel = budget[['Programas','Grupo','Tipo','2013_inc','2014_inc','2015_inc','2016_inc','2017_inc','2018_inc','2018-P_inc','2019-P_inc','2021_inc']]
-	budget_rel.columns = ['Programas','Grupo','Tipo','2013','2014','2015','2016','2017','2018','2018-P','2019-P','2021']
+	budget_abs = budget[[PROGRAM,GROUP,TYPE] + YEARS]
+	budget_rel = budget[[PROGRAM,GROUP,TYPE] + ['_'.join([x,INC_SUFFIX]) for x in YEARS[1:]]]
+	budget_rel.columns = [PROGRAM,GROUP,TYPE] + YEARS[1:]
 	budget.info()
 	# TODO
 
 def melt(fileIn, fileOut, year):
 	df=pd.read_csv(fileIn,sep=';', decimal=',')
 	df.drop(columns=['Unnamed: 0'],axis=1,inplace=True)
-	dfm=df.melt(id_vars=['Programas','Grupo'], value_vars=years[year][0])
+	dfm=df.melt(id_vars=['Programas','Grupo'], value_vars=YEARS)
 	dfm.columns=['Programas','Grupo','Año','Valor']
 	dfm.to_csv(fileOut,sep=';', decimal=',', index=False);
 
