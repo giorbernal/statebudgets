@@ -7,6 +7,9 @@ import argparse
 PROGRAM='Programa'
 GROUP='Grupo'
 TYPE='Tipo'
+YEAR='Año'
+VALUE='Value'
+INC='Incremento'
 
 # Constants
 INC_SUFFIX = 'inc'
@@ -48,8 +51,12 @@ def __increment__(x):
 	result = [100 if x > 100 else np.round(x) for x in ((last-init)/init*100).tolist()]
 	return result[0]
 
+def __melt__(df, years, value_field):
+	dfm=df.melt(id_vars=[PROGRAM,GROUP,TYPE], value_vars=years)
+	dfm.columns=[PROGRAM,GROUP,TYPE,YEAR,value_field]
+	return dfm
 
-def mainParse(fileIn, year):
+def mainParse(fileIn, fileOut):
 	# Process income
 	header_found=False
 	data = []
@@ -132,21 +139,17 @@ def mainParse(fileIn, year):
 	budget_abs = budget[[PROGRAM,GROUP,TYPE] + YEARS]
 	budget_rel = budget[[PROGRAM,GROUP,TYPE] + ['_'.join([x,INC_SUFFIX]) for x in YEARS[1:]]]
 	budget_rel.columns = [PROGRAM,GROUP,TYPE] + YEARS[1:]
-	budget.info()
-	# TODO
 
-def melt(fileIn, fileOut, year):
-	df=pd.read_csv(fileIn,sep=';', decimal=',')
-	df.drop(columns=['Unnamed: 0'],axis=1,inplace=True)
-	dfm=df.melt(id_vars=['Programas','Grupo'], value_vars=YEARS)
-	dfm.columns=['Programas','Grupo','Año','Valor']
-	dfm.to_csv(fileOut,sep=';', decimal=',', index=False);
+	budget_abs_melt = __melt__(budget_abs, YEARS, VALUE)
+	budget_rel_melt = __melt__(budget_rel, YEARS[1:], INC)
+	budget_melt = budget_abs_melt.merge(budget_rel_melt, how='outer', on=[PROGRAM,GROUP,TYPE,YEAR])
+
+	budget_melt.to_csv(fileOut, sep=';', decimal=',', index=False)
 
 if (__name__ == "__main__"):
 	parser = argparse.ArgumentParser(description="Creating dataset for state budget analysis")
 	parser.add_argument("--fileIn", required=False, help="Input files (If more than one, use comma separated)")
 	parser.add_argument("--fileOut", required=False, help="Output file")
-	parser.add_argument("--year", required=False, help="year of budget")
 
 	args = parser.parse_args()
-	mainParse(args.fileIn, args.year)
+	mainParse(args.fileIn, args.fileOut)
