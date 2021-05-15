@@ -8,7 +8,7 @@ PROGRAM='Programa'
 GROUP='Grupo'
 TYPE='Tipo'
 YEAR='Año'
-VALUE='Value'
+VALUE='Valor'
 INC='Incremento'
 
 # Constants
@@ -92,7 +92,8 @@ def mainParse(fileIn, fileOut):
 			line = reader.readline()
 
 	income = pd.DataFrame(data, columns=([PROGRAM] + YEARS + [GROUP]))
-	income[YEARS] = income[YEARS].apply(pd.to_numeric)
+	for y in YEARS:
+		income[y] = income[y].apply(lambda x: pd.to_numeric(x.replace('.','')))
 
 	# Process Outcome
 	header_found=False
@@ -124,7 +125,8 @@ def mainParse(fileIn, fileOut):
 			line = reader.readline()
 
 	outcome = pd.DataFrame(data, columns=([PROGRAM] + YEARS + [GROUP]))
-	outcome[YEARS] = outcome[YEARS].apply(pd.to_numeric)
+	for y in YEARS:
+		outcome[y] = outcome[y].apply(lambda x: pd.to_numeric(x.replace('.','')))
 
 	# merging income and outcome in the same dataset
 	income[TYPE] = INCOME
