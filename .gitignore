@@ -1,5 +1,2 @@
-general/datasets/presupuestos_*.csv
-pensions/datasets/edad_melt.csv
-pensions/datasets/tramos_melt.csv
 venv/
 .idea/
