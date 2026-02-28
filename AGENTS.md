@@ -258,3 +258,4 @@ DATA_OUTPUT = PROJECT_ROOT / "data" / "output"
 4. Test changes before committing
 5. Use type hints and docstrings
 6. Run `poetry run pytest` before pushing changes
+7. Do not inspect pge/ folder if you do not receive and explicit order

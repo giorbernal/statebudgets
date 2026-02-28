@@ -1,2 +1,4 @@
-venv/
 .idea/
+.opencode/node_modules/
+
+pge/
