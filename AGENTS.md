@@ -1,37 +1,51 @@
-# AGENTS.md - PDF to CSV Analytics Project
+# AGENTS.md - Spanish State Budget Analytics Project
 
 ## Overview
 
-This is a Streamlit-based data analysis project that converts PDFs to CSVs and provides interactive analytics and visualizations. It uses pandas, numpy for data processing and seaborn/matplotlib for visualizations.
+This project analyzes the Spanish State Budget (Presupuestos Generales del Estado - PGE). It provides tools to download budget data from the official SEPG source, parse the HTML files, and generate CSV files with spending information organized by policy areas.
+
+The data is sourced from the official government portal (Secretaría de Estado de Presupuestos y Gastos) and includes budgets from multiple years (2020, 2022, 2024, 2025, 2026).
 
 ## Project Structure
 
 ```
 /workspace/
-├── pyproject.toml              # Poetry configuration
-├── poetry.lock
+├── .opencode/                 # OpenCode configuration
+│   ├── agents/
+│   │   └── state-budget-collector.md
+│   └── skills/
+│       ├── build-budgets-csv/
+│       ├── download-budgets/
+│       └── get-policy-spendings/
+├── pge/                      # Spanish State Budget data (PGE)
+│   ├── 2020/
+│   ├── 2022/
+│   ├── 2024/
+│   ├── 2025/                # Prorrogado (extended) budget 2025
+│   └── 2026/                # Prorrogado (extended) budget 2026
+├── scripts/
+│   ├── build_spendings.sh   # Shell script to generate CSV from HTM files
+│   └── politicas_gasto.txt  # List of spending policies by area
+├── app/                     # Streamlit application
+│   ├── __init__.py
+│   └── main.py
 ├── src/
 │   ├── __init__.py
-│   ├── pdf_processor/         # Reusable PDF → CSV conversion
+│   ├── analytics/           # Data analysis modules
 │   │   ├── __init__.py
-│   │   ├── base.py           # Abstract base class
-│   │   ├── extractor.py      # PDF text/table extraction
-│   │   └── converter.py      # CSV conversion logic
-│   ├── analytics/             # Data analysis modules
-│   │   ├── __init__.py
-│   │   └── analyzer.py       # Statistical analysis
-│   └── visualization/         # Chart generation
+│   │   └── analyzer.py
+│   └── visualization/       # Chart generation
 │       ├── __init__.py
-│       └── charts.py         # Matplotlib/Seaborn charts
-├── app/
-│   ├── __init__.py
-│   └── main.py               # Streamlit entry point
-├── tests/                    # Test files
+│       └── charts.py
+├── tests/                   # Test files
 ├── data/
-│   ├── input/                # PDF source files
-│   └── output/               # Generated CSV files
-└── .streamlit/
-    └── config.toml           # Streamlit configuration
+│   ├── input/
+│   └── output/
+├── .streamlit/
+│   └── config.toml
+├── AGENTS.md
+├── pyproject.toml
+└── README.md
 ```
 
 ## Commands
@@ -111,8 +125,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Local application
-from src.pdf_processor.base import BaseExtractor
 from src.analytics.analyzer import DataAnalyzer
+from src.visualization.charts import ChartGenerator
 ```
 
 ### Naming Conventions
@@ -121,10 +135,10 @@ from src.analytics.analyzer import DataAnalyzer
 |---------|------------|---------|
 | Variables | snake_case | `data_frame`, `output_path` |
 | Functions | snake_case | `convert_to_csv()`, `analyze_data()` |
-| Classes | PascalCase | `PDFExtractor`, `DataAnalyzer` |
+| Classes | PascalCase | `DataAnalyzer`, `ChartGenerator` |
 | Constants | UPPER_SNAKE_CASE | `MAX_ROWS`, `DEFAULT_ENCODING` |
 | Private methods | snake_case with underscore | `_process_data()` |
-| Modules | snake_case | `pdf_processor`, `data_analyzer` |
+| Modules | snake_case | `analytics`, `visualization` |
 
 ### Types and Type Hints
 
@@ -198,28 +212,6 @@ except pd.errors.EmptyDataError:
 - Keep Streamlit app code minimal in `main.py`; delegate logic to modules
 - Use columns for layout: `col1, col2 = st.columns(2)`
 
-### PDF Processor Module Patterns
-
-- Create abstract base class for extractors
-- Implement strategy pattern for different PDF formats
-- Return DataFrames from processing methods
-- Support both table and text extraction
-
-```python
-class BaseExtractor(ABC):
-    """Abstract base class for PDF extractors."""
-
-    @abstractmethod
-    def extract_tables(self, file_path: str) -> List[pd.DataFrame]:
-        """Extract tables from PDF."""
-        pass
-
-    @abstractmethod
-    def extract_text(self, file_path: str) -> str:
-        """Extract text from PDF."""
-        pass
-```
-
 ### Data Processing Patterns
 
 - Use pandas for tabular data operations
@@ -248,6 +240,8 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).parent
 DATA_INPUT = PROJECT_ROOT / "data" / "input"
 DATA_OUTPUT = PROJECT_ROOT / "data" / "output"
+PGE_BASE = PROJECT_ROOT / "pge"
+SCRIPTS = PROJECT_ROOT / "scripts"
 ```
 
 ## Working with This Project
@@ -258,4 +252,4 @@ DATA_OUTPUT = PROJECT_ROOT / "data" / "output"
 4. Test changes before committing
 5. Use type hints and docstrings
 6. Run `poetry run pytest` before pushing changes
-7. Do not inspect pge/ folder if you do not receive and explicit order
+7. **Do NOT inspect `pge/` folder without explicit order from the user** — this folder contains large budget data files and should only be accessed when specifically requested

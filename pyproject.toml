@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "pdf-csv-analytics"
+name = "state-budget-analytics"
 version = "0.1.0"
-description = "PDF to CSV converter with analytics and visualizations"
+description = "analytics and visualizations for Spain general budgets"
 authors = ["Developer <developer@example.com>"]
 readme = "README.md"
 packages = [{include = "src"}]
