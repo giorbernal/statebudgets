@@ -1,11 +1,11 @@
 #!/bin/sh
-# Genera spendings.csv para presupuestos del estado español
+# Genera spending.csv para presupuestos del estado español
 # Skill: build-budgets-csv
 # Soporta múltiples formatos de HTML (nuevo con <span>, antiguo con <div>)
 
 if [[ $# != 1 ]]; then
   echo "error: invalid params!"
-  echo "usage: scripts/build_spendings.sh <year>"
+  echo "usage: scripts/build_spending.sh <year>"
   exit -1
 fi
 
@@ -14,8 +14,8 @@ YEAR=$1
 WORKSPACE=$(pwd)
 HTM_DIR="$WORKSPACE/pge/$YEAR/PGE-ROM/doc/HTM"
 POLITICAS_FILE="$WORKSPACE/scripts/politicas_gasto.txt"
-OUTPUT_CSV="$WORKSPACE/pge/$YEAR/spendings.csv"
-TMP_ALL="$WORKSPACE/scripts/spendings_all.tmp"
+OUTPUT_CSV="$WORKSPACE/pge/$YEAR/spending.csv"
+TMP_ALL="$WORKSPACE/scripts/spending_all.tmp"
 
 rm -f "$OUTPUT_CSV" "$TMP_ALL"
 echo "Generando $OUTPUT_CSV para año $YEAR..."
@@ -336,9 +336,9 @@ if [ -f "$POLITICAS_FILE" ]; then
         pol = (prefix in politica) ? politica[prefix] : ""
         print clasif "|" expl "|" total "|" pol
     }
-    ' "$TMP_ALL" > /tmp/spendings_with_pol.tmp
+    ' "$TMP_ALL" > /tmp/spending_with_pol.tmp
 else
-    cp "$TMP_ALL" /tmp/spendings_with_pol.tmp
+    cp "$TMP_ALL" /tmp/spending_with_pol.tmp
     echo "ADVERTENCIA: No se encontró $POLITICAS_FILE"
 fi
 
@@ -350,7 +350,7 @@ awk -F'|' '
     if (pol != "") prev_pol = pol
     print clasif ";" expl ";" total ";" pol
 }
-' /tmp/spendings_with_pol.tmp > "$OUTPUT_CSV"
+' /tmp/spending_with_pol.tmp > "$OUTPUT_CSV"
 
 total_filas=$(wc -l < "$OUTPUT_CSV")
 echo ""
@@ -360,4 +360,4 @@ echo ""
 echo "Primeras 10 líneas:"
 head -10 "$OUTPUT_CSV"
 
-rm -f "$TMP_ALL" /tmp/spendings_with_pol.tmp
+rm -f "$TMP_ALL" /tmp/spending_with_pol.tmp

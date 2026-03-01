@@ -1,5 +1,5 @@
 ---
-name: get-policy-spendings
+name: get-policy-spending
 description: obtiene la lista de políticas de gasto de los presupuestos del estado de un año concreto
 license: MIT
 compatibility: opencode

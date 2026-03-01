@@ -16,7 +16,7 @@ The data is sourced from the official government portal (Secretaría de Estado d
 │   └── skills/
 │       ├── build-budgets-csv/
 │       ├── download-budgets/
-│       └── get-policy-spendings/
+│       └── get-policy-spending/
 ├── pge/                      # Spanish State Budget data (PGE)
 │   ├── 2020/
 │   ├── 2022/
@@ -24,7 +24,7 @@ The data is sourced from the official government portal (Secretaría de Estado d
 │   ├── 2025/                # Prorrogado (extended) budget 2025
 │   └── 2026/                # Prorrogado (extended) budget 2026
 ├── scripts/
-│   ├── build_spendings.sh   # Shell script to generate CSV from HTM files
+│   ├── build_spending.sh   # Shell script to generate CSV from HTM files
 │   └── politicas_gasto.txt  # List of spending policies by area
 ├── app/                     # Streamlit application
 │   ├── __init__.py
