@@ -26,6 +26,7 @@ echo "Generando $OUTPUT_CSV para año $YEAR..."
 YEAR_PREFIX=${YEAR:2:2}
 PREV_YEAR=$((10#$YEAR_PREFIX - 1))
 
+# Determinando sufijo del patron de ficheros según año
 if [ $YEAR -gt 2013 ]; then
   FILE_PATTERN_SUFFIX=E_R_31_*_1_1_3_1.HTM
 else
