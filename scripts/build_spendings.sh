@@ -1,6 +1,7 @@
 #!/bin/sh
-# Genera spendings.csv para el presupuesto prorrogado 2025
+# Genera spendings.csv para presupuestos del estado español
 # Skill: build-budgets-csv
+# Soporta múltiples formatos de HTML (nuevo con <span>, antiguo con <div>)
 
 if [[ $# != 1 ]]; then
   echo "error: invalid params!"
@@ -17,172 +18,254 @@ OUTPUT_CSV="$WORKSPACE/pge/$YEAR/spendings.csv"
 TMP_ALL="$WORKSPACE/scripts/spendings_all.tmp"
 
 rm -f "$OUTPUT_CSV" "$TMP_ALL"
-echo "Generando $OUTPUT_CSV ..."
+echo "Generando $OUTPUT_CSV para año $YEAR..."
 
-FILE_PATTERN=N_${YEAR:2:2}P_E_R_31_*_1_1_3_1.HTM
-echo $FILE_PATTERN
-compgen -G $FILE_PATTERN > /dev/null || FILE_PATTERN=N_$((${YEAR:2:2}-1))P_E_R_31_*_1_1_3_1.HTM
-#FILE_PATTERN=N_12_E_R_31_*_1_1_7.HTM
+# Determinar el patrón de archivo según el año
+# Años 2022+: N_22P_E_R_31_*_1_1_3_1.HTM (formato nuevo)
+# Años 2019-2021: N_18P_E_R_31_*_1_1_3_1.HTM (formato antiguo)
+YEAR_PREFIX=${YEAR:2:2}
+PREV_YEAR=$((10#$YEAR_PREFIX - 1))
 
-# ── Procesar cada fichero HTM ─────────────────────────────────────────────────
-for htm in $(ls "$HTM_DIR"/$FILE_PATTERN | sort); do
-    fname=$(basename "$htm")
+FILE_PATTERN_SUFFIX=E_R_31_*_1_1_3_1.HTM
 
-    iconv -f windows-1252 -t utf-8 "$htm" 2>/dev/null \
-      | sed 's/<span[^>]*>/\n__SPAN__/g; s/<\/span>/__ENDSPAN__\n/g' \
-      | grep "__SPAN__" \
-      | sed 's/^__SPAN__//; s/__ENDSPAN__$//' \
-      | awk '
-        # Decodifica entidades HTML numéricas.
-        # Solo decodifica codepoints ASCII (<= 127); los mayores se dejan como texto
-        # (el fichero ya viene en UTF-8 via iconv, los &#NNN; > 127 son redundantes)
-        function decode(s,    result, code, chunk) {
-            result = ""
-            while (length(s) > 0) {
-                if (match(s, /&#[0-9]+;/)) {
-                    result = result substr(s, 1, RSTART-1)
-                    code = substr(s, RSTART+2, RLENGTH-3) + 0
-                    if (code <= 127) {
-                        result = result sprintf("%c", code)
-                    } else {
-                        # Para codepoints > 127 usamos la representación UTF-8 del fichero:
-                        # eliminamos la entidad y dejamos vacío (el char real ya estará
-                        # en el texto literal gracias al iconv)
-                        # En estos ficheros solo las letras con tilde se codifican así
-                        # y el texto literal ya no está: todo es entidad. 
-                        # Necesitamos producir el char UTF-8 manualmente.
-                        if (code == 193) result = result "\xC3\x81"   # Á
-                        else if (code == 201) result = result "\xC3\x89"  # É
-                        else if (code == 205) result = result "\xC3\x8D"  # Í
-                        else if (code == 211) result = result "\xC3\x93"  # Ó
-                        else if (code == 218) result = result "\xC3\x9A"  # Ú
-                        else if (code == 225) result = result "\xC3\xA1"  # á
-                        else if (code == 233) result = result "\xC3\xA9"  # é
-                        else if (code == 237) result = result "\xC3\xAD"  # í
-                        else if (code == 243) result = result "\xC3\xB3"  # ó
-                        else if (code == 250) result = result "\xC3\xBA"  # ú
-                        else if (code == 241) result = result "\xC3\xB1"  # ñ
-                        else if (code == 209) result = result "\xC3\x91"  # Ñ
-                        else if (code == 252) result = result "\xC3\xBC"  # ü
-                        else if (code == 231) result = result "\xC3\xA7"  # ç
-                        else if (code == 191) result = result "\xC2\xBF"  # ¿
-                        else if (code == 161) result = result "\xC2\xA1"  # ¡
-                        else if (code == 186) result = result "\xC2\xBA"  # º
-                        else if (code == 170) result = result "\xC2\xAA"  # ª
-                        else result = result "?"
-                    }
-                    s = substr(s, RSTART+RLENGTH)
+FILE_PATTERN="N_${YEAR_PREFIX}_$FILE_PATTERN_SUFFIX"
+
+# Verificar si existen archivos con el patrón del año actual
+if ! ls "$HTM_DIR"/$FILE_PATTERN 1> /dev/null 2>&1; then
+    FILE_PATTERN="N_${PREV_YEAR}_$FILE_PATTERN_SUFFIX"
+    echo "Usando patrón de año anterior: $FILE_PATTERN"
+    if ! ls "$HTM_DIR"/$FILE_PATTERN 1> /dev/null 2>&1; then
+      FILE_PATTERN="N_${PREV_YEAR_PREFIX}P_$FILE_PATTERN_SUFFIX"
+      echo "Usando patrón de prorroga: $FILE_PATTERN"
+      if ! ls "$HTM_DIR"/$FILE_PATTERN 1> /dev/null 2>&1; then
+        FILE_PATTERN="N_${PREV_YEAR}P_$FILE_PATTERN_SUFFIX"
+        echo "Usando patrón de prorroga del año anterior: $FILE_PATTERN"
+      else
+        echo "Error. Ningún patron encontrado"
+        exit -1
+      fi
+    fi
+fi
+
+
+echo "Patrón: $FILE_PATTERN"
+
+# ── Función de decodificación de entidades HTML ─────────────────────────────────────
+decode_entities() {
+    awk '
+    function decode(s,    result, code) {
+        result = ""
+        while (length(s) > 0) {
+            if (match(s, /&#[0-9]+;/)) {
+                result = result substr(s, 1, RSTART-1)
+                code = substr(s, RSTART+2, RLENGTH-3) + 0
+                if (code <= 127) {
+                    result = result sprintf("%c", code)
                 } else {
-                    result = result s
-                    s = ""
+                    # Mapeo manual de caracteres UTF-8 comunes
+                    if (code == 193) result = result "\xC3\x81"
+                    else if (code == 201) result = result "\xC3\x89"
+                    else if (code == 205) result = result "\xC3\x8D"
+                    else if (code == 211) result = result "\xC3\x93"
+                    else if (code == 218) result = result "\xC3\x9A"
+                    else if (code == 225) result = result "\xC3\xA1"
+                    else if (code == 233) result = result "\xC3\xA9"
+                    else if (code == 237) result = result "\xC3\xAD"
+                    else if (code == 243) result = result "\xC3\xB3"
+                    else if (code == 250) result = result "\xC3\xBA"
+                    else if (code == 241) result = result "\xC3\xB1"
+                    else if (code == 209) result = result "\xC3\x91"
+                    else if (code == 252) result = result "\xC3\xBC"
+                    else if (code == 231) result = result "\xC3\xA7"
+                    else if (code == 191) result = result "\xC2\xBF"
+                    else if (code == 161) result = result "\xC2\xA1"
+                    else if (code == 186) result = result "\xC2\xBA"
+                    else if (code == 170) result = result "\xC2\xAA"
+                    else result = result "?"
+                }
+                s = substr(s, RSTART+RLENGTH)
+            } else {
+                result = result s
+                s = ""
+            }
+        }
+        return result
+    }
+    { print decode($0) }
+    '
+}
+
+# ── Determinar tipo de estructura HTML (span vs div) ─────────────────────────────
+detect_html_type() {
+    local htm="$1"
+    local span_count=$(iconv -f windows-1252 -t utf-8 "$htm" 2>/dev/null | grep -c "<span" || echo 0)
+    
+    if [ "$span_count" -gt 0 ]; then
+        echo "span"
+    else
+        echo "div"
+    fi
+}
+
+# ── Procesar cada ficheo HTM ─────────────────────────────────────────────────────
+for htm in $(ls "$HTM_DIR"/$FILE_PATTERN 2>/dev/null | sort); do
+    fname=$(basename "$htm")
+    
+    # Detectar tipo de HTML
+    html_type=$(detect_html_type "$htm")
+    
+    if [ "$html_type" = "span" ]; then
+        # Formato nuevo (2022+): usar <span> tags
+        iconv -f windows-1252 -t utf-8 "$htm" 2>/dev/null \
+          | sed 's/<span[^>]*>/\n__SPAN__/g; s/<\/span>/__ENDSPAN__\n/g' \
+          | grep "__SPAN__" \
+          | sed 's/^__SPAN__//; s/__ENDSPAN__$//' \
+          | decode_entities \
+          | awk '
+            BEGIN { found_header = 0; ncols = 0; buf_count = 0; seccion = ""; counting_header = 0; header_count = 0 }
+
+            !found_header && /Secci/ && !/Clasif/ {
+                if (match($0, /: /)) {
+                    seccion = substr($0, RSTART + 2)
+                    gsub(/^[[:space:]]+|[[:space:]]+$/, "", seccion)
                 }
             }
-            return result
-        }
 
-        BEGIN {
-            found_header = 0
-            ncols = 0
-            buf_count = 0
-            seccion = ""
-            counting_header = 0
-            header_count = 0
-        }
-
-        {
-            decoded = decode($0)
-        }
-
-        # Capturar sección: línea que contiene el patrón de sección
-        !found_header && (decoded ~ /Secci/ || $0 ~ /&#243;n/) && decoded !~ /Clasif/ {
-            if (match(decoded, /: /)) {
-                seccion = substr(decoded, RSTART + 2)
-                gsub(/^[[:space:]]+|[[:space:]]+$/, "", seccion)
-            } else if (match($0, /&#58; /)) {
-                # Fallback: extraer del raw y decodificar solo ASCII
-                rest = substr($0, RSTART + 6)
-                seccion = decode(rest)
-                gsub(/^[[:space:]]+|[[:space:]]+$/, "", seccion)
+            !found_header && /^Clasif\./ {
+                counting_header = 1
+                header_count = 1
+                next
             }
-        }
 
-        # Detectar inicio del header
-        !found_header && decoded ~ /^Clasif\./ {
-            counting_header = 1
-            header_count = 1
-            next
-        }
-
-        # Contar columnas del header hasta "Total"
-        counting_header && !found_header {
-            header_count++
-            if (decoded == "Total") {
-                ncols = header_count
-                found_header = 1
-                counting_header = 0
-                buf_count = 0
-            }
-            next
-        }
-
-        # Acumular datos en grupos de ncols
-        found_header && ncols > 0 {
-            buf[buf_count] = decoded
-            buf_count++
-
-            if (buf_count == ncols) {
-                clasif = buf[0]
-                expl   = buf[1]
-                total  = buf[ncols - 1]
-                buf_count = 0
-
-                # Validar código: 3 dígitos + 1 alfanum
-                if (clasif !~ /^[0-9][0-9][0-9][A-Za-z0-9]$/) next
-
-                # Excluir filas de totales
-                if (expl ~ /^TOTAL/) next
-
-                # Excluir sin importe
-                if (total == "") next
-
-                # Añadir sección a códigos 000X
-                if (clasif ~ /^000/) {
-                    expl = expl " (Sección: " seccion ")"
+            counting_header && !found_header {
+                header_count++
+                if ($0 == "Total") {
+                    ncols = header_count
+                    found_header = 1
+                    counting_header = 0
+                    buf_count = 0
                 }
-
-                print clasif "|" expl "|" total
+                next
             }
-        }
-      ' >> "$TMP_ALL"
 
-    count=$(wc -l < "$TMP_ALL" 2>/dev/null || echo 0)
+            found_header && ncols > 0 {
+                buf[buf_count] = $0
+                buf_count++
+
+                if (buf_count == ncols) {
+                    clasif = buf[0]
+                    expl   = buf[1]
+                    total  = buf[ncols - 1]
+                    buf_count = 0
+
+                    if (clasif !~ /^[0-9][0-9][0-9][A-Za-z0-9]$/) next
+                    if (expl ~ /^TOTAL/) next
+                    if (total == "") next
+
+                    if (clasif ~ /^000/) {
+                        expl = expl " (Sección: " seccion ")"
+                    }
+
+                    print clasif "|" expl "|" total
+                }
+            }
+          ' >> "$TMP_ALL"
+    else
+        # Formato antiguo (2019-2021): buscar en <div> tags
+        iconv -f windows-1252 -t utf-8 "$htm" 2>/dev/null \
+          | sed 's/<div[^>]*>/\n__DIV__/g; s/<\/div>/__ENDDIV__\n/g' \
+          | grep -v "^__DIV__<" \
+          | grep "__DIV__" \
+          | sed 's/^__DIV__//; s/__ENDDIV__$//' \
+          | decode_entities \
+          | awk '
+            BEGIN { found_header = 0; ncols = 0; buf_count = 0; seccion = ""; counting_header = 0; header_count = 0 }
+
+            !found_header && /Secci/ && !/Clasif/ {
+                if (match($0, /: /)) {
+                    seccion = substr($0, RSTART + 2)
+                    gsub(/^[[:space:]]+|[[:space:]]+$/, "", seccion)
+                }
+            }
+
+            !found_header && /^Clasif\./ {
+                counting_header = 1
+                header_count = 1
+                next
+            }
+
+            counting_header && !found_header {
+                header_count++
+                if ($0 == "Total") {
+                    ncols = header_count
+                    found_header = 1
+                    counting_header = 0
+                    buf_count = 0
+                }
+                next
+            }
+
+            found_header && ncols > 0 {
+                buf[buf_count] = $0
+                buf_count++
+
+                if (buf_count == ncols) {
+                    clasif = buf[0]
+                    expl   = buf[1]
+                    total  = buf[ncols - 1]
+                    buf_count = 0
+
+                    if (clasif !~ /^[0-9][0-9][0-9][A-Za-z0-9]$/) next
+                    if (expl ~ /^TOTAL/) next
+                    if (total == "") next
+
+                    if (clasif ~ /^000/) {
+                        expl = expl " (Sección: " seccion ")"
+                    }
+
+                    print clasif "|" expl "|" total
+                }
+            }
+          ' >> "$TMP_ALL"
+    fi
+
+    count=$(wc -l < "$TMP_ALL" 2>/dev/null)
+    if [ -z "$count" ]; then count=0; fi
+    count=$(echo "$count" | tr -d ' ')
     echo "  $fname procesado (acumulado: $count filas)"
 done
 
-total_raw=$(wc -l < "$TMP_ALL")
+total_raw=$(wc -l < "$TMP_ALL" 2>/dev/null)
+if [ -z "$total_raw" ]; then total_raw=0; fi
+total_raw=$(echo "$total_raw" | tr -d ' ')
 echo ""
 echo "Líneas extraídas en bruto: $total_raw"
 
-# ── Cruzar con políticas de gasto ────────────────────────────────────────────
-awk -v pfile="$POLITICAS_FILE" '
-BEGIN {
-    while ((getline line < pfile) > 0) {
-        prefix = substr(line, 1, 2)
-        politica[prefix] = line
+# ── Cruzar con políticas de gasto ────────────────────────────────────────────────
+if [ -f "$POLITICAS_FILE" ]; then
+    awk -v pfile="$POLITICAS_FILE" '
+    BEGIN {
+        while ((getline line < pfile) > 0) {
+            prefix = substr(line, 1, 2)
+            politica[prefix] = line
+        }
     }
-}
-{
-    n = split($0, fields, "|")
-    clasif = fields[1]
-    expl   = fields[2]
-    total  = fields[3]
-    prefix = substr(clasif, 1, 2)
-    pol = (prefix in politica) ? politica[prefix] : ""
-    print clasif "|" expl "|" total "|" pol
-}
-' "$TMP_ALL" > /tmp/spendings_with_pol.tmp
+    {
+        n = split($0, fields, "|")
+        clasif = fields[1]
+        expl   = fields[2]
+        total  = fields[3]
+        prefix = substr(clasif, 1, 2)
+        pol = (prefix in politica) ? politica[prefix] : ""
+        print clasif "|" expl "|" total "|" pol
+    }
+    ' "$TMP_ALL" > /tmp/spendings_with_pol.tmp
+else
+    cp "$TMP_ALL" /tmp/spendings_with_pol.tmp
+    echo "ADVERTENCIA: No se encontró $POLITICAS_FILE"
+fi
 
-# ── Política más frecuente (para 000X) ───────────────────────────────────────
+# ── Política más frecuente (para 000X) ────────────────────────────────────────────
 politica_frecuente=$(awk -F'|' '
 $1 !~ /^000/ && $4 != "" { count[$4]++ }
 END {
@@ -194,7 +277,7 @@ END {
 
 echo "Política más frecuente (para 000X): $politica_frecuente"
 
-# ── Escribir CSV final ────────────────────────────────────────────────────────
+# ── Escribir CSV final ────────────────────────────────────────────────────────────
 awk -F'|' -v pfrecuente="$politica_frecuente" '
 {
     clasif = $1; expl = $2; total = $3; pol = $4
@@ -210,8 +293,5 @@ echo "Total de filas: $total_filas"
 echo ""
 echo "Primeras 10 líneas:"
 head -10 "$OUTPUT_CSV"
-echo ""
-echo "Filas 000X:"
-grep "^000X" "$OUTPUT_CSV"
 
 rm -f "$TMP_ALL" /tmp/spendings_with_pol.tmp
