@@ -26,7 +26,11 @@ echo "Generando $OUTPUT_CSV para año $YEAR..."
 YEAR_PREFIX=${YEAR:2:2}
 PREV_YEAR=$((10#$YEAR_PREFIX - 1))
 
-FILE_PATTERN_SUFFIX=E_R_31_*_1_1_3_1.HTM
+if [ $YEAR -gt 2013 ]; then
+  FILE_PATTERN_SUFFIX=E_R_31_*_1_1_3_1.HTM
+else
+  FILE_PATTERN_SUFFIX=E_R_31_*_1_1_7.HTM
+fi
 
 FILE_PATTERN="N_${YEAR_PREFIX}_$FILE_PATTERN_SUFFIX"
 
@@ -40,9 +44,10 @@ if ! ls "$HTM_DIR"/$FILE_PATTERN 1> /dev/null 2>&1; then
       if ! ls "$HTM_DIR"/$FILE_PATTERN 1> /dev/null 2>&1; then
         FILE_PATTERN="N_${PREV_YEAR}P_$FILE_PATTERN_SUFFIX"
         echo "Usando patrón de prorroga del año anterior: $FILE_PATTERN"
-      else
-        echo "Error. Ningún patron encontrado"
-        exit -1
+        if ! ls "$HTM_DIR"/$FILE_PATTERN 1> /dev/null 2>&1; then
+          echo "Error. Ningún patron encontrado"
+          exit -1
+        fi
       fi
     fi
 fi
