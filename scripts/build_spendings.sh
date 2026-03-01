@@ -101,15 +101,29 @@ decode_entities() {
     '
 }
 
-# ── Determinar tipo de estructura HTML (span vs div) ─────────────────────────────
+# ── Determinar tipo de estructura HTML (span vs div vs table) ──────────────────────
 detect_html_type() {
     local htm="$1"
-    local span_count=$(iconv -f windows-1252 -t utf-8 "$htm" 2>/dev/null | grep -c "<span" || echo 0)
+    local span_count div_count table_count
     
+    span_count=$(iconv -f windows-1252 -t utf-8 "$htm" 2>/dev/null | grep -c "<span")
+    if [ $? -ne 0 ] || [ -z "$span_count" ]; then span_count=0; fi
+    
+    div_count=$(iconv -f windows-1252 -t utf-8 "$htm" 2>/dev/null | grep -c "<div")
+    if [ $? -ne 0 ] || [ -z "$div_count" ]; then div_count=0; fi
+    
+    table_count=$(iconv -f windows-1252 -t utf-8 "$htm" 2>/dev/null | grep -c "<table")
+    if [ $? -ne 0 ] || [ -z "$table_count" ]; then table_count=0; fi
+    
+    # 2022+ format uses <span> tags (1+ spans)
     if [ "$span_count" -gt 0 ]; then
         echo "span"
-    else
+    # 2014-2021 format uses lowercase <div> tags (more divs than tables)
+    elif [ "$div_count" -gt "$table_count" ]; then
         echo "div"
+    # 2013 format uses <DIV> tags (uppercase) - need table parsing
+    else
+        echo "table"
     fi
 }
 
@@ -176,10 +190,67 @@ for htm in $(ls "$HTM_DIR"/$FILE_PATTERN 2>/dev/null | sort); do
                 }
             }
           ' >> "$TMP_ALL"
-    else
-        # Formato antiguo (2019-2021): buscar en <div> tags
+    elif [ "$html_type" = "div" ]; then
+        # Formato antiguo (2014-2021): buscar en <div> tags
         iconv -f windows-1252 -t utf-8 "$htm" 2>/dev/null \
           | sed 's/<div[^>]*>/\n__DIV__/g; s/<\/div>/__ENDDIV__\n/g' \
+          | grep -v "^__DIV__<" \
+          | grep "__DIV__" \
+          | sed 's/^__DIV__//; s/__ENDDIV__$//' \
+          | decode_entities \
+          | awk '
+            BEGIN { found_header = 0; ncols = 0; buf_count = 0; seccion = ""; counting_header = 0; header_count = 0 }
+
+            !found_header && /Secci/ && !/Clasif/ {
+                if (match($0, /: /)) {
+                    seccion = substr($0, RSTART + 2)
+                    gsub(/^[[:space:]]+|[[:space:]]+$/, "", seccion)
+                }
+            }
+
+            !found_header && /^Clasif\./ {
+                counting_header = 1
+                header_count = 1
+                next
+            }
+
+            counting_header && !found_header {
+                header_count++
+                if ($0 == "Total") {
+                    ncols = header_count
+                    found_header = 1
+                    counting_header = 0
+                    buf_count = 0
+                }
+                next
+            }
+
+            found_header && ncols > 0 {
+                buf[buf_count] = $0
+                buf_count++
+
+                if (buf_count == ncols) {
+                    clasif = buf[0]
+                    expl   = buf[1]
+                    total  = buf[ncols - 1]
+                    buf_count = 0
+
+                    if (clasif !~ /^[0-9][0-9][0-9][A-Za-z0-9]$/) next
+                    if (expl ~ /^TOTAL/) next
+                    if (total == "") next
+
+                    if (clasif ~ /^000/) {
+                        expl = expl " (Sección: " seccion ")"
+                    }
+
+                    print clasif "|" expl "|" total
+                }
+            }
+          ' >> "$TMP_ALL"
+    elif [ "$html_type" = "table" ]; then
+        # Formato 2013: usar <DIV> tags (case-insensitive)
+        iconv -f windows-1252 -t utf-8 "$htm" 2>/dev/null \
+          | sed 's/<DIV[^>]*>/\n__DIV__/gi; s/<\/DIV>/__ENDDIV__\n/gi' \
           | grep -v "^__DIV__<" \
           | grep "__DIV__" \
           | sed 's/^__DIV__//; s/__ENDDIV__$//' \
