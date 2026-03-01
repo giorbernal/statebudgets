@@ -342,23 +342,12 @@ else
     echo "ADVERTENCIA: No se encontró $POLITICAS_FILE"
 fi
 
-# ── Política más frecuente (para 000X) ────────────────────────────────────────────
-politica_frecuente=$(awk -F'|' '
-$1 !~ /^000/ && $4 != "" { count[$4]++ }
-END {
-    max = 0; best = ""
-    for (p in count) { if (count[p] > max) { max = count[p]; best = p } }
-    print best
-}
-' /tmp/spendings_with_pol.tmp)
-
-echo "Política más frecuente (para 000X): $politica_frecuente"
-
-# ── Escribir CSV final ────────────────────────────────────────────────────────────
-awk -F'|' -v pfrecuente="$politica_frecuente" '
+# ── Escribir CSV final (para 000X usar política del registro anterior) ──────────────
+awk -F'|' '
 {
     clasif = $1; expl = $2; total = $3; pol = $4
-    if (clasif ~ /^000/ && pol == "") pol = pfrecuente
+    if (clasif ~ /^000/ && pol == "") pol = prev_pol
+    if (pol != "") prev_pol = pol
     print clasif ";" expl ";" total ";" pol
 }
 ' /tmp/spendings_with_pol.tmp > "$OUTPUT_CSV"
