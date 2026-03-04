@@ -15,7 +15,7 @@ fi
 mkdir -p "$DATA_DIR"
 
 rm -f "$OUTPUT_FILE"
-
+echo "year,code,name,amount,policy" >> "$OUTPUT_FILE"
 echo "Ensembling spending.csv files..."
 
 for year_dir in $(ls -d "$PGE_DIR"/[0-9]* 2>/dev/null | sort -t/ -k6 -n); do
