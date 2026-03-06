@@ -56,4 +56,4 @@ run:
 	@echo "Iniciando aplicación Streamlit..."
 	@echo "Acceso: http://localhost:8501"
 	@echo ""
-	cd app && streamlit run main.py
+	cd app && streamlit run Gasto_anual.py

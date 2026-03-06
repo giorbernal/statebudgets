@@ -24,7 +24,7 @@ make run
 
 # Opción 2: Directamente
 cd app
-streamlit run main.py
+streamlit run Gasto_anual.py
 ```
 
 La aplicación estará disponible en: **http://localhost:8501**

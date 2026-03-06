@@ -23,11 +23,11 @@ The data is sourced from the official government portal (Secretaría de Estado d
 │   ├── build_spending.sh      # Shell script to generate CSV from HTM files
 │   └── politicas_gasto.txt    # List of spending policies by area
 ├── app/                       # Streamlit application (MAIN)
-│   ├── main.py                # Entry point with tab navigation
+│   ├── Gasto_anual.py         # Main page: Annual spending by policy
 │   ├── pages/                 # Page modules
-│   │   ├── tab_policies.py    # Tab 1: Treemap visualization by policy
-│   │   └── tab_timeline.py    # Tab 2: Timeline evolution with filters
+│   │   └── Evolución_Temporal.py  # Page: Timeline evolution with filters
 │   ├── utils/                 # Utility modules
+│   │   ├── shared.py          # Shared initialization logic
 │   │   └── data_loader.py     # CSV parsing, cleaning, and data caching
 │   └── __init__.py
 ├── src/
@@ -69,10 +69,10 @@ poetry shell
 ```bash
 # Run from app directory (recommended)
 cd app
-streamlit run main.py
+streamlit run Gasto_anual.py
 
 # Or from project root
-streamlit run app/main.py
+streamlit run app/Gasto_anual.py
 
 # Access at http://localhost:8501
 ```
@@ -122,10 +122,10 @@ The application provides interactive visualization and analysis of Spanish State
 
 ### Architecture
 
-**Entry Point**: `app/main.py`
-- Session state management
-- Tab-based navigation
-- Error handling and data initialization
+**Main Page**: `app/Gasto_anual.py`
+- Annual spending visualization by policy
+- Year selector with treemap
+- Statistics and detailed breakdown table
 
 **Tab 1 - Spending by Policy** (`app/pages/tab_policies.py`)
 - Treemap visualization (Plotly) showing spending distribution
@@ -324,7 +324,7 @@ except pd.errors.EmptyDataError:
 - Use `st.` prefix for Streamlit components
 - Cache expensive computations with `@st.cache_data` or `@st.cache_resource`
 - Use `st.session_state` for persistent state
-- Keep Streamlit app code minimal in `main.py`; delegate logic to modules
+- Keep Streamlit app code minimal in pages; delegate logic to utils modules
 - Use columns for layout: `col1, col2 = st.columns(2)`
 
 ### Data Processing Patterns
