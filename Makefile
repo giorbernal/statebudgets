@@ -1,7 +1,25 @@
-.PHONY: spending ensemble-spending
+.PHONY: help spending ensemble-spending check-pge
 
 # Available budget years in pge/
 YEARS := 2011 2012 2013 2014 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026
+
+# Default target
+.DEFAULT_GOAL := help
+
+# Show available commands
+help:
+	@echo "╔════════════════════════════════════════════════════════╗"
+	@echo "║   Presupuestos Generales del Estado - Comandos        ║"
+	@echo "╚════════════════════════════════════════════════════════╝"
+	@echo ""
+	@echo "  make help              - Muestra esta ayuda"
+	@echo ""
+	@echo "  make spending          - Genera spending.csv para todos los años"
+	@echo "                           (2011-2026)"
+	@echo ""
+	@echo "  make ensemble-spending - Ensambla todos los spending.csv en un"
+	@echo "                           archivo global (data/input/spending.csv)"
+	@echo ""
 
 # Check if pge directory exists
 check-pge:
