@@ -11,10 +11,10 @@ import streamlit as st
 def _parse_spending_csv(file_path: Path) -> pd.DataFrame:
     """Parse the spending.csv file with custom logic to handle malformed data.
     
-    The CSV has inconsistent structure:
-    - Header uses commas (year,code,name,amount,policy)
-    - Data uses semicolons as delimiters but some rows have > 5 fields
-    - The issue is that policy field contains "; Y OTROS" causing extra split
+    The CSV uses semicolon as delimiter throughout:
+    - Header: year;code;name;amount;policy
+    - Data: Consistent semicolon delimiters with some rows having > 5 fields
+    - The issue is that policy field contains semicolons causing extra splits
     
     Args:
         file_path: Path to the CSV file.
@@ -26,7 +26,8 @@ def _parse_spending_csv(file_path: Path) -> pd.DataFrame:
     
     with open(file_path, 'r', encoding='utf-8') as f:
         reader = csv.reader(f, delimiter=';')
-        next(reader)  # Skip header line
+        # Skip header line (now uses semicolon delimiter)
+        next(reader)
         
         for line_num, row in enumerate(reader, start=2):
             if len(row) < 4:
