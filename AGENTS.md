@@ -68,9 +68,11 @@ make ensemble-spending # Combine all spending.csv into one
 
 ### Data Loading
 
-- **data_loader.py**: Custom CSV parser handling malformed rows
+- **data_loader.py**: Pandas-based CSV parser
+  - Uses `pd.read_csv()` with `on_bad_lines='skip'` for robustness
   - Converts Spanish format: 1.234,56 → 1234.56
   - Decodes HTML entities: &uacute; → ú
+  - Validates and cleans data
   - Caches data with @st.cache_data
   
 - **shared.py**: Shared page initialization
@@ -136,7 +138,6 @@ except FileNotFoundError:
 
 ## Known Limitations
 
-- Initial data load slower due to custom CSV parsing
 - Large number of policies may slow timeline rendering
 - Requires manual `make spending` for data updates
 

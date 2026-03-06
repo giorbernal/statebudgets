@@ -2,69 +2,56 @@
 
 from pathlib import Path
 from typing import Optional
-import csv
 
 import pandas as pd
 import streamlit as st
 
 
 def _parse_spending_csv(file_path: Path) -> pd.DataFrame:
-    """Parse the spending.csv file with custom logic to handle malformed data.
+    """Parse the spending.csv file using Pandas with error handling.
     
-    The CSV uses semicolon as delimiter throughout:
-    - Header: year;code;name;amount;policy
-    - Data: Consistent semicolon delimiters with some rows having > 5 fields
-    - The issue is that policy field contains semicolons causing extra splits
+    The CSV uses semicolon as delimiter and may have rows with extra fields
+    where the policy field contains semicolons.
     
     Args:
         file_path: Path to the CSV file.
     
     Returns:
-        DataFrame with proper structure.
+        DataFrame with columns: year, code, name, amount, policy.
     """
-    rows = []
-    
-    with open(file_path, 'r', encoding='utf-8') as f:
-        reader = csv.reader(f, delimiter=';')
-        # Skip header line (now uses semicolon delimiter)
-        next(reader)
-        
-        for line_num, row in enumerate(reader, start=2):
-            if len(row) < 4:
-                # Skip incomplete rows
-                continue
-            
-            # Handle rows with extra fields (policy contains ";")
-            if len(row) > 5:
-                # Rejoin excess fields back to the policy field
-                # Keep first 4 fields: year, code, name, amount
-                # Rejoin remaining fields as policy
-                year, code, name, amount = row[:4]
-                policy = ";".join(row[4:])
-            else:
-                year, code, name, amount = row[:4]
-                policy = row[4] if len(row) > 4 else ""
-            
-            # Only keep rows with valid year and amount
-            try:
-                int(year)
-                # Try to parse amount (could be "71.021.601,90" or similar)
-                float(amount.replace(".", "").replace(",", "."))
-            except (ValueError, AttributeError):
-                continue
-            
-            rows.append({
-                "year": year,
-                "code": code,
-                "name": name,
-                "amount": amount,
-                "policy": policy,
-            })
-    
-    df = pd.DataFrame(rows)
+    # Read CSV with semicolon delimiter, handling potential malformed rows
+    df = pd.read_csv(
+        file_path,
+        sep=';',
+        encoding='utf-8',
+        on_bad_lines='skip',  # Skip rows with inconsistent field count
+        engine='python'  # Python engine handles edge cases better
+    )
     
     if df.empty:
         raise ValueError("CSV file produced empty DataFrame")
+    
+    # Ensure required columns exist
+    required_columns = ['year', 'code', 'name', 'amount', 'policy']
+    if not all(col in df.columns for col in required_columns):
+        raise ValueError(f"CSV missing required columns. Expected: {required_columns}")
+    
+    # Keep only required columns
+    df = df[required_columns].copy()
+    
+    # Validate data: remove rows with invalid year or amount
+    df['year'] = pd.to_numeric(df['year'], errors='coerce')
+    df['amount'] = df['amount'].astype(str).str.strip()
+    df['amount'] = pd.to_numeric(
+        df['amount'].str.replace(".", "", regex=False).str.replace(",", ".", regex=False),
+        errors='coerce'
+    )
+    
+    # Remove rows where year or amount couldn't be converted
+    df = df.dropna(subset=['year', 'amount'])
+    
+    # Convert year to integer
+    df['year'] = df['year'].astype(int)
     
     return df
 
@@ -82,21 +69,11 @@ def load_spending_data() -> pd.DataFrame:
     if not data_path.exists():
         raise FileNotFoundError(f"Dataset not found at {data_path}")
     
-    # Parse CSV with custom logic
+    # Parse CSV with Pandas
     df = _parse_spending_csv(data_path)
     
-    # Convert year to integer
-    df["year"] = df["year"].astype(int)
-    
-    # Clean amount column: remove spaces, dots (thousands separator), convert comma to dot
-    df["amount"] = (
-        df["amount"]
-        .astype(str)
-        .str.strip()
-        .str.replace(".", "", regex=False)  # Remove thousand separators
-        .str.replace(",", ".", regex=False)  # Replace comma with dot
-        .astype(float)
-    )
+    # Ensure amount is float (already converted in _parse_spending_csv)
+    df["amount"] = df["amount"].astype(float)
     
     # Clean policy column: remove leading/trailing spaces and HTML entities
     df["policy"] = (
@@ -116,12 +93,8 @@ def load_spending_data() -> pd.DataFrame:
         .str.replace("&auml;", "ä", regex=False)
     )
     
-    # Remove rows with empty policy
-    df = df[df["policy"].notna()]
-    df = df[df["policy"] != ""]
-    df = df[df["policy"] != "nan"]
-    
-    # Remove rows with NaN in critical columns
+    # Remove rows with empty policy or NaN values
+    df = df[df["policy"].notna() & (df["policy"] != "") & (df["policy"] != "nan")]
     df = df.dropna(subset=["year", "amount"])
     
     return df.reset_index(drop=True)
