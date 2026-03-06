@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Genera spending.csv para presupuestos del estado español
 # Skill: build-budgets-csv
 # Soporta múltiples formatos de HTML (nuevo con <span>, antiguo con <div>)
@@ -59,9 +59,10 @@ echo "Patrón: $FILE_PATTERN"
 # ── Función de decodificación de entidades HTML ─────────────────────────────────────
 decode_entities() {
     awk '
-    function decode(s,    result, code) {
+    function decode(s,    result, code, entity) {
         result = ""
         while (length(s) > 0) {
+            # Primero procesar entidades numéricas (&#233;)
             if (match(s, /&#[0-9]+;/)) {
                 result = result substr(s, 1, RSTART-1)
                 code = substr(s, RSTART+2, RLENGTH-3) + 0
@@ -90,9 +91,60 @@ decode_entities() {
                     else result = result "?"
                 }
                 s = substr(s, RSTART+RLENGTH)
+            }
+            # Luego procesar entidades nombradas (&eacute;, &aacute;, etc.)
+            else if (match(s, /&[a-zA-Z]+;/)) {
+                result = result substr(s, 1, RSTART-1)
+                entity = substr(s, RSTART+1, RLENGTH-2)
+                
+                # Mapeo de entidades HTML comunes españolas
+                if (entity == "aacute") result = result "\xC3\xA1"
+                else if (entity == "eacute") result = result "\xC3\xA9"
+                else if (entity == "iacute") result = result "\xC3\xAD"
+                else if (entity == "oacute") result = result "\xC3\xB3"
+                else if (entity == "uacute") result = result "\xC3\xBA"
+                else if (entity == "Aacute") result = result "\xC3\x81"
+                else if (entity == "Eacute") result = result "\xC3\x89"
+                else if (entity == "Iacute") result = result "\xC3\x8D"
+                else if (entity == "Oacute") result = result "\xC3\x93"
+                else if (entity == "Uacute") result = result "\xC3\x9A"
+                else if (entity == "aacute") result = result "\xC3\xA1"
+                else if (entity == "acirc") result = result "\xC3\xA2"
+                else if (entity == "Acirc") result = result "\xC3\x82"
+                else if (entity == "ocirc") result = result "\xC3\xB4"
+                else if (entity == "Ocirc") result = result "\xC3\x94"
+                else if (entity == "ecirc") result = result "\xC3\xAA"
+                else if (entity == "Ecirc") result = result "\xC3\x8A"
+                else if (entity == "icirc") result = result "\xC3\xAE"
+                else if (entity == "Icirc") result = result "\xC3\x8E"
+                else if (entity == "ucirc") result = result "\xC3\xBB"
+                else if (entity == "Ucirc") result = result "\xC3\x9B"
+                else if (entity == "ntilde") result = result "\xC3\xB1"
+                else if (entity == "Ntilde") result = result "\xC3\x91"
+                else if (entity == "uuml") result = result "\xC3\xBC"
+                else if (entity == "Uuml") result = result "\xC3\x9C"
+                else if (entity == "ccedil") result = result "\xC3\xA7"
+                else if (entity == "Ccedil") result = result "\xC3\x87"
+                else if (entity == "iquest") result = result "\xC2\xBF"
+                else if (entity == "iexcl") result = result "\xC2\xA1"
+                else if (entity == "ordf") result = result "\xC2\xBA"
+                else if (entity == "ordm") result = result "\xC2\xBA"
+                else if (entity == "ordf") result = result "\xC2\xAA"
+                else if (entity == "agrave") result = result "\xC3\xA0"
+                else if (entity == "egrave") result = result "\xC3\xA8"
+                else if (entity == "igrave") result = result "\xC3\xAC"
+                else if (entity == "ograve") result = result "\xC3\xB2"
+                else if (entity == "ugrave") result = result "\xC3\xB9"
+                else if (entity == "quot") result = result "\""
+                else if (entity == "amp") result = result "&"
+                else if (entity == "lt") result = result "<"
+                else if (entity == "gt") result = result ">"
+                else result = result "&" entity ";"
+                
+                s = substr(s, RSTART+RLENGTH)
             } else {
-                result = result s
-                s = ""
+                result = result substr(s, 1, 1)
+                s = substr(s, 2)
             }
         }
         return result
