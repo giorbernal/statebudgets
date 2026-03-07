@@ -38,7 +38,7 @@ spending: check-pge
 		if [ -d "pge/$$year" ]; then \
 			echo ""; \
 			echo "=== Procesando año $$year ==="; \
-			sh scripts/build_spending.sh $$year; \
+			python3.10 scripts/build_spending.py $$year; \
 		else \
 			echo "  Skip año $$year (directorio no existe)"; \
 		fi; \
