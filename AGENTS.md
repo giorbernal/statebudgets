@@ -24,8 +24,9 @@ Interactive analysis tool for Spanish State Budget (Presupuestos Generales del E
 │   └── input/
 │       └── spending.csv           # Main dataset (1,854 rows)
 ├── scripts/
-│   ├── build_spending.sh
-│   └── politicas_gasto.txt
+│   ├── build_spending.py           # Script para generar spending.csv
+│   ├── politicas_gasto.txt
+│   └── ensemble_spending.sh
 ├── Makefile
 ├── README.md
 └── pyproject.toml
@@ -52,6 +53,12 @@ make spending          # Generate spending.csv for all years
 make ensemble-spending # Combine all spending.csv into one
 ```
 
+Para generar datos de un año específico:
+```bash
+python3.10 scripts/build_spending.py <año>
+# Ejemplo: python3.10 scripts/build_spending.py 2026
+```
+
 ## Application Architecture
 
 ### Pages
@@ -76,9 +83,19 @@ make ensemble-spending # Combine all spending.csv into one
   - Caches data with @st.cache_data
   
 - **shared.py**: Shared page initialization
-  - Configures Streamlit page
-  - Loads and validates data
-  - Handles errors
+   - Configures Streamlit page
+   - Loads and validates data
+   - Handles errors
+
+### Data Scripts
+
+- **build_spending.py**: Generador de spending.csv
+  - Procesa ficheros HTM de presupuestos (2011-2026)
+  - Soporta dos formatos: `<span>` (2014+) y `<div>` (2011-2013)
+  - Extrae clasificación por programas, descripción e importes
+  - Mapea códigos con políticas de gasto desde `politicas_gasto.txt`
+  - Genera CSV en formato: `código;descripción;importe;política`
+  - Uso: `python3.10 scripts/build_spending.py <año>`
 
 ## Code Style Guide
 

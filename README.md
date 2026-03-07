@@ -51,7 +51,7 @@ Genera el dataset de gastos de los Presupuestos Generales del Estado para el int
 
 Este comando:
 1. Verifica que exista el directorio `pge/` con los datos de presupuesto
-2. Invoca el script `scripts/build_spending.sh` para cada año disponible
+2. Invoca el script `scripts/build_spending.py` para cada año disponible
 3. Genera un archivo `spending.csv` por cada año en `pge/<año>/`
 
 ```bash
