@@ -170,8 +170,8 @@ detect_html_type() {
     # 2022+ format uses <span> tags (1+ spans)
     if [ "$span_count" -gt 0 ]; then
         echo "span"
-    # 2014-2021 format uses lowercase <div> tags (more divs than tables)
-    elif [ "$div_count" -gt "$table_count" ]; then
+    # 2014-2021 format uses lowercase <div> tags (divs >= tables)
+    elif [ "$div_count" -ge "$table_count" ]; then
         echo "div"
     # 2013 format uses <DIV> tags (uppercase) - need table parsing
     else
@@ -185,6 +185,11 @@ for htm in $(ls "$HTM_DIR"/$FILE_PATTERN 2>/dev/null | sort); do
     
     # Detectar tipo de HTML
     html_type=$(detect_html_type "$htm")
+    
+    # Para años 2011-2013, forzar formato table
+    if [ "$YEAR" -le 2013 ]; then
+        html_type="table"
+    fi
     
     if [ "$html_type" = "span" ]; then
         # Formato nuevo (2022+): usar <span> tags
@@ -300,15 +305,20 @@ for htm in $(ls "$HTM_DIR"/$FILE_PATTERN 2>/dev/null | sort); do
             }
           ' >> "$TMP_ALL"
     elif [ "$html_type" = "table" ]; then
-        # Formato 2013: usar <DIV> tags (case-insensitive)
+        # Formato 2011-2013: usar <DIV> tags (case-insensitive)
+        # Las tablas tienen estructura variable, necesitamos detectar la última columna numérica
         iconv -f windows-1252 -t utf-8 "$htm" 2>/dev/null \
           | sed 's/<DIV[^>]*>/\n__DIV__/gi; s/<\/DIV>/__ENDDIV__\n/gi' \
+          | sed 's/<TD[^>]*>/__TD__/gi; s/<\/TD>/\n/gi' \
           | grep -v "^__DIV__<" \
-          | grep "__DIV__" \
+          | grep "__DIV__\|__TD__" \
           | sed 's/^__DIV__//; s/__ENDDIV__$//' \
           | decode_entities \
           | awk '
-            BEGIN { found_header = 0; ncols = 0; buf_count = 0; seccion = ""; counting_header = 0; header_count = 0 }
+            BEGIN { 
+                found_header = 0; ncols = 0; buf_count = 0; seccion = ""; counting_header = 0; header_count = 0
+                last_numeric_col = -1
+            }
 
             !found_header && /Secci/ && !/Clasif/ {
                 if (match($0, /: /)) {
@@ -325,7 +335,15 @@ for htm in $(ls "$HTM_DIR"/$FILE_PATTERN 2>/dev/null | sort); do
 
             counting_header && !found_header {
                 header_count++
-                if ($0 == "Total") {
+                # Buscar la última columna que tenga "Total" en el header
+                if ($0 ~ /Total/) {
+                    ncols = header_count
+                    found_header = 1
+                    counting_header = 0
+                    buf_count = 0
+                }
+                # También contar si es la última columna del header
+                if (header_count > 8) {
                     ncols = header_count
                     found_header = 1
                     counting_header = 0
@@ -334,6 +352,9 @@ for htm in $(ls "$HTM_DIR"/$FILE_PATTERN 2>/dev/null | sort); do
                 next
             }
 
+            # Saltar líneas que son solo marcadores de celda vacía
+            /^__TD__$/ { next }
+
             found_header && ncols > 0 {
                 buf[buf_count] = $0
                 buf_count++
@@ -341,7 +362,15 @@ for htm in $(ls "$HTM_DIR"/$FILE_PATTERN 2>/dev/null | sort); do
                 if (buf_count == ncols) {
                     clasif = buf[0]
                     expl   = buf[1]
-                    total  = buf[ncols - 1]
+                    
+                    # Buscar la última columna que tenga un valor numérico válido
+                    total = ""
+                    for (i = ncols - 1; i >= 0; i--) {
+                        if (buf[i] ~ /^[0-9]+(\.[0-9]{3})*,[0-9]{2}$/) {
+                            total = buf[i]
+                            break
+                        }
+                    }
                     buf_count = 0
 
                     if (clasif !~ /^[0-9][0-9][0-9][A-Za-z0-9]$/) next

@@ -1,145 +1,74 @@
 year;code;name;amount;policy
 2011;911M;Jefatura del Estado;8.434,28;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
-2011;911N;Actividad legislativa;216.421,09;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
-2011;911O;Control externo del Sector Público;62.216,14;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
-2011;911P;Control Constitucional;26.438,11;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
-2011;912N;Alto asesoramiento del Estado;10.476,16;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
-2011;951M;Amortización y gastos financieros de la deuda pública en moneda nacional;71.021.601,90;95. GASTOS FINANCIEROS DE LA DEUDA PUBLICA
-2011;951N;Amortización y gastos financieros de la deuda pública en moneda extranjera;2.973.154,26;95. GASTOS FINANCIEROS DE LA DEUDA PUBLICA
-2011;211N;Pensiones de Clases Pasivas;211O;21. PENSIONES
-2011;111M;Gobierno del Poder Judicial;37.892,35;11. JUSTICIA
-2011;111O;Selección y formación de jueces;111P;11. JUSTICIA
-2011;141M;Dirección y Servicios Generales de Asuntos Exteriores;142A;14. POLÍTICA EXTERIOR Y DE COOPERACIÓN PARA EL DESARROLLO
-2011;000X;Transferencias internas (Sección: 12 MINISTERIO DE ASUNTOS EXTERIORES Y DE COOPERACIÓN);921.036,54;14. POLÍTICA EXTERIOR Y DE COOPERACIÓN PARA EL DESARROLLO
-2011;111N;Dirección y Servicios Generales de Justicia;Formación del Personal de la Administración de Justicia;11. JUSTICIA
-2011;121M;Administración y Servicios Generales de Defensa;380.769,96;12. DEFENSA
-2011;219N;Gestión de pensiones de Clases Pasivas;600,00;21. PENSIONES
-2011;921T;Servicios de transportes de Ministerios;Coordinación y relaciones financieras con los Entes Territoriales;92. SERVICIOS DE CARÁCTER GENERAL
-2011;131M;Dirección y Servicios Generales de Seguridad y Protección Civil;Formación de Fuerzas y Cuerpos de Seguridad del Estado;13. SEGURIDAD CIUDADANA E INSTITUCIONES PENITENCIARIAS
-2011;133A;Centros e Instituciones Penitenciarias;Trabajo, formación y asistencia a reclusos;13. SEGURIDAD CIUDADANA E INSTITUCIONES PENITENCIARIAS
-2011;261M;Dirección y Servicios Generales de Vivienda;261N;26. ACCESO A LA VIVIENDA Y FOMENTO DE LA EDIFICACIÓN
-2011;441O;Subvenciones y apoyo al transporte aéreo;40.650,00;44. INFRAESTRUCTURAS
-2011;451M;Estudios y servicios de asistencia técnica en Obras Públicas y Urbanismo;58.911,02;45. INFRAESTRUCTURAS Y ECOSISTEMAS RESILIENTES
-2011;144A;Cooperación, promoción y difusión cultural en el exterior;668,65;14. POLÍTICA EXTERIOR Y DE COOPERACIÓN PARA EL DESARROLLO
-2011;322B;Educación secundaria, formación profesional y Escuelas Oficiales de Idiomas;Enseñanzas universitarias;32. EDUCACIÓN
-2011;324M;Servicios complementarios de la enseñanza;47,73;32. EDUCACIÓN
-2011;143A;Cooperación para el desarrollo;28.292,26;14. POLÍTICA EXTERIOR Y DE COOPERACIÓN PARA EL DESARROLLO
-2011;223M;Prestaciones de garantía salarial;224M;22. OTRAS PRESTACIONES ECONÓMICAS
-2011;251M;Prestaciones a los desempleados;291A;25. DESEMPLEO
-2011;494M;Administración de las relaciones laborales y condiciones de trabajo;46.812,95;49. OTRAS ACTUACIONES DE CARÁCTER ECONÓMICO
-2011;912P;Asesoramiento del Gobierno en materia social, económica y laboral;601.648,89;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
-2011;421M;Dirección y Servicios Generales de Industria y Energía;92.691,15;42. INDUSTRIA Y ENERGÍA
-2011;421N;Regulación y protección de la propiedad industrial;421O;42. INDUSTRIA Y ENERGÍA
-2011;423M;Desarrollo alternativo de las comarcas mineras del carbón;22,00;42. INDUSTRIA Y ENERGÍA
-2011;143A;Cooperación para el desarrollo;5,55;14. POLÍTICA EXTERIOR Y DE COOPERACIÓN PARA EL DESARROLLO
-2011;467D;Investigación y experimentación agraria;81.259,44;46. INVESTIGACIÓN, DESARROLLO, INNOVACIÓN Y DIGITALIZACIÓN
-2011;467E;Investigación oceanográfica y pesquera;467F;46. INVESTIGACIÓN, DESARROLLO, INNOVACIÓN Y DIGITALIZACIÓN
-2011;467G;Investigación y desarrollo de la Sociedad de la Información;3.866,29;46. INVESTIGACIÓN, DESARROLLO, INNOVACIÓN Y DIGITALIZACIÓN
-2011;411M;Dirección y Servicios Generales de Agricultura, Pesca y Alimentación;42.772,00;41. AGRICULTURA, PESCA Y ALIMENTACIÓN
-2011;415B;Mejora de estructuras y mercados pesqueros;Previsión de riesgos en las producciones agrarias y pesqueras;41. AGRICULTURA, PESCA Y ALIMENTACIÓN
-2011;144A;Cooperación, promoción y difusión cultural en el exterior;331M;14. POLÍTICA EXTERIOR Y DE COOPERACIÓN PARA EL DESARROLLO
-2011;334B;Promoción del libro y publicaciones culturales;Fomento de las industrias culturales;33. CULTURA
-2011;144A;Cooperación, promoción y difusión cultural en el exterior;304.296,36;14. POLÍTICA EXTERIOR Y DE COOPERACIÓN PARA EL DESARROLLO
-2011;912M;Presidencia del Gobierno;16.654,07;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
-2011;921P;Administración periférica del Estado;Cobertura informativa;92. SERVICIOS DE CARÁCTER GENERAL
-2011;231A;Plan Nacional sobre Drogas;Otros servicios sociales del Estado;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
-2011;232M;Dirección y Servicios Generales de Promoción Social;25.494,76;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
-2011;313C;Seguridad alimentaria y nutrición;Donación y trasplante de órganos, tejidos y células;31. SANIDAD
-2011;467G;Investigación y desarrollo de la Sociedad de la Información;65.254,53;46. INVESTIGACIÓN, DESARROLLO, INNOVACIÓN Y DIGITALIZACIÓN
-2011;441M;Subvenciones y apoyo al transporte terrestre;453A;44. INFRAESTRUCTURAS
+2011;000X;Transferencias internas (Sección: 12 MINISTERIO DE ASUNTOS EXTERIORES Y DE COOPERACIÓN);74.057,42;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
+2011;923A;Gestión del Patrimonio del Estado;403.738,30;92. SERVICIOS DE CARÁCTER GENERAL
+2011;000X;Transferencias internas (Sección: 15 MINISTERIO DE ECONOMÍA Y HACIENDA);116.614,74;92. SERVICIOS DE CARÁCTER GENERAL
+2011;924M;Elecciones y Partidos Políticos;6.659.046,46;92. SERVICIOS DE CARÁCTER GENERAL
+2011;000X;Transferencias internas (Sección: 16 MINISTERIO DEL INTERIOR);1.147,87;92. SERVICIOS DE CARÁCTER GENERAL
+2011;261N;Promoción, administración y ayudas para rehabilitación y acceso a vivienda;1.126.295,50;26. ACCESO A LA VIVIENDA Y FOMENTO DE LA EDIFICACIÓN
+2011;261P;Suelo y Políticas Urbanas;2.382,79;26. ACCESO A LA VIVIENDA Y FOMENTO DE LA EDIFICACIÓN
+2011;224M;Prestaciones económicas por cese de actividad;1.248,97;22. OTRAS PRESTACIONES ECONÓMICAS
+2011;251M;Prestaciones a los desempleados;30.474.059,63;25. DESEMPLEO
+2011;467G;Investigación y desarrollo de la Sociedad de la Información;23.945,38;46. INVESTIGACIÓN, DESARROLLO, INNOVACIÓN Y DIGITALIZACIÓN
+2011;000X;Transferencias internas (Sección: 19 MINISTERIO DE TRABAJO E INMIGRACIÓN);38.943,74;46. INVESTIGACIÓN, DESARROLLO, INNOVACIÓN Y DIGITALIZACIÓN
+2011;421O;Calidad y seguridad industrial;1.961,22;42. INDUSTRIA Y ENERGÍA
+2011;432A;Coordinación y promoción del turismo;445.036,96;43. COMERCIO, TURISMO Y PYMES
+2011;465A;Investigación sanitaria;300.052,03;46. INVESTIGACIÓN, DESARROLLO, INNOVACIÓN Y DIGITALIZACIÓN
+2011;467F;Investigación geológico-minera y medioambiental;26.397,95;46. INVESTIGACIÓN, DESARROLLO, INNOVACIÓN Y DIGITALIZACIÓN
+2011;333A;Museos;416,00;33. CULTURA
+2011;334B;Promoción del libro y publicaciones culturales;14.615,78;33. CULTURA
+2011;334C;Fomento de las industrias culturales;30.800,68;33. CULTURA
 2011;941N;Transferencias a Comunidades Autónomas por los Fondos de Compensación Interterritorial;1.074.370,00;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
-2011;943M;Transferencias al Presupuesto General de la Unión Europea;943N;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
 2011;929N;Fondo de contingencia de ejecución presupuestaria;2.440.442,84;92. SERVICIOS DE CARÁCTER GENERAL
-2011;941M;Transferencias a Comunidades Autónomas por participación en ingresos Estado;14.797.873,61;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
-2011;942M;Transferencias a Entidades Locales por participación en ingresos Estado;13.235.984,38;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
+2011;941M;Transferencias a Comunidades Autónomas por participación en ingresos Estado;13.235.984,38;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
 2012;911M;Jefatura del Estado;8.264,28;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
-2012;911N;Actividad legislativa;206.626,89;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
-2012;911O;Control externo del Sector Público;62.123,22;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
-2012;911P;Control Constitucional;25.531,83;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
-2012;912N;Alto asesoramiento del Estado;10.087,22;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
-2012;951M;Amortización y gastos financieros de la deuda pública en moneda nacional;75.542.950,10;95. GASTOS FINANCIEROS DE LA DEUDA PUBLICA
-2012;951N;Amortización y gastos financieros de la deuda pública en moneda extranjera;3.355.193,74;95. GASTOS FINANCIEROS DE LA DEUDA PUBLICA
-2012;211N;Pensiones de Clases Pasivas;211O;21. PENSIONES
-2012;111M;Gobierno del Poder Judicial;35.759,18;11. JUSTICIA
-2012;111O;Selección y formación de jueces;111P;11. JUSTICIA
-2012;141M;Dirección y Servicios Generales de Asuntos Exteriores;142A;14. POLÍTICA EXTERIOR Y DE COOPERACIÓN PARA EL DESARROLLO
-2012;000X;Transferencias internas (Sección: 12 MINISTERIO DE ASUNTOS EXTERIORES Y DE COOPERACIÓN);320.565,81;14. POLÍTICA EXTERIOR Y DE COOPERACIÓN PARA EL DESARROLLO
-2012;111N;Dirección y Servicios Generales de Justicia;Formación del Personal de la Administración de Justicia;11. JUSTICIA
-2012;121M;Administración y Servicios Generales de Defensa;326.330,03;12. DEFENSA
-2012;219N;Gestión de pensiones de Clases Pasivas;9.431,44;21. PENSIONES
-2012;312E;Asistencia sanitaria del Mutualismo Administrativo;10.179,96;31. SANIDAD
-2012;422A;Incentivos regionales a la localización industrial;4.628,81;42. INDUSTRIA Y ENERGÍA
-2012;921T;Servicios de transportes de Ministerios;Evaluación de políticas y programas públicos, calidad de los servicios e impacto normativo;92. SERVICIOS DE CARÁCTER GENERAL
-2012;942A;Cooperación económica local del Estado;1.423.427,80;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
-2012;131M;Dirección y Servicios Generales de Seguridad y Protección Civil;Formación de Fuerzas y Cuerpos de Seguridad del Estado;13. SEGURIDAD CIUDADANA E INSTITUCIONES PENITENCIARIAS
-2012;133A;Centros e Instituciones Penitenciarias;Trabajo, formación y asistencia a reclusos;13. SEGURIDAD CIUDADANA E INSTITUCIONES PENITENCIARIAS
-2012;261N;Promoción, administración y ayudas para rehabilitación y acceso a vivienda;Ordenación y fomento de la edificación;26. ACCESO A LA VIVIENDA Y FOMENTO DE LA EDIFICACIÓN
-2012;144A;Cooperación, promoción y difusión cultural en el exterior;321M;14. POLÍTICA EXTERIOR Y DE COOPERACIÓN PARA EL DESARROLLO
-2012;322G;Educación compensatoria;4.005,95;32. EDUCACIÓN
-2012;334B;Promoción del libro y publicaciones culturales;Fomento de las industrias culturales;33. CULTURA
-2012;143A;Cooperación para el desarrollo;22.607,64;14. POLÍTICA EXTERIOR Y DE COOPERACIÓN PARA EL DESARROLLO
-2012;223M;Prestaciones de garantía salarial;224M;22. OTRAS PRESTACIONES ECONÓMICAS
-2012;421M;Dirección y Servicios Generales de Industria y Energía;70.923,09;42. INDUSTRIA Y ENERGÍA
-2012;421N;Regulación y protección de la propiedad industrial;421O;42. INDUSTRIA Y ENERGÍA
-2012;423M;Desarrollo alternativo de las comarcas mineras del carbón;22,00;42. INDUSTRIA Y ENERGÍA
-2012;412C;Competitividad y calidad de la producción y los mercados agrarios;17.449,18;41. AGRICULTURA, PESCA Y ALIMENTACIÓN
-2012;416A;Previsión de riesgos en las producciones agrarias y pesqueras;62.795,32;41. AGRICULTURA, PESCA Y ALIMENTACIÓN
-2012;456C;Protección y mejora del medio natural;456D;45. INFRAESTRUCTURAS Y ECOSISTEMAS RESILIENTES
-2012;337A;Administración del Patrimonio Histórico-Nacional;462M;33. CULTURA
-2012;231A;Plan Nacional sobre Drogas;Otros servicios sociales del Estado;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
-2012;143A;Cooperación para el desarrollo;66,08;14. POLÍTICA EXTERIOR Y DE COOPERACIÓN PARA EL DESARROLLO
-2012;467H;Investigación energética, medioambiental y tecnológica;492M;46. INVESTIGACIÓN, DESARROLLO, INNOVACIÓN Y DIGITALIZACIÓN
-2012;467G;Investigación y desarrollo de la Sociedad de la Información;48.151,27;46. INVESTIGACIÓN, DESARROLLO, INNOVACIÓN Y DIGITALIZACIÓN
-2012;441M;Subvenciones y apoyo al transporte terrestre;453A;44. INFRAESTRUCTURAS
+2012;000X;Transferencias internas (Sección: 12 MINISTERIO DE ASUNTOS EXTERIORES Y DE COOPERACIÓN);46.267,42;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
+2012;924M;Elecciones y Partidos Políticos;6.564.508,66;92. SERVICIOS DE CARÁCTER GENERAL
+2012;000X;Transferencias internas (Sección: 16 MINISTERIO DEL INTERIOR);218,13;92. SERVICIOS DE CARÁCTER GENERAL
+2012;337B;Conservación y restauración de bienes culturales;30.605,81;33. CULTURA
+2012;337C;Protección del Patrimonio Histórico;7.582,63;33. CULTURA
+2012;466A;Investigación y evaluación educativa;5.588,84;46. INVESTIGACIÓN, DESARROLLO, INNOVACIÓN Y DIGITALIZACIÓN
+2012;224M;Prestaciones económicas por cese de actividad;1.026,44;22. OTRAS PRESTACIONES ECONÓMICAS
+2012;421O;Calidad y seguridad industrial;1.850,23;42. INDUSTRIA Y ENERGÍA
+2012;467C;Investigación y desarrollo tecnológico-industrial;274.519,01;46. INVESTIGACIÓN, DESARROLLO, INNOVACIÓN Y DIGITALIZACIÓN
+2012;415A;Protección de los recursos pesqueros y desarrollo sostenible;19.672,39;41. AGRICULTURA, PESCA Y ALIMENTACIÓN
+2012;452A;Gestión e infraestructuras del agua;752,99;45. INFRAESTRUCTURAS Y ECOSISTEMAS RESILIENTES
+2012;462M;Investigación y estudios sociológicos y constitucionales;12.510,93;46. INVESTIGACIÓN, DESARROLLO, INNOVACIÓN Y DIGITALIZACIÓN
+2012;467G;Investigación y desarrollo de la Sociedad de la Información;273,96;46. INVESTIGACIÓN, DESARROLLO, INNOVACIÓN Y DIGITALIZACIÓN
+2012;921R;Publicidad de las normas legales;33.808,89;92. SERVICIOS DE CARÁCTER GENERAL
+2012;923M;Dirección y Servicios Generales de Hacienda y Administraciones Públicas;524.082,57;92. SERVICIOS DE CARÁCTER GENERAL
+2012;923O;Gestión de la Deuda y de la Tesorería del Estado;28.557,41;92. SERVICIOS DE CARÁCTER GENERAL
+2012;931M;Previsión y política económica;3.932.699,55;93. ADMINISTRACIÓN FINANCIERA Y TRIBUTARIA
 2012;941N;Transferencias a Comunidades Autónomas por los Fondos de Compensación Interterritorial;671.580,00;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
-2012;943M;Transferencias al Presupuesto General de la Unión Europea;943N;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
 2012;929N;Fondo de contingencia de ejecución presupuestaria;2.322.809,00;92. SERVICIOS DE CARÁCTER GENERAL
-2012;941M;Transferencias a Comunidades Autónomas por participación en los ingresos del Estado;21.806.230,66;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
-2012;942M;Transferencias a Entidades Locales por participación en los ingresos del Estado;14.683.078,52;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
+2012;941M;Transferencias a Comunidades Autónomas por participación en los ingresos del Estado;14.683.078,52;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
 2013;911M;Jefatura del Estado;7.933,71;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
-2013;911N;Actividad legislativa;201.413,03;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
-2013;911O;Control externo del Sector Público;61.334,93;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
-2013;911P;Control Constitucional;24.284,22;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
-2013;912N;Alto asesoramiento del Estado;9.888,16;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
-2013;951M;Amortización y gastos financieros de la deuda pública en moneda nacional;98.548.119,13;95. GASTOS FINANCIEROS DE LA DEUDA PUBLICA
-2013;951N;Amortización y gastos financieros de la deuda pública en moneda extranjera;2.361.273,12;95. GASTOS FINANCIEROS DE LA DEUDA PUBLICA
-2013;211N;Pensiones de Clases Pasivas;211O;21. PENSIONES
-2013;111M;Gobierno del Poder Judicial;32.995,11;11. JUSTICIA
-2013;111O;Selección y formación de jueces;111P;11. JUSTICIA
-2013;141M;Dirección y Servicios Generales de Asuntos Exteriores;Acción del Estado en el exterior;14. POLÍTICA EXTERIOR Y DE COOPERACIÓN PARA EL DESARROLLO
-2013;111N;Dirección y Servicios Generales de Justicia;Formación del Personal de la Administración de Justicia;11. JUSTICIA
-2013;121M;Administración y Servicios Generales de Defensa;301.526,39;12. DEFENSA
-2013;219N;Gestión de pensiones de Clases Pasivas;9.431,44;21. PENSIONES
-2013;312E;Asistencia sanitaria del Mutualismo Administrativo;8.652,96;31. SANIDAD
-2013;422A;Incentivos regionales a la localización industrial;914,63;42. INDUSTRIA Y ENERGÍA
-2013;492N;Regulación y vigilancia de la competencia en el Mercado de Tabacos;1.909,80;49. OTRAS ACTUACIONES DE CARÁCTER ECONÓMICO
-2013;921P;Administración periférica del Estado;921T;92. SERVICIOS DE CARÁCTER GENERAL
-2013;922N;Coordinación y relaciones financieras con los Entes Territoriales;Gestión del Patrimonio del Estado;92. SERVICIOS DE CARÁCTER GENERAL
-2013;131M;Dirección y Servicios Generales de Seguridad y Protección Civil;Formación de Fuerzas y Cuerpos de Seguridad del Estado;13. SEGURIDAD CIUDADANA E INSTITUCIONES PENITENCIARIAS
-2013;133A;Centros e Instituciones Penitenciarias;Trabajo, formación y asistencia a reclusos;13. SEGURIDAD CIUDADANA E INSTITUCIONES PENITENCIARIAS
-2013;261N;Promoción, administración y ayudas para rehabilitación y acceso a vivienda;2.092,22;26. ACCESO A LA VIVIENDA Y FOMENTO DE LA EDIFICACIÓN
-2013;441O;Subvenciones y apoyo al transporte aéreo;19.840,00;44. INFRAESTRUCTURAS
-2013;451M;Estudios y servicios de asistencia técnica en Obras Públicas y Urbanismo;54.667,49;45. INFRAESTRUCTURAS Y ECOSISTEMAS RESILIENTES
-2013;467B;Investigación, desarrollo y experimentación en transporte e infraestructuras;Servicio postal universal;46. INVESTIGACIÓN, DESARROLLO, INNOVACIÓN Y DIGITALIZACIÓN
-2013;144A;Cooperación, promoción y difusión cultural en el exterior;321M;14. POLÍTICA EXTERIOR Y DE COOPERACIÓN PARA EL DESARROLLO
-2013;334C;Fomento de las industrias culturales;Música y danza;33. CULTURA
-2013;143A;Cooperación para el desarrollo;17.771,02;14. POLÍTICA EXTERIOR Y DE COOPERACIÓN PARA EL DESARROLLO
-2013;223M;Prestaciones de garantía salarial;224M;22. OTRAS PRESTACIONES ECONÓMICAS
-2013;421M;Dirección y Servicios Generales de Industria y Energía;63.499,36;42. INDUSTRIA Y ENERGÍA
-2013;421N;Regulación y protección de la propiedad industrial;421O;42. INDUSTRIA Y ENERGÍA
-2013;412C;Competitividad y calidad de la producción y los mercados agrarios;25.835,45;41. AGRICULTURA, PESCA Y ALIMENTACIÓN
-2013;416A;Previsión de riesgos en las producciones agrarias y pesqueras;61.501,80;41. AGRICULTURA, PESCA Y ALIMENTACIÓN
-2013;456C;Protección y mejora del medio natural;456D;45. INFRAESTRUCTURAS Y ECOSISTEMAS RESILIENTES
-2013;337A;Administración del Patrimonio Histórico-Nacional;462M;33. CULTURA
-2013;231A;Plan Nacional sobre Drogas;Otros servicios sociales del Estado;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
-2013;143A;Cooperación para el desarrollo;66,08;14. POLÍTICA EXTERIOR Y DE COOPERACIÓN PARA EL DESARROLLO
-2013;467G;Investigación y desarrollo de la Sociedad de la Información;34.445,16;46. INVESTIGACIÓN, DESARROLLO, INNOVACIÓN Y DIGITALIZACIÓN
-2013;441M;Subvenciones y apoyo al transporte terrestre;453A;44. INFRAESTRUCTURAS
+2013;144A;Cooperación, promoción y difusión cultural en el exterior;90.221,22;14. POLÍTICA EXTERIOR Y DE COOPERACIÓN PARA EL DESARROLLO
+2013;931P;Control interno y Contabilidad Pública;75.107,02;93. ADMINISTRACIÓN FINANCIERA Y TRIBUTARIA
+2013;453M;Ordenación e inspección del transporte terrestre;23.307,64;45. INFRAESTRUCTURAS Y ECOSISTEMAS RESILIENTES
+2013;455M;Regulación y supervisión de la aviación civil;54.423,86;45. INFRAESTRUCTURAS Y ECOSISTEMAS RESILIENTES
+2013;323M;Becas y ayudas a estudiantes;1.222.166,11;32. EDUCACIÓN
+2013;334A;Promoción y cooperación cultural;9.988,75;33. CULTURA
+2013;334B;Promoción del libro y publicaciones culturales;7.615,84;33. CULTURA
+2013;334C;Fomento de las industrias culturales;14.467,05;33. CULTURA
+2013;335A;Música y danza;70.567,89;33. CULTURA
+2013;335B;Teatro;36.864,05;33. CULTURA
+2013;224M;Prestaciones económicas por cese de actividad;1.026,44;22. OTRAS PRESTACIONES ECONÓMICAS
+2013;421O;Calidad y seguridad industrial;2.090,18;42. INDUSTRIA Y ENERGÍA
+2013;423N;Explotación minera;8,68;42. INDUSTRIA Y ENERGÍA
+2013;415A;Protección de los recursos pesqueros y desarrollo sostenible;13.809,62;41. AGRICULTURA, PESCA Y ALIMENTACIÓN
+2013;452A;Gestión e infraestructuras del agua;754,99;45. INFRAESTRUCTURAS Y ECOSISTEMAS RESILIENTES
+2013;462M;Investigación y estudios sociológicos y constitucionales;11.520,55;46. INVESTIGACIÓN, DESARROLLO, INNOVACIÓN Y DIGITALIZACIÓN
+2013;467G;Investigación y desarrollo de la Sociedad de la Información;265,04;46. INVESTIGACIÓN, DESARROLLO, INNOVACIÓN Y DIGITALIZACIÓN
+2013;921R;Publicidad de las normas legales;33.764,04;92. SERVICIOS DE CARÁCTER GENERAL
+2013;492O;Protección y promoción de los derechos de los consumidores y usuarios;16.598,98;49. OTRAS ACTUACIONES DE CARÁCTER ECONÓMICO
+2013;923O;Gestión de la Deuda y de la Tesorería del Estado;512.194,15;92. SERVICIOS DE CARÁCTER GENERAL
+2013;923Q;Dirección y Servicios Generales de Economía y Competitividad;66.781,85;92. SERVICIOS DE CARÁCTER GENERAL
+2013;931M;Previsión y política económica;4.285.662,72;93. ADMINISTRACIÓN FINANCIERA Y TRIBUTARIA
+2013;923A;Gestión del Patrimonio del Estado;1.750.933,45;92. SERVICIOS DE CARÁCTER GENERAL
 2013;941N;Transferencias a Comunidades Autónomas por los Fondos de Compensación Interterritorial;671.580,00;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
-2013;943M;Transferencias al Presupuesto General de la Unión Europea;943N;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
 2013;929N;Fondo de contingencia de ejecución presupuestaria;2.595.461,79;92. SERVICIOS DE CARÁCTER GENERAL
-2013;941M;Transferencias a Comunidades Autónomas por participación en los ingresos del Estado;19.771.673,52;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
-2013;942M;Transferencias a Entidades Locales por participación en los ingresos del Estado;15.542.559,94;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
+2013;941M;Transferencias a Comunidades Autónomas por participación en los ingresos del Estado;15.542.559,94;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
 2014;911M;Jefatura del Estado;7.775,04;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
 2014;911N;Actividad legislativa;201.340,40;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
 2014;211N;Pensiones de Clases Pasivas;12.340.613,16;21. PENSIONES
