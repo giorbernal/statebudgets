@@ -6,6 +6,19 @@ Proyecto de análisis interactivo de los Presupuestos Generales del Estado espa�
 
 ## Inicio Rápido
 
+### Configuración
+```bash
+pip install pandas numpy plotly streamlit
+# Or: poetry install
+```
+
+### Ejecutar la aplicación
+```bash
+make run
+# Or: cd app && streamlit run Gasto_anual.py
+# Access: http://localhost:8501
+```
+
 ### Instalación
 
 ```bash
