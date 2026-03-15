@@ -102,15 +102,30 @@ def parse_htm_file(file_path: str) -> List[Tuple[str, str, str, Optional[str]]]:
     if clasif_idx is None:
         return rows
     
-    # Saltar los encabezados de la tabla (típicamente 5-6 elementos después de "Clasif. por programas")
+    # Encontrar el índice de la columna "Total" en los headers
+    total_col_idx = find_total_column_index(elements, clasif_idx)
+    
+    # Calcular el offset del header "Total" respecto a "Clasif. por programas"
+    header_offset = total_col_idx - clasif_idx if total_col_idx != -1 else -1
+    
+    # Saltar los encabezados de la tabla (buscar el primer código válido)
     i = clasif_idx + 5
+    
+    # Saltar hasta encontrar el primer código válido
+    while i < len(elements):
+        element = elements[i].strip()
+        if (len(element) >= 3 and len(element) <= 4 and 
+            all(c.isalnum() for c in element) and 
+            not element.isdigit()):
+            break
+        i += 1
     
     # Procesar filas hasta encontrar "TOTAL" o fin del documento
     while i < len(elements):
         element = elements[i].strip()
         
         # Parar si llegamos a encabezados de totales o secciones
-        if "TOTAL" in element or "CONSOLIDADO" in element:
+        if "TOTAL" in element.upper() or "CONSOLIDADO" in element.upper():
             break
         
         # Verificar si es un código (3-4 caracteres alfanuméricos)
@@ -127,29 +142,77 @@ def parse_htm_file(file_path: str) -> List[Tuple[str, str, str, Optional[str]]]:
                 i += 1
                 continue
             
-            # Obtener importe (siguiente elemento después de descripción)
-            # Puede haber espacios en blanco, así que buscar el siguiente que sea un número
+            # Obtener importe de la columna "Total"
             amount = None
-            j = i + 2
-            while j < len(elements) and amount is None:
-                candidate = elements[j].strip()
-                # Verificar si parece un importe (contiene números y puntos/comas)
-                if any(c.isdigit() for c in candidate) and any(c in ".,0123456789" for c in candidate):
-                    amount = candidate
-                    break
-                j += 1
             
-            if amount and desc and "TOTAL" not in desc and "CONSOLIDADO" not in desc:
+            if header_offset != -1:
+                # Usar el índice relativo calculado para acceder al valor de "Total"
+                # En los headers: Clasif.idx=clasif_idx, ..., Total=total_col_idx
+                # En los datos: Código=i, ..., Total=(i + header_offset)
+                total_amount_idx = i + header_offset
+                
+                if total_amount_idx < len(elements):
+                    candidate = elements[total_amount_idx].strip()
+                    # Verificar si es un número válido (debe tener dígitos y puntuación española)
+                    # Y NO debe ser otro código (3-4 caracteres alfanuméricos)
+                    is_code = (len(candidate) >= 3 and len(candidate) <= 4 and 
+                               all(c.isalnum() for c in candidate) and 
+                               not candidate.isdigit())
+                    if (any(c.isdigit() for c in candidate) and 
+                        (',' in candidate or '.' in candidate) and
+                        not is_code):
+                        amount = candidate
+            
+            # Fallback: si no se encuentra "Total" en headers, buscar el valor que parece Total
+            # Buscar el valor en la posición que corresponde a "Total" en los datos
+            if amount is None:
+                # Estrategia: buscar el número más grande después de la descripción
+                # que esté antes de "TOTAL" o el siguiente código
+                j = i + 2
+                max_amount = None
+                while j < len(elements):
+                    candidate = elements[j].strip()
+                    # Parar si encontramos el siguiente código o TOTAL
+                    if (len(candidate) >= 3 and len(candidate) <= 4 and 
+                        all(c.isalnum() for c in candidate) and 
+                        not candidate.isdigit()):
+                        break
+                    if "TOTAL" in candidate.upper():
+                        break
+                    # Verificar si es un importe válido
+                    if any(c.isdigit() for c in candidate) and (',' in candidate or '.' in candidate):
+                        # Guardar el primero que encontremos (fallback)
+                        if amount is None:
+                            amount = candidate
+                    j += 1
+            
+            if amount and desc and "TOTAL" not in desc.upper() and "CONSOLIDADO" not in desc.upper():
                 rows.append((code, desc, amount, section))
-                i = j + 1
-            else:
-                i += 1
+            
+            i += 1
         else:
             i += 1
     
     return rows
 
 
+def find_total_column_index(elements: List[str], clasif_idx: int) -> int:
+    """
+    Encuentra el índice de la columna 'Total' en los headers de la tabla.
+    
+    Args:
+        elements: Lista de elementos extraídos del HTML
+        clasif_idx: Índice de "Clasif. por programas"
+        
+    Returns:
+        Índice absoluto de 'Total' en elements, o -1 si no encuentra
+    """
+    # Los headers están entre "Clasif. por programas" y el primer código
+    # Buscar "Total" en los headers (típicamente dentro de los próximos 15 elementos)
+    for i in range(clasif_idx, min(clasif_idx + 15, len(elements))):
+        if elements[i].strip().upper() == "TOTAL":
+            return i
+    return -1
 
 
 
