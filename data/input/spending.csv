@@ -264,6 +264,25 @@ year;code;name;amount;policy
 2011;929N;Fondo de contingencia de ejecución presupuestaria;2.440.442,84;92. SERVICIOS DE CARÁCTER GENERAL
 2011;941M;Transferencias a Comunidades Autónomas por participación en ingresos Estado;14.797.873,61;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
 2011;942M;Transferencias a Entidades Locales por participación en ingresos Estado;13.235.984,38;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
+2011;211M;Pensiones contributivas de la Seguridad Social;99.238.688,39;21. PENSIONES
+2011;212M;Pensiones no contributivas y prestaciones asistenciales;2.004.945,45;21. PENSIONES
+2011;219M;Gestión de las prestaciones económicas de Seguridad Social;446.524,35;21. PENSIONES
+2011;221M;Subsidios de incapacidad temporal y otras prestaciones económicas de la Seguridad Social;11.580.709,07;22. OTRAS PRESTACIONES ECONÓMICAS
+2011;224M;Prestaciones económicas por cese de actividad;8.120,00;22. OTRAS PRESTACIONES ECONÓMICAS
+2011;231C;Servicios Sociales de la Seguridad Social a personas con discapacidad;91.841,64;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2011;231D;Servicios Sociales de la Seguridad Social a personas mayores;202.400,47;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2011;231E;Otros servicios sociales de la Seguridad Social;48.663,99;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2011;231I;Autonomía personal y Atención a la Dependencia;1.498.442,46;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2011;239M;Gestión de los servicios sociales de la Seguridad Social;39.049,41;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2011;291M;Dirección y Servicios Generales de Seguridad Social y Protección Social;7.473.243,43;29. GESTIÓN Y ADMINISTRACIÓN DE LA INCLUSIÓN, DE LA SEGURIDAD SOCIAL Y DE LA MIGRACIÓN
+2011;311M;Dirección y Servicios Generales de Sanidad y Política Social;16.869,82;31. SANIDAD
+2011;312B;Atención primaria de salud. Instituto Nacional de Gestión Sanitaria;61.960,40;31. SANIDAD
+2011;312C;Atención especializada de salud. Instituto Nacional de Gestión Sanitaria;149.289,63;31. SANIDAD
+2011;312D;Medicina marítima;32.111,45;31. SANIDAD
+2011;312F;Atención primaria de salud de Mutuas de Accidentes de Trabajo y E.P e I.S.M;1.005.323,11;31. SANIDAD
+2011;312G;Atención especializada de salud de Mutuas de Accidentes de Trabajo y E.P e I.S.M;375.428,66;31. SANIDAD
+2011;322I;Enseñanzas especiales;1.554,86;32. EDUCACIÓN
+2011;000X;Transferencias internas (Sección: 60 SEGURIDAD SOCIAL);4.265.111,24;32. EDUCACIÓN
 2012;911M;Jefatura del Estado;8.264,28;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
 2012;911N;Actividad legislativa;206.626,89;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
 2012;911O;Control externo del Sector Público;62.123,22;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
@@ -520,6 +539,25 @@ year;code;name;amount;policy
 2012;929N;Fondo de contingencia de ejecución presupuestaria;2.322.809,00;92. SERVICIOS DE CARÁCTER GENERAL
 2012;941M;Transferencias a Comunidades Autónomas por participación en los ingresos del Estado;21.806.230,66;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
 2012;942M;Transferencias a Entidades Locales por participación en los ingresos del Estado;14.683.078,52;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
+2012;211M;Pensiones contributivas de la Seguridad Social;102.103.288,97;21. PENSIONES
+2012;212M;Pensiones no contributivas y prestaciones asistenciales;1.999.518,21;21. PENSIONES
+2012;219M;Gestión de las prestaciones económicas de Seguridad Social;412.856,35;21. PENSIONES
+2012;221M;Subsidios de incapacidad temporal y otras prestaciones económicas de la Seguridad Social;10.263.083,16;22. OTRAS PRESTACIONES ECONÓMICAS
+2012;224M;Prestaciones económicas por cese de actividad;16.200,00;22. OTRAS PRESTACIONES ECONÓMICAS
+2012;231C;Servicios Sociales de la Seguridad Social a personas con discapacidad;74.548,98;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2012;231D;Servicios Sociales de la Seguridad Social a personas mayores;124.340,75;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2012;231E;Otros servicios sociales de la Seguridad Social;41.940,47;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2012;231I;Autonomía personal y Atención a la Dependencia;1.407.150,62;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2012;239M;Gestión de los servicios sociales de la Seguridad Social;31.375,08;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2012;291M;Dirección y Servicios Generales de Seguridad Social y Protección Social;2.632.024,58;29. GESTIÓN Y ADMINISTRACIÓN DE LA INCLUSIÓN, DE LA SEGURIDAD SOCIAL Y DE LA MIGRACIÓN
+2012;311M;Dirección y Servicios Generales de Sanidad, Servicios Sociales e Igualdad;15.586,13;31. SANIDAD
+2012;312B;Atención primaria de salud. Instituto Nacional de Gestión Sanitaria;59.963,99;31. SANIDAD
+2012;312C;Atención especializada de salud. Instituto Nacional de Gestión Sanitaria;141.627,99;31. SANIDAD
+2012;312D;Medicina marítima;32.559,81;31. SANIDAD
+2012;312F;Atención primaria de salud de Mutuas de Accidentes de Trabajo y E.P e I.S.M;831.128,97;31. SANIDAD
+2012;312G;Atención especializada de salud de Mutuas de Accidentes de Trabajo y E.P e I.S.M;365.407,68;31. SANIDAD
+2012;322I;Enseñanzas especiales;1.910,69;32. EDUCACIÓN
+2012;000X;Transferencias internas (Sección: 60 SEGURIDAD SOCIAL);4.384.481,51;32. EDUCACIÓN
 2013;911M;Jefatura del Estado;7.933,71;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
 2013;911N;Actividad legislativa;201.413,03;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
 2013;911O;Control externo del Sector Público;61.334,93;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
@@ -767,6 +805,25 @@ year;code;name;amount;policy
 2013;929N;Fondo de contingencia de ejecución presupuestaria;2.595.461,79;92. SERVICIOS DE CARÁCTER GENERAL
 2013;941M;Transferencias a Comunidades Autónomas por participación en los ingresos del Estado;19.771.673,52;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
 2013;942M;Transferencias a Entidades Locales por participación en los ingresos del Estado;15.542.559,94;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
+2013;211M;Pensiones contributivas de la Seguridad Social;106.504.905,02;21. PENSIONES
+2013;212M;Pensiones no contributivas y prestaciones asistenciales;2.480.039,25;21. PENSIONES
+2013;219M;Gestión de las prestaciones económicas de Seguridad Social;396.272,75;21. PENSIONES
+2013;221M;Subsidios de incapacidad temporal y otras prestaciones económicas de la Seguridad Social;10.602.112,94;22. OTRAS PRESTACIONES ECONÓMICAS
+2013;224M;Prestaciones económicas por cese de actividad;23.820,00;22. OTRAS PRESTACIONES ECONÓMICAS
+2013;231C;Servicios Sociales de la Seguridad Social a personas con discapacidad;68.779,82;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2013;231D;Servicios Sociales de la Seguridad Social a personas mayores;114.775,21;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2013;231E;Otros servicios sociales de la Seguridad Social;40.556,22;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2013;231I;Autonomía personal y Atención a la Dependencia;2.205.750,95;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2013;239M;Gestión de los servicios sociales de la Seguridad Social;31.415,90;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2013;291M;Dirección y Servicios Generales de Seguridad Social y Protección Social;4.182.065,18;29. GESTIÓN Y ADMINISTRACIÓN DE LA INCLUSIÓN, DE LA SEGURIDAD SOCIAL Y DE LA MIGRACIÓN
+2013;311M;Dirección y Servicios Generales de Sanidad, Servicios Sociales e Igualdad;15.399,34;31. SANIDAD
+2013;312B;Atención primaria de salud. Instituto Nacional de Gestión Sanitaria;57.634,47;31. SANIDAD
+2013;312C;Atención especializada de salud. Instituto Nacional de Gestión Sanitaria;140.732,19;31. SANIDAD
+2013;312D;Medicina marítima;32.146,50;31. SANIDAD
+2013;312F;Atención primaria de salud de Mutuas de Accidentes de Trabajo y E.P e I.S.M;817.533,56;31. SANIDAD
+2013;312G;Atención especializada de salud de Mutuas de Accidentes de Trabajo y E.P e I.S.M;369.400,24;31. SANIDAD
+2013;322I;Enseñanzas especiales;2.198,65;32. EDUCACIÓN
+2013;000X;Transferencias internas (Sección: 60 SEGURIDAD SOCIAL);3.755.764,05;32. EDUCACIÓN
 2014;911M;Jefatura del Estado;7.775,04;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
 2014;911N;Actividad legislativa;201.340,40;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
 2014;911O;Control externo del Sector Público;61.413,19;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
@@ -1012,6 +1069,26 @@ year;code;name;amount;policy
 2014;929N;Fondo de contingencia de ejecución presupuestaria;2.665.180,00;92. SERVICIOS DE CARÁCTER GENERAL
 2014;941M;Transferencias a Comunidades Autónomas por participación en los ingresos del Estado;16.041.187,56;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
 2014;942M;Transferencias a Entidades Locales por participación en los ingresos del Estado;15.548.308,21;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
+2014;211M;Pensiones contributivas de la Seguridad Social;104.627.825,00;21. PENSIONES
+2014;212M;Pensiones no contributivas y prestaciones asistenciales;2.167.912,09;21. PENSIONES
+2014;212O;Gestión y control de los complementos a mínimos de pensiones;7.633.020,00;21. PENSIONES
+2014;219M;Gestión de las prestaciones económicas de Seguridad Social;389.548,04;21. PENSIONES
+2014;221M;Subsidios de incapacidad temporal y otras prestaciones económicas de la Seguridad Social;9.838.563,45;22. OTRAS PRESTACIONES ECONÓMICAS
+2014;224M;Prestaciones económicas por cese de actividad;11.060,00;22. OTRAS PRESTACIONES ECONÓMICAS
+2014;231C;Servicios Sociales de la Seguridad Social a personas con discapacidad;62.638,49;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2014;231D;Servicios Sociales de la Seguridad Social a personas mayores;117.216,37;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2014;231E;Otros servicios sociales de la Seguridad Social;41.004,16;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2014;231I;Autonomía personal y Atención a la Dependencia;1.176.579,24;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2014;239M;Gestión de los servicios sociales de la Seguridad Social;28.723,46;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2014;291M;Dirección y Servicios Generales de Seguridad Social y Protección Social;4.125.157,14;29. GESTIÓN Y ADMINISTRACIÓN DE LA INCLUSIÓN, DE LA SEGURIDAD SOCIAL Y DE LA MIGRACIÓN
+2014;311M;Dirección y Servicios Generales de Sanidad, Servicios Sociales e Igualdad;15.380,34;31. SANIDAD
+2014;312B;Atención primaria de salud. Instituto Nacional de Gestión Sanitaria;58.094,64;31. SANIDAD
+2014;312C;Atención especializada de salud. Instituto Nacional de Gestión Sanitaria;145.996,87;31. SANIDAD
+2014;312D;Medicina marítima;32.100,50;31. SANIDAD
+2014;312F;Atención primaria de salud de Mutuas de Accidentes de Trabajo y E.P e I.S.M;823.422,71;31. SANIDAD
+2014;312G;Atención especializada de salud de Mutuas de Accidentes de Trabajo y E.P e I.S.M;378.512,16;31. SANIDAD
+2014;322I;Enseñanzas especiales;2.384,80;32. EDUCACIÓN
+2014;000X;Transferencias internas (Sección: 60 SEGURIDAD SOCIAL);3.909.014,90;32. EDUCACIÓN
 2015;911M;Jefatura del Estado;7.775,04;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
 2015;911N;Actividad legislativa;202.148,84;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
 2015;911O;Control externo del Sector Público;60.989,23;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
@@ -1262,6 +1339,26 @@ year;code;name;amount;policy
 2015;929N;Fondo de contingencia de ejecución presupuestaria;2.581.200,00;92. SERVICIOS DE CARÁCTER GENERAL
 2015;941M;Transferencias a Comunidades Autónomas por participación en los ingresos del Estado;17.081.699,23;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
 2015;942M;Transferencias a Entidades Locales por participación en los ingresos del Estado;15.850.980,37;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
+2015;211M;Pensiones contributivas de la Seguridad Social;108.265.205,72;21. PENSIONES
+2015;212M;Pensiones no contributivas y prestaciones asistenciales;2.242.945,55;21. PENSIONES
+2015;212O;Gestión y control de los complementos a mínimos de pensiones;7.563.020,00;21. PENSIONES
+2015;219M;Gestión de las prestaciones económicas de Seguridad Social;384.921,51;21. PENSIONES
+2015;221M;Subsidios de incapacidad temporal y otras prestaciones económicas de la Seguridad Social;9.495.762,85;22. OTRAS PRESTACIONES ECONÓMICAS
+2015;224M;Prestaciones económicas por cese de actividad;11.060,00;22. OTRAS PRESTACIONES ECONÓMICAS
+2015;231C;Servicios Sociales de la Seguridad Social a personas con discapacidad;58.773,11;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2015;231D;Servicios Sociales de la Seguridad Social a personas mayores;117.628,32;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2015;231E;Otros servicios sociales de la Seguridad Social;40.642,83;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2015;231I;Autonomía personal y Atención a la Dependencia;1.177.037,78;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2015;239M;Gestión de los servicios sociales de la Seguridad Social;27.931,60;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2015;291M;Dirección y Servicios Generales de Seguridad Social y Protección Social;5.093.500,92;29. GESTIÓN Y ADMINISTRACIÓN DE LA INCLUSIÓN, DE LA SEGURIDAD SOCIAL Y DE LA MIGRACIÓN
+2015;311M;Dirección y Servicios Generales de Sanidad, Servicios Sociales e Igualdad;15.380,34;31. SANIDAD
+2015;312B;Atención primaria de salud. Instituto Nacional de Gestión Sanitaria;58.299,63;31. SANIDAD
+2015;312C;Atención especializada de salud. Instituto Nacional de Gestión Sanitaria;149.679,85;31. SANIDAD
+2015;312D;Medicina marítima;31.373,77;31. SANIDAD
+2015;312F;Atención primaria de salud de Mutuas de Accidentes de Trabajo y E.P e I.S.M;823.158,52;31. SANIDAD
+2015;312G;Atención especializada de salud de Mutuas de Accidentes de Trabajo y E.P e I.S.M;395.829,34;31. SANIDAD
+2015;322I;Enseñanzas especiales;2.491,02;32. EDUCACIÓN
+2015;000X;Transferencias internas (Sección: 60 SEGURIDAD SOCIAL);4.253.560,10;32. EDUCACIÓN
 2016;911M;Jefatura del Estado;7.775,04;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
 2016;911N;Actividad legislativa;206.290,39;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
 2016;911O;Control externo del Sector Público;62.897,82;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
@@ -1513,6 +1610,26 @@ year;code;name;amount;policy
 2016;929N;Fondo de contingencia de ejecución presupuestaria;2.467.880,00;92. SERVICIOS DE CARÁCTER GENERAL
 2016;941M;Transferencias a Comunidades Autónomas por participación en los ingresos del Estado;17.388.239,40;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
 2016;942M;Transferencias a Entidades Locales por participación en los ingresos del Estado;16.408.483,45;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
+2016;211M;Pensiones contributivas de la Seguridad Social;111.691.309,56;21. PENSIONES
+2016;212M;Pensiones no contributivas y prestaciones asistenciales;2.291.196,99;21. PENSIONES
+2016;212O;Gestión y control de los complementos a mínimos de pensiones;7.409.936,20;21. PENSIONES
+2016;219M;Gestión de las prestaciones económicas de Seguridad Social;388.865,84;21. PENSIONES
+2016;221M;Subsidios de incapacidad temporal y otras prestaciones económicas de la Seguridad Social;10.208.026,38;22. OTRAS PRESTACIONES ECONÓMICAS
+2016;224M;Prestaciones económicas por cese de actividad;9.194,25;22. OTRAS PRESTACIONES ECONÓMICAS
+2016;231C;Servicios Sociales de la Seguridad Social a personas con discapacidad;55.675,53;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2016;231D;Servicios Sociales de la Seguridad Social a personas mayores;117.489,44;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2016;231E;Otros servicios sociales de la Seguridad Social;47.651,29;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2016;231I;Autonomía personal y Atención a la Dependencia;1.252.289,19;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2016;239M;Gestión de los servicios sociales de la Seguridad Social;27.714,70;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2016;291M;Dirección y Servicios Generales de Seguridad Social y Protección Social;5.740.386,16;29. GESTIÓN Y ADMINISTRACIÓN DE LA INCLUSIÓN, DE LA SEGURIDAD SOCIAL Y DE LA MIGRACIÓN
+2016;311M;Dirección y Servicios Generales de Sanidad, Servicios Sociales e Igualdad;15.338,34;31. SANIDAD
+2016;312B;Atención primaria de salud. Instituto Nacional de Gestión Sanitaria;64.174,94;31. SANIDAD
+2016;312C;Atención especializada de salud. Instituto Nacional de Gestión Sanitaria;150.932,62;31. SANIDAD
+2016;312D;Medicina marítima;31.373,77;31. SANIDAD
+2016;312F;Atención primaria de salud de mutuas colaboradoras con la Seguridad Social e I.S.M.;857.211,89;31. SANIDAD
+2016;312G;Atención especializada de salud de mutuas colaboradoras con la Seguridad Social e I.S.M.;419.824,03;31. SANIDAD
+2016;322I;Enseñanzas especiales;2.491,02;32. EDUCACIÓN
+2016;000X;Transferencias internas (Sección: 60 SEGURIDAD SOCIAL);4.604.876,15;32. EDUCACIÓN
 2017;911M;Jefatura del Estado;7.818,89;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
 2017;911N;Actividad legislativa;207.435,26;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
 2017;911O;Control externo del Sector Público;62.199,27;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
@@ -1766,6 +1883,26 @@ year;code;name;amount;policy
 2017;929N;Fondo de contingencia de ejecución presupuestaria;2.366.740,00;92. SERVICIOS DE CARÁCTER GENERAL
 2017;941M;Transferencias a Comunidades Autónomas por participación en los ingresos del Estado;17.548.423,01;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
 2017;942M;Transferencias a Entidades Locales por participación en los ingresos del Estado;16.149.435,66;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
+2017;211M;Pensiones contributivas de la Seguridad Social;115.757.032,38;21. PENSIONES
+2017;212M;Pensiones no contributivas y prestaciones asistenciales;2.320.587,38;21. PENSIONES
+2017;212O;Gestión y control de los complementos a mínimos de pensiones;7.179.594,91;21. PENSIONES
+2017;219M;Gestión de las prestaciones económicas de Seguridad Social;380.573,85;21. PENSIONES
+2017;221M;Subsidios de incapacidad temporal y otras prestaciones económicas de la Seguridad Social;12.020.627,91;22. OTRAS PRESTACIONES ECONÓMICAS
+2017;224M;Prestaciones económicas por cese de actividad;20.860,00;22. OTRAS PRESTACIONES ECONÓMICAS
+2017;231C;Servicios Sociales de la Seguridad Social a personas con discapacidad;53.278,52;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2017;231D;Servicios Sociales de la Seguridad Social a personas mayores;117.512,58;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2017;231E;Otros servicios sociales de la Seguridad Social;46.923,43;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2017;231I;Autonomía personal y atención a la dependencia;1.354.811,38;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2017;239M;Gestión de los servicios sociales de la Seguridad Social;27.271,79;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2017;291M;Dirección y Servicios Generales de Seguridad Social y Protección Social;3.841.396,63;29. GESTIÓN Y ADMINISTRACIÓN DE LA INCLUSIÓN, DE LA SEGURIDAD SOCIAL Y DE LA MIGRACIÓN
+2017;311M;Dirección y Servicios Generales de Sanidad, Servicios Sociales e Igualdad;15.876,42;31. SANIDAD
+2017;312B;Atención primaria de salud. Instituto Nacional de Gestión Sanitaria;64.914,38;31. SANIDAD
+2017;312C;Atención especializada de salud. Instituto Nacional de Gestión Sanitaria;156.910,73;31. SANIDAD
+2017;312D;Medicina marítima;34.873,77;31. SANIDAD
+2017;312F;Atención primaria de salud de Mutuas colaboradoras con la Seguridad Social e Instituto Social de la Marina;904.755,11;31. SANIDAD
+2017;312G;Atención especializada de salud de Mutuas colaboradoras con la Seguridad Social e Instituto Social de la Marina;433.319,87;31. SANIDAD
+2017;322I;Enseñanzas especiales;2.615,11;32. EDUCACIÓN
+2017;000X;Transferencias internas (Sección: 60 SEGURIDAD SOCIAL);4.272.693,64;32. EDUCACIÓN
 2018;911M;Jefatura del Estado;7.887,15;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
 2018;911N;Actividad legislativa;212.136,84;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
 2018;911O;Control externo del Sector Público;63.016,62;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
@@ -2016,6 +2153,26 @@ year;code;name;amount;policy
 2018;929N;Fondo de contingencia de ejecución presupuestaria;2.276.680,00;92. SERVICIOS DE CARÁCTER GENERAL
 2018;941M;Transferencias a Comunidades Autónomas por participación en los ingresos del Estado;18.266.441,06;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
 2018;942M;Transferencias a Entidades Locales por participación en los ingresos del Estado;16.335.691,16;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
+2018;211M;Pensiones contributivas de la Seguridad Social;119.940.026,55;21. PENSIONES
+2018;212M;Pensiones no contributivas y prestaciones asistenciales;2.380.367,35;21. PENSIONES
+2018;212O;Gestión y control de los complementos a mínimos de pensiones;7.329.116,20;21. PENSIONES
+2018;219M;Gestión de las prestaciones económicas de Seguridad Social;379.806,55;21. PENSIONES
+2018;221M;Subsidios de incapacidad temporal y otras prestaciones económicas de la Seguridad Social;13.175.843,40;22. OTRAS PRESTACIONES ECONÓMICAS
+2018;224M;Prestaciones económicas por cese de actividad;20.860,00;22. OTRAS PRESTACIONES ECONÓMICAS
+2018;231C;Servicios Sociales de la Seguridad Social a personas con discapacidad;52.704,87;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2018;231D;Servicios Sociales de la Seguridad Social a personas mayores;117.340,60;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2018;231E;Otros servicios sociales de la Seguridad Social;47.605,16;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2018;231I;Autonomía personal y atención a la dependencia;1.401.091,30;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2018;239M;Gestión de los servicios sociales de la Seguridad Social;47.306,38;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2018;291M;Dirección y Servicios Generales de Seguridad Social y Protección Social;3.204.627,29;29. GESTIÓN Y ADMINISTRACIÓN DE LA INCLUSIÓN, DE LA SEGURIDAD SOCIAL Y DE LA MIGRACIÓN
+2018;311M;Dirección y Servicios Generales de Sanidad, Servicios Sociales e Igualdad;15.966,91;31. SANIDAD
+2018;312B;Atención primaria de salud. Instituto Nacional de Gestión Sanitaria;65.704,41;31. SANIDAD
+2018;312C;Atención especializada de salud. Instituto Nacional de Gestión Sanitaria;160.409,46;31. SANIDAD
+2018;312D;Medicina marítima;35.123,77;31. SANIDAD
+2018;312F;Atención primaria de salud de Mutuas colaboradoras con la Seguridad Social e Instituto Social de la Marina;944.377,56;31. SANIDAD
+2018;312G;Atención especializada de salud de Mutuas colaboradoras con la Seguridad Social e Instituto Social de la Marina;459.005,26;31. SANIDAD
+2018;322I;Enseñanzas especiales;2.575,03;32. EDUCACIÓN
+2018;000X;Transferencias internas (Sección: 60 SEGURIDAD SOCIAL);4.369.580,49;32. EDUCACIÓN
 2019;911M;Jefatura del Estado;7.887,15;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
 2019;911N;Actividad legislativa;212.136,84;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
 2019;911O;Control externo del Sector Público;63.016,62;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
@@ -2881,6 +3038,28 @@ year;code;name;amount;policy
 2021;941O;Otras transferencias a Comunidades Autónomas;1.009.986,18;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
 2021;942M;Transferencias a Entidades Locales por participación en los ingresos del Estado;17.872.735,89;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
 2021;942N;Otras transferencias a Entidades Locales;190.411,29;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
+2021;211M;Pensiones contributivas de la Seguridad Social;136.127.112,36;21. PENSIONES
+2021;212M;Pensiones no contributivas y prestaciones asistenciales;2.567.854,34;21. PENSIONES
+2021;212O;Gestión y control de los complementos a mínimos de pensiones;7.075.019,95;21. PENSIONES
+2021;219M;Gestión de las prestaciones económicas de Seguridad Social;433.447,66;21. PENSIONES
+2021;221M;Subsidios de incapacidad temporal y otras prestaciones económicas de la Seguridad Social;18.672.121,71;22. OTRAS PRESTACIONES ECONÓMICAS
+2021;224M;Prestaciones económicas por cese de actividad;712.796,51;22. OTRAS PRESTACIONES ECONÓMICAS
+2021;231C;Servicios Sociales de la Seguridad Social a personas con discapacidad;46.739,11;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2021;231D;Servicios Sociales de la Seguridad Social a personas mayores;118.232,72;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2021;231E;Otros servicios sociales de la Seguridad Social;49.519,80;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2021;231I;Autonomía personal y atención a la dependencia;2.353.543,31;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2021;239M;Gestión de los servicios sociales de la Seguridad Social;46.336,38;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2021;290A;Gestión y administración de la Inclusión de la Seguridad Social y de la Migración. Mecanismo de Recuperación y Resiliencia;8.500,00;29. GESTIÓN Y ADMINISTRACIÓN DE LA INCLUSIÓN, DE LA SEGURIDAD SOCIAL Y DE LA MIGRACIÓN
+2021;291M;Dirección y Servicios Generales de la Inclusión, de la Seguridad Social y de la Migración;2.276.378,04;29. GESTIÓN Y ADMINISTRACIÓN DE LA INCLUSIÓN, DE LA SEGURIDAD SOCIAL Y DE LA MIGRACIÓN
+2021;310A;Sanidad. Mecanismo de Recuperación y Resiliencia;18.500,00;31. SANIDAD
+2021;311M;Dirección y Servicios Generales de Sanidad;16.633,30;31. SANIDAD
+2021;312B;Atención primaria de salud. Instituto Nacional de Gestión Sanitaria;73.915,04;31. SANIDAD
+2021;312C;Atención especializada de salud. Instituto Nacional de Gestión Sanitaria;210.072,44;31. SANIDAD
+2021;312D;Medicina marítima;38.003,77;31. SANIDAD
+2021;312F;Atención primaria de salud de Mutuas colaboradoras con la Seguridad Social e Instituto Social de la Marina;939.010,34;31. SANIDAD
+2021;312G;Atención especializada de salud de Mutuas colaboradoras con la Seguridad Social e Instituto Social de la Marina;440.555,01;31. SANIDAD
+2021;322I;Enseñanzas especiales;2.681,72;32. EDUCACIÓN
+2021;000X;Transferencias y libramientos internos (Sección: 60 SEGURIDAD SOCIAL);3.958.448,93;32. EDUCACIÓN
 2022;911M;Jefatura del Estado;8.431,15;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
 2022;911N;Actividad legislativa;247.123,24;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
 2022;911O;Control externo del Sector Público;74.964,91;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
@@ -3318,6 +3497,30 @@ year;code;name;amount;policy
 2022;941O;Otras transferencias a Comunidades Autónomas;452.000,00;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
 2022;942M;Transferencias a Entidades Locales por participación en los ingresos del Estado;19.829.343,92;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
 2022;942N;Otras transferencias a Entidades Locales;206.784,43;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
+2022;211M;Pensiones contributivas de la Seguridad Social;143.090.488,84;21. PENSIONES
+2022;212M;Pensiones no contributivas y prestaciones asistenciales;2.587.462,27;21. PENSIONES
+2022;212O;Gestión y control de los complementos a mínimos de pensiones;7.050.020,00;21. PENSIONES
+2022;219M;Gestión de las prestaciones económicas de Seguridad Social;407.131,21;21. PENSIONES
+2022;221A;Ingreso mínimo vital y prestaciones familiares;4.435.927,44;22. OTRAS PRESTACIONES ECONÓMICAS
+2022;221M;Subsidios de incapacidad temporal y otras prestaciones económicas de la Seguridad Social;15.198.199,32;22. OTRAS PRESTACIONES ECONÓMICAS
+2022;224M;Prestaciones económicas por cese de actividad;75.140,00;22. OTRAS PRESTACIONES ECONÓMICAS
+2022;231C;Servicios Sociales de la Seguridad Social a personas con discapacidad;46.087,79;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2022;231D;Servicios Sociales de la Seguridad Social a personas mayores;118.066,39;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2022;231E;Otros servicios sociales de la Seguridad Social;48.973,01;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2022;231I;Autonomía personal y atención a la dependencia;2.902.035,93;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2022;239M;Gestión de los servicios sociales de la Seguridad Social;73.354,07;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2022;29KB;C11.I02 Proyectos tractores de digitalización de la Administración General del Estado. Gestión y Administración de la Inclusión, de la Seguridad Social y de la Migración;47.000,00;29. GESTIÓN Y ADMINISTRACIÓN DE LA INCLUSIÓN, DE LA SEGURIDAD SOCIAL Y DE LA MIGRACIÓN
+2022;29SC;C19.I03 Competencias digitales para el empleo. Gestión y Administración de la Inclusión, de la Seguridad Social y de la Migración;15.000,00;29. GESTIÓN Y ADMINISTRACIÓN DE LA INCLUSIÓN, DE LA SEGURIDAD SOCIAL Y DE LA MIGRACIÓN
+2022;291M;Dirección y Servicios Generales de la Inclusión, de la Seguridad Social y de la Migración;3.014.894,85;29. GESTIÓN Y ADMINISTRACIÓN DE LA INCLUSIÓN, DE LA SEGURIDAD SOCIAL Y DE LA MIGRACIÓN
+2022;31RC;C18.I03 Aumento de capacidades de respuesta ante crisis sanitarias. Sanidad;18.500,00;31. SANIDAD
+2022;311M;Dirección y Servicios Generales de Sanidad;18.372,03;31. SANIDAD
+2022;312B;Atención primaria de salud. Instituto Nacional de Gestión Sanitaria;80.186,65;31. SANIDAD
+2022;312C;Atención especializada de salud. Instituto Nacional de Gestión Sanitaria;210.565,99;31. SANIDAD
+2022;312D;Medicina marítima;38.353,77;31. SANIDAD
+2022;312F;Atención primaria de salud de Mutuas colaboradoras con la Seguridad Social e Instituto Social de la Marina;955.757,22;31. SANIDAD
+2022;312G;Atención especializada de salud de Mutuas colaboradoras con la Seguridad Social e Instituto Social de la Marina;443.766,91;31. SANIDAD
+2022;322I;Enseñanzas especiales;2.742,36;32. EDUCACIÓN
+2022;000X;Transferencias y libramientos internos (Sección: 60 SEGURIDAD SOCIAL);4.255.965,49;32. EDUCACIÓN
 2023;911M;Jefatura del Estado;8.431,15;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
 2023;911N;Actividad legislativa;268.007,17;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
 2023;911O;Control externo del Sector Público;78.372,36;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
@@ -3765,6 +3968,31 @@ year;code;name;amount;policy
 2023;941O;Otras transferencias a Comunidades Autónomas;522.200,00;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
 2023;942M;Transferencias a Entidades Locales por participación en los ingresos del Estado;20.792.575,72;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
 2023;942N;Otras transferencias a Entidades Locales;220.319,43;94. TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS
+2023;211A;Pensiones contributivas de la Seguridad Social;159.688.815,85;21. PENSIONES
+2023;212A;Pensiones no contributivas y prestaciones asistenciales;2.803.945,60;21. PENSIONES
+2023;212C;Complementos por mínimos de las pensiones contributivas;7.261.170,00;21. PENSIONES
+2023;219M;Gestión de las prestaciones económicas de Seguridad Social;424.705,10;21. PENSIONES
+2023;221A;Ingreso mínimo vital y prestaciones familiares;4.193.128,43;22. OTRAS PRESTACIONES ECONÓMICAS
+2023;221B;Subsidios de incapacidad temporal y otras prestaciones económicas de la Seguridad Social;16.792.938,29;22. OTRAS PRESTACIONES ECONÓMICAS
+2023;224A;Prestaciones económicas por cese de actividad;51.111,21;22. OTRAS PRESTACIONES ECONÓMICAS
+2023;23VA;C22.I01 Plan de apoyos y cuidados de larga duración: desinstitucionalización, equipamientos y tecnología.;2.460,47;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2023;231C;Servicios Sociales de la Seguridad Social a personas con discapacidad;44.558,39;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2023;231D;Servicios Sociales de la Seguridad Social a personas mayores;123.217,37;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2023;231E;Otros servicios sociales de la Seguridad Social;49.808,37;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2023;231I;Autonomía personal y atención a la dependencia;3.522.300,75;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2023;239M;Gestión de los servicios sociales de la Seguridad Social;60.097,81;23. SERVICIOS SOCIALES Y PROMOCIÓN SOCIAL
+2023;29KB;C11.I02 Proyectos tractores de digitalización de la Administración General del Estado. Gestión y Administración de la Inclusión, de la Seguridad Social y de la Migración;139.500,00;29. GESTIÓN Y ADMINISTRACIÓN DE LA INCLUSIÓN, DE LA SEGURIDAD SOCIAL Y DE LA MIGRACIÓN
+2023;29SC;C19.I03 Competencias digitales para el empleo. Gestión y Administración de la Inclusión, de la Seguridad Social y de la Migración;36.000,00;29. GESTIÓN Y ADMINISTRACIÓN DE LA INCLUSIÓN, DE LA SEGURIDAD SOCIAL Y DE LA MIGRACIÓN
+2023;291M;Dirección y Servicios Generales de la Inclusión, de la Seguridad Social y de la Migración;6.695.288,35;29. GESTIÓN Y ADMINISTRACIÓN DE LA INCLUSIÓN, DE LA SEGURIDAD SOCIAL Y DE LA MIGRACIÓN
+2023;31RC;C18.I03 Aumento de capacidades de respuesta ante crisis sanitarias. Sanidad;15.660,00;31. SANIDAD
+2023;311M;Dirección y Servicios Generales de Sanidad;17.980,06;31. SANIDAD
+2023;312B;Atención primaria de salud. Instituto Nacional de Gestión Sanitaria;79.385,39;31. SANIDAD
+2023;312C;Atención especializada de salud. Instituto Nacional de Gestión Sanitaria;204.671,18;31. SANIDAD
+2023;312D;Medicina marítima;39.241,77;31. SANIDAD
+2023;312F;Atención primaria de salud de Mutuas colaboradoras con la Seguridad Social e Instituto Social de la Marina;997.383,21;31. SANIDAD
+2023;312G;Atención especializada de salud de Mutuas colaboradoras con la Seguridad Social e Instituto Social de la Marina;486.583,80;31. SANIDAD
+2023;322I;Enseñanzas especiales;2.951,96;32. EDUCACIÓN
+2023;000X;Transferencias y libramientos internos (Sección: 60 SEGURIDAD SOCIAL);5.444.358,97;32. EDUCACIÓN
 2024;911M;Jefatura del Estado;8.431,15;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
 2024;911N;Actividad legislativa;268.007,17;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS
 2024;911O;Control externo del Sector Público;78.372,36;91. ÓRGANOS CONSTITUCIONALES, GOBIERNO Y OTROS

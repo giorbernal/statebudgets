@@ -259,8 +259,8 @@ def build_spending_csv(year: int):
         year_suffix = str(year)[-2:]
         prev_year_suffix = str(year - 1)[-2:]
         patterns = [
-            f"N_{prev_year_suffix}P_E_R_31_*_1_1_3_1.HTM",
-            f"N_{year_suffix}_E_R_31_*_1_1_3_1.HTM"
+            f"N_{prev_year_suffix}P_E_R_31_*_1_3_1.HTM",
+            f"N_{year_suffix}_E_R_31_*_1_3_1.HTM",
         ]
     else:
         # Patrones para años <= 2013
@@ -268,8 +268,8 @@ def build_spending_csv(year: int):
         year_suffix = str(year)[-2:]
         prev_year_suffix = str(year - 1)[-2:]
         patterns = [
-            f"N_{prev_year_suffix}P_E_R_31_*_1_1_7.HTM",
-            f"N_{year_suffix}_E_R_31_*_1_1_7.HTM"
+            f"N_{prev_year_suffix}P_E_R_31_*_1_7.HTM",
+            f"N_{year_suffix}_E_R_31_*_1_7.HTM"
         ]
     
     # Buscar y procesar archivos
