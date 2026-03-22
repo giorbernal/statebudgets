@@ -143,18 +143,33 @@ def parse_htm_file(file_path: str) -> List[Tuple[str, str, str, Optional[str]]]:
                 continue
             
             # Obtener importe de la columna "Total"
+            # Estrategia principal: buscar el último valor numérico antes del siguiente código
+            # Esto funciona independientemente del número de columnas en cada fila
             amount = None
+            j = i + 2
+            last_numeric = None
+            while j < len(elements):
+                candidate = elements[j].strip()
+                # Parar si encontramos el siguiente código o TOTAL
+                if (len(candidate) >= 3 and len(candidate) <= 4 and 
+                    all(c.isalnum() for c in candidate) and 
+                    not candidate.isdigit()):
+                    break
+                if "TOTAL" in candidate.upper():
+                    break
+                # Verificar si es un importe válido
+                if any(c.isdigit() for c in candidate) and (',' in candidate or '.' in candidate):
+                    # Guardar el último valor numérico encontrado (más probable que sea Total)
+                    last_numeric = candidate
+                j += 1
+            if last_numeric:
+                amount = last_numeric
             
-            if header_offset != -1:
-                # Usar el índice relativo calculado para acceder al valor de "Total"
-                # En los headers: Clasif.idx=clasif_idx, ..., Total=total_col_idx
-                # En los datos: Código=i, ..., Total=(i + header_offset)
+            # Fallback: usar offset de cabecera si no se encontró amount
+            if amount is None and header_offset != -1:
                 total_amount_idx = i + header_offset
-                
                 if total_amount_idx < len(elements):
                     candidate = elements[total_amount_idx].strip()
-                    # Verificar si es un número válido (debe tener dígitos y puntuación española)
-                    # Y NO debe ser otro código (3-4 caracteres alfanuméricos)
                     is_code = (len(candidate) >= 3 and len(candidate) <= 4 and 
                                all(c.isalnum() for c in candidate) and 
                                not candidate.isdigit())
@@ -163,33 +178,25 @@ def parse_htm_file(file_path: str) -> List[Tuple[str, str, str, Optional[str]]]:
                         not is_code):
                         amount = candidate
             
-            # Fallback: si no se encuentra "Total" en headers, buscar el valor que parece Total
-            # Buscar el valor en la posición que corresponde a "Total" en los datos
-            if amount is None:
-                # Estrategia: buscar el número más grande después de la descripción
-                # que esté antes de "TOTAL" o el siguiente código
-                j = i + 2
-                max_amount = None
-                while j < len(elements):
-                    candidate = elements[j].strip()
-                    # Parar si encontramos el siguiente código o TOTAL
-                    if (len(candidate) >= 3 and len(candidate) <= 4 and 
-                        all(c.isalnum() for c in candidate) and 
-                        not candidate.isdigit()):
-                        break
-                    if "TOTAL" in candidate.upper():
-                        break
-                    # Verificar si es un importe válido
-                    if any(c.isdigit() for c in candidate) and (',' in candidate or '.' in candidate):
-                        # Guardar el primero que encontremos (fallback)
-                        if amount is None:
-                            amount = candidate
-                    j += 1
-            
             if amount and desc and "TOTAL" not in desc.upper() and "CONSOLIDADO" not in desc.upper():
                 rows.append((code, desc, amount, section))
             
-            i += 1
+            # Avanzar al siguiente código - buscar directamente el siguiente código válido
+            j = i + 1
+            next_code_found = False
+            while j < len(elements):
+                elem = elements[j].strip()
+                if (len(elem) >= 3 and len(elem) <= 4 and 
+                    all(c.isalnum() for c in elem) and 
+                    not elem.isdigit() and 
+                    "TOTAL" not in elem.upper() and 
+                    "CONSOLIDADO" not in elem.upper()):
+                    i = j
+                    next_code_found = True
+                    break
+                j += 1
+            if not next_code_found:
+                i += 1
         else:
             i += 1
     
