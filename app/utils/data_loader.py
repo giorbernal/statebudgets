@@ -177,3 +177,29 @@ def get_spending_timeline(
     )
     
     return timeline
+
+
+def thousands_to_millions(amount_thousands: float) -> float:
+    """Convert amount from thousands of euros to millions of euros.
+    
+    Args:
+        amount_thousands: Amount in thousands of euros.
+    
+    Returns:
+        Amount in millions of euros.
+    """
+    return amount_thousands / 1000
+
+
+def format_millions(amount_thousands: float, decimals: int = 3) -> str:
+    """Format amount from thousands to millions with specified decimals.
+    
+    Args:
+        amount_thousands: Amount in thousands of euros.
+        decimals: Number of decimal places (default 3).
+    
+    Returns:
+        Formatted string with millions of euros (M€).
+    """
+    millions = thousands_to_millions(amount_thousands)
+    return f"{millions:,.{decimals}f}".replace(",", "X").replace(".", ",").replace("X", ".") + " M€"

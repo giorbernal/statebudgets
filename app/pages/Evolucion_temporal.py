@@ -7,6 +7,8 @@ from utils.shared import initialize_page
 from utils.data_loader import (
     get_policies,
     get_spending_timeline,
+    thousands_to_millions,
+    format_millions,
 )
 
 
@@ -54,21 +56,25 @@ if not selected_policies:
 # Get timeline data
 timeline_data = get_spending_timeline(df, selected_policies)
 
+# Convert amounts to millions for display
+timeline_data_display = timeline_data.copy()
+timeline_data_display["amount_millions"] = timeline_data_display["amount"].apply(thousands_to_millions)
+
 # Create line chart
 fig = px.line(
-    timeline_data,
+    timeline_data_display,
     x="year",
-    y="amount",
+    y="amount_millions",
     color="policy",
     markers=True,
     title="Evolución del Gasto por Política (2011-2026)",
     labels={
         "year": "Año",
-        "amount": "Gasto (€)",
+        "amount_millions": "Gasto (M€)",
         "policy": "Política",
     },
     hover_data={
-        "amount": ":.0f",
+        "amount_millions": ":.3f",
         "year": True,
         "policy": True,
     },
@@ -77,16 +83,16 @@ fig = px.line(
 fig.update_traces(
     hovertemplate="<b>%{customdata[1]}</b><br>" +
                   "Año: %{customdata[0]}<br>" +
-                  "Gasto: %{y:,.0f}€<extra></extra>",
-    customdata=timeline_data[["year", "policy"]].values,
+                  "Gasto: %{y:,.3f} M€<extra></extra>",
+    customdata=timeline_data_display[["year", "policy"]].values,
 )
 
 fig.update_layout(
     height=600,
     font=dict(size=11),
     xaxis_title="Año",
-    yaxis_title="Gasto (€)",
-    yaxis_tickformat=",.0f",
+    yaxis_title="Gasto (M€)",
+    yaxis_tickformat=",.3f",
     hovermode="x unified",
     legend=dict(
         yanchor="top",
@@ -115,19 +121,19 @@ num_data_points = len(timeline_data)
 with col1:
     st.metric(
         "Gasto Total",
-        f"{total_spending:,.0f}€",
+        format_millions(total_spending),
     )
 
 with col2:
     st.metric(
         "Gasto Promedio",
-        f"{avg_spending:,.0f}€",
+        format_millions(avg_spending),
     )
 
 with col3:
     st.metric(
         "Gasto Máximo",
-        f"{max_spending:,.0f}€",
+        format_millions(max_spending),
     )
 
 with col4:
@@ -153,9 +159,7 @@ policy_stats = (
 
 # Format currency columns
 for col in ["Gasto Total", "Gasto Promedio", "Gasto Máximo", "Gasto Mínimo"]:
-    policy_stats[col] = policy_stats[col].apply(
-        lambda x: f"{x:,.2f}€".replace(",", ".")
-    )
+    policy_stats[col] = policy_stats[col].apply(format_millions)
 
 policy_stats.columns = ["Política", "Gasto Total", "Gasto Promedio", 
                         "Gasto Máximo", "Gasto Mínimo"]
@@ -182,12 +186,8 @@ yearly_stats = (
 )
 
 # Format currency columns
-yearly_stats["Gasto Total"] = yearly_stats["Gasto Total"].apply(
-    lambda x: f"{x:,.0f}€"
-)
-yearly_stats["Gasto Promedio"] = yearly_stats["Gasto Promedio"].apply(
-    lambda x: f"{x:,.0f}€"
-)
+yearly_stats["Gasto Total"] = yearly_stats["Gasto Total"].apply(format_millions)
+yearly_stats["Gasto Promedio"] = yearly_stats["Gasto Promedio"].apply(format_millions)
 
 yearly_stats.columns = ["Año", "Gasto Total", "Num. Políticas", "Gasto Promedio"]
 yearly_stats = yearly_stats.reset_index(drop=True)

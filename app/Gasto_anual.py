@@ -7,6 +7,8 @@ from utils.shared import initialize_page
 from utils.data_loader import (
     get_years,
     get_spending_by_policy,
+    thousands_to_millions,
+    format_millions,
 )
 
 
@@ -42,23 +44,27 @@ with col2:
 # Get spending by policy for selected year
 spending_by_policy = get_spending_by_policy(df, selected_year)
 
+# Convert amounts to millions for display
+spending_by_policy_display = spending_by_policy.copy()
+spending_by_policy_display["amount_millions"] = spending_by_policy_display["amount"].apply(thousands_to_millions)
+
 # Create treemap visualization using plotly graph_objects
 fig = go.Figure(
     go.Treemap(
-        labels=spending_by_policy["policy"].tolist(),
-        parents=[""] * len(spending_by_policy),
-        values=spending_by_policy["amount"].tolist(),
+        labels=spending_by_policy_display["policy"].tolist(),
+        parents=[""] * len(spending_by_policy_display),
+        values=spending_by_policy_display["amount_millions"].tolist(),
         marker=dict(
-            colors=spending_by_policy["amount"].tolist(),
+            colors=spending_by_policy_display["amount_millions"].tolist(),
             colorscale="Viridis",
-            cmid=spending_by_policy["amount"].median(),
+            cmid=spending_by_policy_display["amount_millions"].median(),
             colorbar=dict(
-                title="Gasto (€)",
-                tickformat=",.0f",
+                title="Gasto (M€)",
+                tickformat=",.3f",
             ),
         ),
         textposition="middle center",
-        hovertemplate="<b>%{label}</b><br>Gasto: %{value:,.0f}€<extra></extra>",
+        hovertemplate="<b>%{label}</b><br>Gasto: %{value:,.3f} M€<extra></extra>",
     )
 )
 
@@ -85,7 +91,7 @@ num_policies = len(spending_by_policy)
 with col1:
     st.metric(
         "Gasto Total",
-        f"{total_spending:,.0f}€",
+        format_millions(total_spending),
     )
 
 with col2:
@@ -97,7 +103,7 @@ with col2:
 with col3:
     st.metric(
         "Gasto Promedio",
-        f"{avg_spending:,.0f}€",
+        format_millions(avg_spending),
     )
 
 with col4:
@@ -111,10 +117,8 @@ st.subheader("📋 Detalle de Gastos")
 
 # Format amount column for display
 display_df = spending_by_policy.copy()
-display_df["amount"] = display_df["amount"].apply(
-    lambda x: f"{x:,.2f}€".replace(",", ".")
-)
-display_df.columns = ["Política de Gasto", "Gasto (€)"]
+display_df["amount"] = display_df["amount"].apply(format_millions)
+display_df.columns = ["Política de Gasto", "Gasto (M€)"]
 display_df = display_df.reset_index(drop=True)
 display_df.index = display_df.index + 1
 
