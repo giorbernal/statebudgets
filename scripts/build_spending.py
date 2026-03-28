@@ -223,6 +223,48 @@ def find_total_column_index(elements: List[str], clasif_idx: int) -> int:
 
 
 
+def find_proroga_file(year: int, project_root: Path) -> Optional[str]:
+    """
+    Busca el fichero de prórroga (*31_*G_1_3_1.HTM o *31_*G_1_7.HTM) para el año.
+    Si no existe en el año actual, busca recursivamente en años anteriores.
+    
+    Razonamiento: Si el fichero de prórroga no existe en el año solicitado,
+    significa que ese año usa la prórroga del año anterior. Si tampoco existe
+    en el año anterior, continúa buscando en años anteriores hasta encontrarlo.
+    
+    Args:
+        year: Año a procesar
+        project_root: Ruta raíz del proyecto
+        
+    Returns:
+        Ruta del fichero de prórroga encontrado, o None si no existe
+    """
+    if year < 2011:
+        return None
+    
+    base_dir = project_root / "pge" / str(year) / "PGE-ROM" / "doc" / "HTM"
+    
+    if not base_dir.exists():
+        return None
+    
+    # Determinar patrón según el año
+    if year > 2013:
+        pattern = "N_*_E_R_31_*G_1_3_1.HTM"
+    else:
+        pattern = "N_*_E_R_31_*G_1_7.HTM"
+    
+    # Buscar el fichero
+    file_paths = glob.glob(str(base_dir / pattern))
+    
+    if file_paths:
+        # Retornar el primer fichero encontrado
+        return file_paths[0]
+    
+    # Si no existe, buscar en el año anterior
+    print(f"Fichero de prórroga no encontrado para {year}, buscando en {year - 1}...")
+    return find_proroga_file(year - 1, project_root)
+
+
 def build_spending_csv(year: int):
     """
     Construye el archivo spending.csv para un año específico.
@@ -259,8 +301,8 @@ def build_spending_csv(year: int):
         year_suffix = str(year)[-2:]
         prev_year_suffix = str(year - 1)[-2:]
         patterns = [
-            f"N_{prev_year_suffix}P_E_R_31_*_1_3_1.HTM",
-            f"N_{year_suffix}_E_R_31_*_1_3_1.HTM",
+            f"N_{prev_year_suffix}P_E_R_31_*_1_1_3_1.HTM",
+            f"N_{year_suffix}_E_R_31_*_1_1_3_1.HTM",
         ]
     else:
         # Patrones para años <= 2013
@@ -268,8 +310,8 @@ def build_spending_csv(year: int):
         year_suffix = str(year)[-2:]
         prev_year_suffix = str(year - 1)[-2:]
         patterns = [
-            f"N_{prev_year_suffix}P_E_R_31_*_1_7.HTM",
-            f"N_{year_suffix}_E_R_31_*_1_7.HTM"
+            f"N_{prev_year_suffix}P_E_R_31_*_1_1_7.HTM",
+            f"N_{year_suffix}_E_R_31_*_1_1_7.HTM"
         ]
     
     # Buscar y procesar archivos
@@ -284,6 +326,15 @@ def build_spending_csv(year: int):
             rows = parse_htm_file(file_path)
             all_rows.extend(rows)
             files_processed += 1
+    
+    # Buscar y procesar fichero de prórroga (*31_*G_1_3_1.HTM o *31_*G_1_7.HTM)
+    # Solo se procesa si se encontraron archivos normales (no es una prórroga completa)
+    proroga_file = find_proroga_file(year, project_root)
+    if proroga_file:
+        print(f"Procesando fichero de prórroga: {proroga_file}")
+        rows = parse_htm_file(proroga_file)
+        all_rows.extend(rows)
+        files_processed += 1
     
     if files_processed == 0:
         print(f"Advertencia: No se encontraron archivos para {year}", file=sys.stderr)
