@@ -203,3 +203,30 @@ def format_millions(amount_thousands: float, decimals: int = 3) -> str:
     """
     millions = thousands_to_millions(amount_thousands)
     return f"{millions:,.{decimals}f}".replace(",", "X").replace(".", ",").replace("X", ".") + " M€"
+
+
+def get_spending_by_code_and_name(
+    df: pd.DataFrame,
+    year: int,
+    policy: str,
+) -> pd.DataFrame:
+    """Get spending breakdown by code and name for a specific policy and year.
+    
+    Args:
+        df: Spending DataFrame.
+        year: Target year.
+        policy: Target policy.
+    
+    Returns:
+        DataFrame with code, name, and total amount grouped by code-name combination.
+    """
+    filtered_data = df[(df["year"] == year) & (df["policy"] == policy)]
+    
+    spending_by_code = (
+        filtered_data.groupby(["code", "name"])["amount"]
+        .sum()
+        .reset_index()
+        .sort_values("amount", ascending=False)
+    )
+    
+    return spending_by_code
