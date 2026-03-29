@@ -124,11 +124,10 @@ if st.session_state.view_state == "main":
     st.divider()
     st.subheader("📈 Estadísticas del Año")
     
-    col1, col2, col3, col4 = st.columns(4)
+    col1, col2, col3 = st.columns(3)
     
     total_spending = spending_by_policy["amount"].sum()
     top_policy = spending_by_policy.iloc[0]
-    avg_spending = spending_by_policy["amount"].mean()
     num_policies = len(spending_by_policy)
     
     with col1:
@@ -138,9 +137,6 @@ if st.session_state.view_state == "main":
         st.metric("Política Mayor", f"{top_policy['policy'][:30]}...")
     
     with col3:
-        st.metric("Gasto Promedio", format_millions(avg_spending))
-    
-    with col4:
         st.metric("Num. Políticas", num_policies)
     
     # Detailed table
@@ -230,11 +226,10 @@ elif st.session_state.view_state == "detail":
     st.divider()
     st.subheader("📈 Estadísticas de la Política")
     
-    col1, col2, col3, col4 = st.columns(4)
+    col1, col2, col3 = st.columns(3)
     
     total_spending = spending_by_code["amount"].sum()
     top_code = spending_by_code.iloc[0]
-    avg_spending = spending_by_code["amount"].mean()
     num_codes = len(spending_by_code)
     
     with col1:
@@ -244,9 +239,6 @@ elif st.session_state.view_state == "detail":
         st.metric("Concepto Mayor", f"{top_code['code']}")
     
     with col3:
-        st.metric("Gasto Promedio", format_millions(avg_spending))
-    
-    with col4:
         st.metric("Num. Conceptos", num_codes)
     
     # Detailed table
