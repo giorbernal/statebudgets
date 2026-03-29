@@ -8,6 +8,9 @@ from utils.data_loader import (
     get_years,
     get_spending_by_policy,
     get_spending_by_code_and_name,
+    load_parties_data,
+    get_party_color,
+    style_dataframe_by_party,
     thousands_to_millions,
     format_millions,
 )
@@ -46,6 +49,14 @@ with col2:
         key="year_selector",
         label_visibility="collapsed",
     )
+
+# Get governing party for the selected year
+parties_df = load_parties_data()
+governing_party = parties_df[parties_df["year"] == selected_year]["party"].values
+if governing_party:
+    party = governing_party[0]
+    party_color = get_party_color(party)
+    st.markdown(f"<p style='color: {party_color}; font-weight: bold;'>🏛️ Gobierno: <strong>{party}</strong></p>", unsafe_allow_html=True)
 
 st.markdown("---")
 
@@ -148,11 +159,22 @@ if st.session_state.view_state == "main":
     display_df = display_df.reset_index(drop=True)
     display_df.index = display_df.index + 1
     
-    st.dataframe(
-        display_df,
-        use_container_width=True,
-        height=400,
-    )
+    # Apply party-based styling
+    governing_party = parties_df[parties_df["year"] == selected_year]["party"].values
+    if governing_party:
+        party = governing_party[0]
+        styled_df = style_dataframe_by_party(display_df, party)
+        st.dataframe(
+            styled_df,
+            use_container_width=True,
+            height=400,
+        )
+    else:
+        st.dataframe(
+            display_df,
+            use_container_width=True,
+            height=400,
+        )
 
 # VIEW 2: Detail view - Code Level
 elif st.session_state.view_state == "detail":
@@ -250,11 +272,22 @@ elif st.session_state.view_state == "detail":
     display_df = display_df[["Código", "Nombre", "Gasto (M€)"]].reset_index(drop=True)
     display_df.index = display_df.index + 1
     
-    st.dataframe(
-        display_df,
-        use_container_width=True,
-        height=400,
-    )
+    # Apply party-based styling
+    governing_party = parties_df[parties_df["year"] == selected_year]["party"].values
+    if governing_party:
+        party = governing_party[0]
+        styled_df = style_dataframe_by_party(display_df, party)
+        st.dataframe(
+            styled_df,
+            use_container_width=True,
+            height=400,
+        )
+    else:
+        st.dataframe(
+            display_df,
+            use_container_width=True,
+            height=400,
+        )
 
 # Footer
 st.markdown("---")

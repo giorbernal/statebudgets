@@ -230,3 +230,161 @@ def get_spending_by_code_and_name(
     )
     
     return spending_by_code
+
+
+@st.cache_data
+def load_parties_data() -> pd.DataFrame:
+    """Load and cache the parties.csv dataset.
+    
+    Returns:
+        DataFrame with year and party columns.
+    """
+    project_root = Path(__file__).parent.parent.parent
+    parties_path = project_root / "data" / "input" / "parties.csv"
+    
+    if not parties_path.exists():
+        raise FileNotFoundError(f"Parties dataset not found at {parties_path}")
+    
+    df = pd.read_csv(parties_path)
+    df['year'] = pd.to_numeric(df['year'], errors='coerce').astype(int)
+    
+    return df
+
+
+def get_party_color(party: str) -> str:
+    """Get the color for a political party.
+    
+    Args:
+        party: Party name (PSOE or PP).
+    
+    Returns:
+        Hex color code for the party.
+    """
+    party_colors = {
+        "PSOE": "#E41E3F",  # Red
+        "PP": "#0066CC",    # Blue
+    }
+    return party_colors.get(party, "#999999")  # Gray as default
+
+
+def add_party_to_data(df: pd.DataFrame, timeline_data: pd.DataFrame) -> pd.DataFrame:
+    """Add party information to timeline data based on year.
+    
+    Args:
+        df: Original spending DataFrame (to load parties if needed).
+        timeline_data: Timeline data with year, policy, and amount columns.
+    
+    Returns:
+        Timeline data with added 'party' column.
+    """
+    parties_df = load_parties_data()
+    result = timeline_data.merge(parties_df, on="year", how="left")
+    result["party_display"] = result["party"].fillna("Desconocido")
+    
+    return result
+
+
+def get_party_background_color(party: str, opacity: float = 0.15) -> str:
+    """Get a light background color for a political party.
+    
+    Args:
+        party: Party name (PSOE or PP).
+        opacity: Opacity value (0.0 to 1.0).
+    
+    Returns:
+        RGBA color code for the party background.
+    """
+    party_colors = {
+        "PSOE": f"rgba(228, 30, 63, {opacity})",      # Light red
+        "PP": f"rgba(0, 102, 204, {opacity})",        # Light blue
+    }
+    return party_colors.get(party, f"rgba(153, 153, 153, {opacity})")  # Light gray as default
+
+
+def style_dataframe_by_party(
+    df: pd.DataFrame,
+    party: str,
+    opacity: float = 0.15
+):
+    """Style a dataframe with party-based background color for Streamlit display.
+    
+    Args:
+        df: DataFrame to style.
+        party: Party name (PSOE or PP).
+        opacity: Background opacity (0.0-1.0).
+    
+    Returns:
+        Styled object compatible with st.dataframe().
+    """
+    background_color = get_party_background_color(party, opacity)
+    
+    # Create a styled dataframe with party background for all cells
+    def apply_party_color(val):
+        return f'background-color: {background_color}'
+    
+    # Use map method for cell-by-cell styling (pandas 1.4+)
+    try:
+        styled = df.style.map(apply_party_color)
+    except AttributeError:
+        # Fallback for older pandas versions
+        styled = df.style.applymap(apply_party_color)
+    
+    return styled
+
+
+def get_policy_concepts_timeline(
+    df: pd.DataFrame,
+    policy: str,
+) -> pd.DataFrame:
+    """Get spending timeline for all concepts (code+name) within a policy.
+    
+    Args:
+        df: Spending DataFrame.
+        policy: Target policy name.
+    
+    Returns:
+        DataFrame with year, code, name, amount columns, grouped by concept.
+    """
+    # Filter by policy
+    policy_df = df[df["policy"] == policy].copy()
+    
+    # Create concept label combining code and name
+    policy_df["concept"] = policy_df["code"].astype(str) + " - " + policy_df["name"].astype(str)
+    
+    # Group by year and concept
+    timeline = (
+        policy_df.groupby(["year", "concept"])["amount"]
+        .sum()
+        .reset_index()
+        .sort_values(["concept", "year"])
+    )
+    
+    return timeline
+
+
+def get_yearly_totals(df: pd.DataFrame) -> pd.DataFrame:
+    """Get total spending by year and TODO: total income by year.
+    
+    Args:
+        df: Spending DataFrame.
+    
+    Returns:
+        DataFrame with year, total_spending, and total_income columns.
+        Note: total_income is currently a placeholder and needs to be implemented
+        when income data source is available.
+    """
+    yearly_spending = (
+        df.groupby("year")["amount"]
+        .sum()
+        .reset_index()
+        .rename(columns={"amount": "total_spending"})
+    )
+    
+    # TODO: Add income data once source is available
+    # yearly_income = load_income_data()
+    # yearly_totals = yearly_spending.merge(yearly_income, on="year", how="left")
+    
+    yearly_totals = yearly_spending.copy()
+    yearly_totals["total_income"] = None  # Placeholder for income data
+    
+    return yearly_totals.sort_values("year")
