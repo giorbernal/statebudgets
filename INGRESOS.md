@@ -140,18 +140,26 @@ make ensemble-revenue
 
 ## Disponibilidad de Datos por Año
 
-### ✓ Años con datos completos (2017-2023)
-Los siguientes años tienen archivos de ingresos disponibles con patrón estándar `N_XX_E_R_2_[organismo]_1_7_A_1.CSV`:
+### ✓ Años con datos disponibles (2014-2019, 2021-2023)
 
-```
-✓ 2017-2019: Archivos N_*_E_R_2_101_1_7_A_1 (ESTADO) y N_*_E_R_2_105_1_7_A_1 (SS)
-✓ 2021-2023: Archivos N_*_E_R_2_101_1_7_A_1 (ESTADO) y N_*_E_R_2_105_1_7_A_1 (SS)
-```
+El script ahora soporta múltiples formatos y puede generar datos para **9 años**:
+
+| Año | Formato | Estado |
+|-----|---------|--------|
+| 2014-2016 | HTML (N_XX_E_R_2_*_7_A_1.HTM) | ✓ Disponible |
+| 2017-2019 | CSV clásico (N_XX_E_R_2_*_7_A_1.CSV) | ✓ Disponible |
+| 2020 | E_R_31 (nuevo formato) | ✗ No hay datos de ingresos |
+| 2021-2023 | CSV clásico (N_XX_E_R_2_*_7_A_1.CSV) | ✓ Disponible |
+| 2024-2026 | E_R_31 / E_V_1 (nuevo formato) | ✗ No hay datos de ingresos |
 
 **Comando para generar ingresos de múltiples años:**
 ```bash
+make revenue
+# O directamente:
 python3.10 scripts/build_revenue.py all
 ```
+
+Esto generará datos para todos los años disponibles (2014-2019, 2021-2023).
 
 ### ✗ Años SIN datos de ingresos disponibles
 
@@ -179,19 +187,42 @@ python3.10 scripts/build_revenue.py all
 
 ## Limitaciones Conocidas
 
-1. **Período con datos**: 2017-2023 disponibles actualmente
-   - 2017-2019 y 2021-2023 tienen estructura compatible
-   - Ejecutar: `make revenue` genera datos solo para 2023
-   - Ejecutar: `python3.10 scripts/build_revenue.py all` genera todos los años disponibles
+1. **Período con datos**: 2014-2019, 2021-2023 disponibles actualmente (9 años)
+   - 2014-2016: Parseados desde formato HTML
+   - 2017-2019: Estructura CSV clásica
+   - 2021-2023: Estructura CSV clásica
+   - Ejecutar: `make revenue` genera todos los años disponibles
 
-2. **Años faltantes**: 2011-2016, 2020, 2024-2026
-   - 2011-2016: Solo disponibles en HTM (requiere parser HTML)
-   - 2020: Estructura diferente de CSV (requiere adapter)
-   - 2024-2026: Nuevo formato PGE (requiere actualización del parser)
+2. **Años sin datos de ingresos públicos disponibles**:
+   - **2011-2013**: No hay archivos en formato HTML ni CSV en la descarga
+   - **2020**: Estructura E_R_31 no contiene datos de ingresos consolidados
+   - **2024-2026**: Estructura E_R_31 / E_V_1 no contiene datos de ingresos consolidados
 
-3. **Estructura simplificada**: Consolidación a nivel ESTADO + SS
+3. **Estructura simplificada**: Consolidación a nivel ESTADO + SEGURIDAD SOCIAL
 
 4. **No incluye**: Organismos autónomos (futura expansión)
+
+## Formatos Soportados
+
+El script `build_revenue.py` soporta tres formatos de archivos:
+
+### HTML (2014-2016)
+- **Patrón**: `N_XX_E_R_2_101_1_7_A_1.HTM`
+- **Descripción**: Tablas HTML con capítulos de ingresos consolidados
+- **Parser**: `parse_html_revenue()` en `revenue_parsers.py`
+- **Estado**: ✓ Funcional
+
+### CSV Clásico (2017-2019, 2021-2023)
+- **Patrón**: `N_XX_E_R_2_[101|105]_1_7_A_1.CSV`
+- **Descripción**: CSV con capítulos consolidados (2011 en formato original)
+- **Parser**: `parse_csv_chapters_simple()` en `build_revenue.py`
+- **Estado**: ✓ Funcional
+
+### Nuevo Formato (2024-2026)
+- **Patrón**: `N_*P_E_R_31_*` y `N_*P_E_V_1_*`
+- **Descripción**: Nuevo formato de PGE (cambio en 2024)
+- **Problema**: No contiene resúmenes de ingresos por capítulos
+- **Status**: ✗ No disponible para ingresos
 
 ## Fuente de Datos
 
