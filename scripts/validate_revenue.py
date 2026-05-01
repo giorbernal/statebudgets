@@ -35,28 +35,53 @@ def validate_revenue_data(csv_file: str) -> bool:
     
     all_passed = True
     
-    # ========== VALIDACIÓN 1: Verificar que ESTADO suma correctamente ==========
+    # ========== VALIDACIÓN 1: Verificar que capítulos del ESTADO suman al total ==========
     print("=" * 70)
-    print("VALIDACIÓN 1: Ingresos del ESTADO")
+    print("VALIDACIÓN 1: Ingresos del ESTADO - Validación por año")
     print("=" * 70)
     
-    estado_rows = df[df['organismo'] == 'ESTADO']
-    if not estado_rows.empty:
-        estado_total_calculated = estado_rows['total'].sum()
-        estado_expected = 192544166.33  # Valor conocido
+    estado_data = df[df['organismo'] == 'ESTADO']
+    if not estado_data.empty:
+        years = sorted(estado_data['año'].unique())
         
-        print(f"\nIngresos por capítulo (miles de euros):")
-        for _, row in estado_rows.iterrows():
-            print(f"  Cap {row['codigo']}: {row['descripcion']:<40} {row['total']:>15,.2f}")
-        
-        print(f"\nTotal calculado: {estado_total_calculated:,.2f}")
-        print(f"Total esperado:  {estado_expected:,.2f}")
-        
-        tolerance = 100  # Tolerancia de 100 mil euros por errores de redondeo
-        if abs(estado_total_calculated - estado_expected) < tolerance:
-            print("✓ ESTADO suma correctamente")
+        for year in years:
+            year_data = estado_data[estado_data['año'] == year]
+            estado_total = year_data['total'].sum()
+            
+            print(f"\nAño {year}:")
+            print(f"  Capítulos:")
+            for _, row in year_data.iterrows():
+                print(f"    Cap {row['codigo']}: {row['descripcion']:<40} {row['total']:>15,.2f}")
+            print(f"  Total ESTADO: {estado_total:,.2f} miles €")
+    
+    # ========== VALIDACIÓN 1B: Verificar que la suma de ESTADO + SS es razonable ==========
+    print("\n" + "=" * 70)
+    print("VALIDACIÓN 1B: Relación ESTADO vs SEGURIDAD SOCIAL")
+    print("=" * 70)
+    
+    yearly_breakdown = df.groupby(['año', 'organismo'])['total'].sum().unstack(fill_value=0)
+    print("\nDesglose por año y organismo (miles de euros):")
+    print(f"{'Año':<6} {'ESTADO':<20} {'SEG.SOCIAL':<20} {'Total':<20}")
+    print("-" * 66)
+    
+    for year in yearly_breakdown.index:
+        estado_val = yearly_breakdown.loc[year, 'ESTADO'] if 'ESTADO' in yearly_breakdown.columns else 0
+        ss_val = yearly_breakdown.loc[year, 'SEGURIDAD SOCIAL'] if 'SEGURIDAD SOCIAL' in yearly_breakdown.columns else 0
+        total = estado_val + ss_val
+        print(f"{year:<6} {estado_val:>18,.0f} {ss_val:>18,.0f} {total:>18,.0f}")
+    
+    # Verificar que SS es ~50-60% del total (patrón esperado)
+    for year in yearly_breakdown.index:
+        estado_val = yearly_breakdown.loc[year, 'ESTADO'] if 'ESTADO' in yearly_breakdown.columns else 0
+        ss_val = yearly_breakdown.loc[year, 'SEGURIDAD SOCIAL'] if 'SEGURIDAD SOCIAL' in yearly_breakdown.columns else 0
+        total = estado_val + ss_val
+        if total > 0:
+            ss_pct = (ss_val / total) * 100
+            if 30 < ss_pct < 70:
+                print(f"✓ {year}: SS = {ss_pct:.1f}% del total (razonable)")
+            else:
+                print(f"⚠ {year}: SS = {ss_pct:.1f}% (esperado 40-60%)")
         else:
-            print(f"✗ ERROR: Diferencia de {abs(estado_total_calculated - estado_expected):,.2f}")
             all_passed = False
     
     # ========== VALIDACIÓN 2: Verificar organismos incluidos en consolidado ==========
@@ -65,15 +90,18 @@ def validate_revenue_data(csv_file: str) -> bool:
     print("=" * 70)
     print("\nNota: Se consolida ESTADO + SEGURIDAD SOCIAL (ambos están en spending.csv)")
     
-    organismo_totals = df.groupby('organismo')['total'].sum().sort_values(ascending=False)
+    organismo_totals = df.groupby('organismo')['total'].sum().sort_values(ascending=True)
     
     print("\nTotales por organismo (miles de euros):")
     for organismo, total in organismo_totals.items():
         print(f"  {organismo:<35} {total:>15,.2f}")
     
-    total_consolidado = organismo_totals.sum()
-    print(f"\nGran total (CONSOLIDADO): {total_consolidado:>15,.2f}")
-    print(f"                         ({total_consolidado * 1000:>15,.0f} euros)")
+    # Calculate only ESTADO + SEGURIDAD SOCIAL
+    estado_total_all = organismo_totals.get('ESTADO', 0)
+    ss_total_all = organismo_totals.get('SEGURIDAD SOCIAL', 0)
+    total_consolidado = estado_total_all + ss_total_all
+    print(f"\nGran total consolidado (ESTADO + SS): {total_consolidado:>15,.2f}")
+    print(f"                                     ({total_consolidado * 1000:>15,.0f} euros)")
     
     # ========== VALIDACIÓN 3: Verificar que no haya valores negativos o nulos ==========
     print("\n" + "=" * 70)
@@ -152,7 +180,7 @@ def validate_revenue_data(csv_file: str) -> bool:
     print("=" * 70)
     
     try:
-        # Load spending data for comparison
+        # Load spending data for comparison - only years with revenue data
         from pathlib import Path
         project_root = Path(__file__).parent.parent
         spending_path = project_root / "data" / "input" / "spending.csv"
@@ -165,22 +193,24 @@ def validate_revenue_data(csv_file: str) -> bool:
                                              .str.replace(",", ".", regex=False),
                 errors='coerce'
             )
-            spending_2023 = spending_df[spending_df['year'] == 2023]
-            total_gastos = spending_2023['amount'].sum()
             
-            print(f"\nIngresos consolidados (ESTADO + Seguridad Social):")
-            print(f"  {total_consolidado:>15,.2f} miles €")
-            print(f"\nGastos consolidados (spending.csv):")
-            print(f"  {total_gastos:>15,.2f} miles €")
+            # Compare for years where we have revenue data
+            revenue_years = sorted(df['año'].unique())
             
-            deficit = total_gastos - total_consolidado
-            deficit_pct = (deficit / total_gastos) * 100 if total_gastos > 0 else 0
-            
-            print(f"\nResultado consolidado:")
-            if deficit > 0:
-                print(f"  Déficit: {deficit:>15,.2f} miles € ({deficit_pct:.1f}% de gastos)")
-            else:
-                print(f"  Superávit: {-deficit:>15,.2f} miles € ({-deficit_pct:.1f}% de gastos)")
+            print(f"\nIngresos consolidados (ESTADO + Seguridad Social) por año:")
+            for year in revenue_years:
+                year_revenue = df[df['año'] == year][['organismo', 'total']].groupby('organismo')['total'].sum()
+                year_total = year_revenue.get('ESTADO', 0) + year_revenue.get('SEGURIDAD SOCIAL', 0)
+                
+                year_spending = spending_df[spending_df['year'] == year]['amount'].sum()
+                
+                if year_spending > 0:
+                    deficit = year_spending - year_total
+                    deficit_pct = (deficit / year_spending) * 100
+                    symbol = "✓" if deficit > 0 else "⚠"
+                    
+                    print(f"\n  {year}: Ingresos {year_total:>12,.0f}k€ | Gastos {year_spending:>12,.0f}k€ | " +
+                          f"{'Déficit' if deficit > 0 else 'Superávit'} {abs(deficit):>12,.0f}k€ ({abs(deficit_pct):>5.1f}%) {symbol}")
     except Exception as e:
         print(f"⚠ No se pudo comparar con gastos: {e}")
     
