@@ -380,11 +380,122 @@ def get_yearly_totals(df: pd.DataFrame) -> pd.DataFrame:
         .rename(columns={"amount": "total_spending"})
     )
     
-    # TODO: Add income data once source is available
-    # yearly_income = load_income_data()
-    # yearly_totals = yearly_spending.merge(yearly_income, on="year", how="left")
-    
-    yearly_totals = yearly_spending.copy()
-    yearly_totals["total_income"] = None  # Placeholder for income data
+    # Add income data
+    try:
+        yearly_income = load_revenue_data_yearly()
+        yearly_totals = yearly_spending.merge(yearly_income, on="year", how="left")
+    except FileNotFoundError:
+        yearly_totals = yearly_spending.copy()
+        yearly_totals["total_income"] = None  # Placeholder for income data
     
     return yearly_totals.sort_values("year")
+
+
+def _parse_revenue_csv(file_path: Path) -> pd.DataFrame:
+    """Parse the revenue.csv file using Pandas.
+    
+    Args:
+        file_path: Path to the CSV file.
+    
+    Returns:
+        DataFrame with columns: año, organismo, codigo, descripcion, total.
+    """
+    df = pd.read_csv(
+        file_path,
+        sep=';',
+        encoding='utf-8',
+        on_bad_lines='skip',
+        engine='python'
+    )
+    
+    if df.empty:
+        raise ValueError("CSV file produced empty DataFrame")
+    
+    # Convert decimal numbers (Spanish format: 1.234,56 -> 1234.56)
+    df['total'] = df['total'].astype(str).str.strip()
+    df['total'] = pd.to_numeric(
+        df['total'].str.replace(".", "", regex=False).str.replace(",", ".", regex=False),
+        errors='coerce'
+    )
+    
+    # Convert año to integer
+    df['año'] = pd.to_numeric(df['año'], errors='coerce').astype(int)
+    
+    # Remove rows with invalid data
+    df = df.dropna(subset=['año', 'total'])
+    
+    return df
+
+
+@st.cache_data
+def load_revenue_data() -> pd.DataFrame:
+    """Load and clean the revenue.csv dataset.
+    
+    Returns:
+        Cleaned DataFrame with revenue data.
+    """
+    project_root = Path(__file__).parent.parent.parent
+    data_path = project_root / "data" / "input" / "revenue.csv"
+    
+    if not data_path.exists():
+        raise FileNotFoundError(f"Revenue dataset not found at {data_path}")
+    
+    # Parse CSV with Pandas
+    df = _parse_revenue_csv(data_path)
+    
+    # Clean descripcion column
+    df["descripcion"] = (
+        df["descripcion"]
+        .astype(str)
+        .str.strip()
+        .str.replace("&uacute;", "ú", regex=False)
+        .str.replace("&aacute;", "á", regex=False)
+        .str.replace("&eacute;", "é", regex=False)
+        .str.replace("&iacute;", "í", regex=False)
+        .str.replace("&oacute;", "ó", regex=False)
+    )
+    
+    return df.reset_index(drop=True)
+
+
+def get_revenue_by_organism(
+    df: pd.DataFrame,
+    year: int,
+) -> pd.DataFrame:
+    """Get total revenue by organism for a specific year.
+    
+    Args:
+        df: Revenue DataFrame.
+        year: Target year.
+    
+    Returns:
+        DataFrame with organism and total amount.
+    """
+    year_data = df[df["año"] == year]
+    
+    revenue_by_organism = (
+        year_data.groupby("organismo")["total"]
+        .sum()
+        .reset_index()
+        .sort_values("total", ascending=False)
+    )
+    
+    return revenue_by_organism
+
+
+def load_revenue_data_yearly() -> pd.DataFrame:
+    """Load yearly revenue totals.
+    
+    Returns:
+        DataFrame with year and total_income columns.
+    """
+    df = load_revenue_data()
+    
+    yearly_revenue = (
+        df.groupby("año")["total"]
+        .sum()
+        .reset_index()
+        .rename(columns={"año": "year", "total": "total_income"})
+    )
+    
+    return yearly_revenue

@@ -84,22 +84,63 @@ Este comando:
 make ensemble-spending
 ```
 
+### revenue
+Genera el dataset de ingresos presupuestarios consolidados (ESTADO + Seguridad Social) para 2023.
+
+Este comando:
+1. Procesa los archivos CSV de ingresos del PGE 2023
+2. Extrae datos de ESTADO (8 capítulos económicos) y Seguridad Social
+3. Genera `data/input/revenue.csv` con análisis consolidado
+
+```bash
+make revenue
+```
+
+### validate-revenue
+Valida la precisión de los datos de ingresos y realiza comparativa vs. gastos.
+
+Este comando:
+1. Verifica que los capítulos de ESTADO sumen correctamente
+2. Comprueba integridad de datos (sin nulos, duplicados)
+3. Compara ingresos consolidados vs. gastos presupuestarios
+4. Reporta déficit/superávit consolidado
+
+```bash
+make validate-revenue
+```
+
 ## Características de la Aplicación
 
-### Tab 1: Gastos por Política 📊
+### Página 1: Gastos por Política 📊 (Principal)
 - Treemap interactivo mostrando distribución de gastos
 - Selector de año (2011-2026)
 - Colorización por monto (escala Viridis)
 - Métricas resumen (total, mayor política, promedio, cantidad)
 - Tabla detallada con formato español
 
-### Tab 2: Evolución Temporal 📈
+### Página 2: Evolución Temporal 📈
 - Gráfico de líneas múltiples (una serie por política)
 - Eje X: Años (2011-2026)
 - Eje Y: Gasto acumulado
 - Filtro multiselección de políticas
 - Opción "Mostrar todas"
 - Estadísticas por política y comparativa año a año
+
+### Página 3: Ingresos Consolidados 📈 (Nueva)
+- Análisis consolidado: **ESTADO + Seguridad Social**
+- Treemap de distribución de ingresos por organismo
+- Comparativa ingresos vs. gastos presupuestarios
+- Métricas de déficit/superávit
+- Desglose por capítulos económicos (8 categorías)
+- Validación de precisión de datos
+
+#### Justificación de la consolidación de ingresos
+Los gastos presupuestarios (spending.csv) incluyen partidas de Seguridad Social (pensiones, desempleo, etc.). 
+Por coherencia analítica, se consolidan los ingresos de ESTADO + Seguridad Social para una comparación equilibrada:
+
+- **Ingresos consolidados 2023**: 401.7 mil millones €
+- **Gastos consolidados 2023**: 650.9 mil millones €
+- **Déficit consolidado**: 249.2 mil millones € (38.3% de gastos)
 
 ## Requisitos
 

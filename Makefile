@@ -1,4 +1,4 @@
-.PHONY: help spending ensemble-spending check-pge run
+.PHONY: help spending ensemble-spending revenue validate-revenue check-pge run
 
 # Available budget years in pge/
 YEARS := 2011 2012 2013 2014 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026
@@ -22,6 +22,11 @@ help:
 	@echo ""
 	@echo "  make ensemble-spending - Ensambla todos los spending.csv en un"
 	@echo "                           archivo global (data/input/spending.csv)"
+	@echo ""
+	@echo "  make revenue           - Genera revenue.csv para el año 2023"
+	@echo "                           (ingresos presupuestarios por organismo)"
+	@echo ""
+	@echo "  make validate-revenue  - Valida la precisión de los datos de ingresos"
 	@echo ""
 
 # Check if pge directory exists
@@ -50,6 +55,16 @@ spending: check-pge
 ensemble-spending: check-pge
 	@echo "Ensembling all spending.csv files..."
 	@sh scripts/ensemble_spending.sh
+
+# Generate revenue.csv for 2023
+revenue: check-pge
+	@echo "Generando revenue.csv para el año 2023..."
+	@python3.10 scripts/build_revenue.py 2023
+
+# Validate revenue data
+validate-revenue: check-pge
+	@echo "Validando datos de ingresos..."
+	@python3.10 scripts/validate_revenue.py
 
 # Run the Streamlit application
 run:
