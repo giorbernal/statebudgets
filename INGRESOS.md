@@ -138,11 +138,60 @@ done
 make ensemble-revenue
 ```
 
+## Disponibilidad de Datos por Año
+
+### ✓ Años con datos completos (2017-2023)
+Los siguientes años tienen archivos de ingresos disponibles con patrón estándar `N_XX_E_R_2_[organismo]_1_7_A_1.CSV`:
+
+```
+✓ 2017-2019: Archivos N_*_E_R_2_101_1_7_A_1 (ESTADO) y N_*_E_R_2_105_1_7_A_1 (SS)
+✓ 2021-2023: Archivos N_*_E_R_2_101_1_7_A_1 (ESTADO) y N_*_E_R_2_105_1_7_A_1 (SS)
+```
+
+**Comando para generar ingresos de múltiples años:**
+```bash
+python3.10 scripts/build_revenue.py all
+```
+
+### ✗ Años SIN datos de ingresos disponibles
+
+#### 2011-2016: Archivos no disponibles en formato CSV
+- Directorio `/pge/YYYY/PGE-ROM/doc/CSV/` está **completamente vacío**
+- Solo disponibles archivos HTM (4,000+ archivos por año)
+- Requeriría **parseo de HTML** para extraer datos
+
+**Situación**: Datos descargados pero sin conversión a CSV
+
+#### 2020: Cambio de estructura de nomenclatura
+- Archivos CSV disponibles pero con patrón diferente: `N_19P_E_R_31_*` (no `N_19P_E_R_2_*`)
+- Los organismos están codificados como `31_101`, `31_105` (antigua estructura era `2_101`, `2_105`)
+- El script `build_revenue.py` busca patrón `2_101_1_7_A_1` que **no existe** en 2020
+
+**Situación**: Requiere actualizar el script para soportar nuevo patrón
+
+#### 2024-2026: Cambio de estructura (nuevo formato)
+- Archivos CSV disponibles pero con patrón completamente diferente: `N_*P_E_R_31_*` 
+- Estructura anterior: `N_*_E_R_2_*_7_A_1`
+- Estructura nueva: `N_*P_E_R_31_*_1_1_*` (más granular)
+- Patrón histórico buscado no existe
+
+**Situación**: Requiere actualizar el script para soportar nuevo formato
+
 ## Limitaciones Conocidas
 
-1. **Período limitado**: Solo 2023 disponible actualmente
-2. **Estructura simplificada**: Consolidación a nivel ESTADO + SS
-3. **No incluye**: Organismos autónomos (futura expansión)
+1. **Período con datos**: 2017-2023 disponibles actualmente
+   - 2017-2019 y 2021-2023 tienen estructura compatible
+   - Ejecutar: `make revenue` genera datos solo para 2023
+   - Ejecutar: `python3.10 scripts/build_revenue.py all` genera todos los años disponibles
+
+2. **Años faltantes**: 2011-2016, 2020, 2024-2026
+   - 2011-2016: Solo disponibles en HTM (requiere parser HTML)
+   - 2020: Estructura diferente de CSV (requiere adapter)
+   - 2024-2026: Nuevo formato PGE (requiere actualización del parser)
+
+3. **Estructura simplificada**: Consolidación a nivel ESTADO + SS
+
+4. **No incluye**: Organismos autónomos (futura expansión)
 
 ## Fuente de Datos
 

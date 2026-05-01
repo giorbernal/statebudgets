@@ -23,8 +23,8 @@ help:
 	@echo "  make ensemble-spending - Ensambla todos los spending.csv en un"
 	@echo "                           archivo global (data/input/spending.csv)"
 	@echo ""
-	@echo "  make revenue           - Genera revenue.csv para el año 2023"
-	@echo "                           (ingresos presupuestarios por organismo)"
+	@echo "  make revenue           - Genera revenue.csv para todos los años"
+	@echo "                           disponibles (2017-2019, 2021-2023)"
 	@echo ""
 	@echo "  make validate-revenue  - Valida la precisión de los datos de ingresos"
 	@echo ""
@@ -56,10 +56,10 @@ ensemble-spending: check-pge
 	@echo "Ensembling all spending.csv files..."
 	@sh scripts/ensemble_spending.sh
 
-# Generate revenue.csv for 2023
+# Generate revenue.csv for all available years
 revenue: check-pge
-	@echo "Generando revenue.csv para el año 2023..."
-	@python3.10 scripts/build_revenue.py 2023
+	@echo "Generando revenue.csv para todos los años disponibles (2017-2019, 2021-2023)..."
+	@python3.10 scripts/build_revenue.py all
 
 # Validate revenue data
 validate-revenue: check-pge
